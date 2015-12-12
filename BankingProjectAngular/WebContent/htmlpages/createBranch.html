@@ -1,0 +1,30 @@
+<div class="row voffset10">
+   <div class="col-md-3"></div>
+   <div class="col-md-6" align="center">
+		<div class="login">
+			<h4>Create Branch</h4>
+			<hr>
+			<form class="login-inner" ng-submit="createBranch()" >
+
+				<label class="pull-left">IFSC **ode: </label><input type="text"
+					class="form-control text" ng-model="ifscCode"
+					placeholder="Enter IFSC Code" required> 
+				<label class="pull-left">Branch name: </label>
+				<input type="text" class="form-control text"
+					ng-model="branchName" placeholder="Enter Branch Name" required>
+				<label class="pull-left">Phone: </label><input type="text" class="form-control text"
+					ng-model="phone" placeholder="Enter Phone Number" required> 
+				<label class="pull-left">Address:
+				</label><input type="text" class="form-control text" ng-model="address"
+					placeholder="Enter Address" required> <br>
+				<br>
+				<br> <input class="btn btn-block btn-lg btn-primary submit"
+					type="submit" value="Create">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+	

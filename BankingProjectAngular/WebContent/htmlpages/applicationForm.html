@@ -1,0 +1,115 @@
+<div class="row voffset10">
+	<div class="col-md-2"></div>
+	<div class="col-md-8" align="left">
+
+		<form class="form-horizontal" ng-submit="apply()">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Application Form - New Account</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">First
+						Name</label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="firstName" type="text"
+							placeholder="Enter your username here"
+							class="form-control input-md" required>
+
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">Last
+						Name</label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="lastName" type="text"
+							placeholder="Enter your username here"
+							class="form-control input-md" required>
+
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Email</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="email" type="text"
+							placeholder="Enter password here" class="form-control input-md"
+							required>
+
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Phone</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="phone" type="number"
+							placeholder="Enter password here" class="form-control input-md"
+							required>
+
+					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Address</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="address" type="address"
+							placeholder="Enter password here" class="form-control input-md"
+							required>
+
+					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Date of birth</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="dateOfBirth" type="calender"
+							placeholder="Enter password here" class="form-control input-md"
+							required>
+
+					</div>
+				</div>
+				
+					<div class="form-group">
+					<label class="col-md-4 control-label" for="selectbasic">Select
+						Branch</label>
+					<div class="col-md-4">
+						<select id="selectbasic" ng-model="branchName" class="form-control">
+							<option value="1">Pune_Loc</option>
+							<option value="2">Mumbai_loc</option>
+						</select>
+					</div>
+				</div>
+				
+					<div class="form-group">
+					<label class="col-md-4 control-label" for="selectbasic">Select
+						Accout Type</label>
+					<div class="col-md-4">
+						<select id="selectbasic" ng-model="accountType" class="form-control">
+							<option value="SAVINGACCOUNT">Savings Account</option>
+							<option value="CURRENTACCOUNT">Currents Account</option>
+						</select>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<button id="submit" name="submit" class="btn btn-primary">Apply</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<uib-alert type="danger" ng-show="error!=null || error!=''"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
+			<uib-alert type="success" ng-show="success!=null || success!=''"
+			class="col-md-6 col-md-offset-3">{{successMessage}}</uib-alert>
+
+
+	</div>
+
+</div>
