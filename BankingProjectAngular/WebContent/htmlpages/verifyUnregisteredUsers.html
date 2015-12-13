@@ -1,0 +1,43 @@
+<div class="text-center">
+
+<div class="clear"> </div>
+   <ul style="list-style:none" class="list-group">
+   
+   		<li class="list-group-item" ng-repeat="user in documents">
+   			<ul style="list-style:none" class="list-group">
+   				<li class="pull-left"> EnquiryID: {{user.id}}  </li>
+   				<br>
+   				<li class="pull-left">Name: {{user.firstName}} {{user.lastName}} </li>
+   			
+   		 	
+   		<li><button type="button" class="btn btn-success pull-right" data-ng-click="sendEmail(user.id)">View</button></li>
+   		</ul>
+   		<br>
+   		</li>
+   </ul>
+  
+
+  <!-- Pagination --> 
+   
+  <!--  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+
+
+</div>

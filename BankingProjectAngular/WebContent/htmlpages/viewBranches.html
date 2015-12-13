@@ -1,0 +1,46 @@
+<div class="text-center">
+
+ <table class="table table-bordered">
+ <thead>
+      <tr>
+        <th  class="text-center">IFSC code</th>
+        <th  class="text-center">Branch name</th>
+        <th  class="text-center">Address</th>
+        <th  class="text-center">Contact</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="branch in branches">
+        <td>{{branch.ifscCode}}</td>
+        <td>{{branch.branchName}}</td>
+        <td>{{branch.address}}</td>
+        <td>{{branch.contact}}</td>
+      </tr>
+     </tbody>
+ </table>
+  
+
+  <!-- Pagination --> 
+   
+  <!--  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav> -->
+
+
+</div>
