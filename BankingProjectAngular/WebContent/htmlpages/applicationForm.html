@@ -41,13 +41,13 @@
 					<label class="col-md-4 control-label" for="email">Email<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="email" type="email" name="email"
+						<input id="password" ng-model="email" type="email" name="email" ng-change="checkEmail()"
 							placeholder="Enter email here" class="form-control input-md"
 							required>
 					</div>
 					<div class="col-md-4 btn btn-danger " ng-show="myForm.email.$error.email" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email</div>
-				
-					
+					<div class="col-md-4 btn-sm btn-danger " ng-show="alreadyExists=='true'" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Email already registered with another account.</div>
+					<div class="text-left-align btn" ng-show="email!=null && email!= '' && alreadyExists=='false'"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				<!-- Text input-->
@@ -130,7 +130,8 @@
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
 						<button id="submit" name="submit"
-							ng-disabled="dateOfBirth==null || firstName==null || lastName===null || email==null ||accountType==null ||branchName==null"
+							ng-disabled="!((email!=null && email!= '' && alreadyExists=='false') && (!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength) && 
+(!myForm.area.$error.required) && (!myForm.date.$error.required) && (branchName!=null && branchName != '') && (accountType!=null && accountType != ''))"
 							class="btn btn-primary">Apply</button>
 					</div>
 				</div>

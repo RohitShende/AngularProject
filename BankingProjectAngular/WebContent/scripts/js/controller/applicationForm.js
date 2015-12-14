@@ -10,15 +10,50 @@ app
 						$state, $rootScope, $http) {
 					delete $scope.submitted;
 					$scope.$storage = $localStorage;
-
+					$scope.alreadyExists = false;
 					$scope.uploadClick = function(id) {
 						$localStorage.enquiryId = $scope.enquiryId;
 						$location.path("/uploadDocument");
 					};
 
+					$scope.checkEmail = function() {
+						console.log("---------->In check");
+						delete $scope.errorMessage;
+						$http({
+							method : 'post',
+							url : $scope.$storage.baseURI + 'customer',
+							data : {
+								email : $scope.email
+							}
+
+						})
+								.then(
+										function successCallback(response) {
+											
+											if (response.data.alreadyExists == "true") {
+												$scope.alreadyExists = "true";
+												console.log("--if->"
+														+ $scope.alreadyExists);
+											} else {
+												$scope.alreadyExists = "false";
+												console.log("--else->"
+														+ $scope.alreadyExists);
+
+											}
+											console.log("---------->In success"
+													+ $scope.alreadyExists);
+										},
+										function errorCallback(response) {
+											console
+													.log("---------->In failure");
+											$scope.errorMessage = "Server Error. Try After Some time";
+										});
+
+					}
+
 					$scope.apply = function() {
 						if ($localStorage.clientId == null) {
-							console.log("---------->In if");
+
 							$http(
 									{
 										method : 'post',
@@ -71,9 +106,7 @@ app
 											});
 
 						} else {
-							console.log("---------->In else");
 							$scope.clientId = $localStorage.clientId
-							console.log("---------->ClientID : "+$scope.clientId);	
 							$http({
 								method : 'post',
 								url : $scope.$storage.baseURI + '/newaccount',
@@ -100,31 +133,37 @@ app
 											function successCallback(response) {
 												var data = response.data;
 												if (response.data.id != null) {
-													console.log("---------->In success");
+													console
+															.log("---------->In success");
 													$scope.submitted = "submitted";
 
 													$scope.successMessage = "Aplication Submitted. Your Enquiry Id : "
 															+ data.id;
 													$scope.enquiryId = data.id;
-													
+
 													delete $scope.errorMessage;
-													$state.go("clientHome.applyNewAccount");
+													$state
+															.go("clientHome.applyNewAccount");
 												} else {
-													console.log("---------->In exceptiion");
+													console
+															.log("---------->In exceptiion");
 													$scope.errorMessage = data.Exception;
 													if (data.EnquiryId != null) {
 														$scope.enquiryId = data.enquiryId;
 													}
-													$state.go("clientHome.applyNewAccount");
+													$state
+															.go("clientHome.applyNewAccount");
 												}
 											},
 											function errorCallback(response) {
-												console.log("---------->In error");
+												console
+														.log("---------->In error");
 												console.log(response)
 												$scope.errorMessage = "Server Error. Try After Some time";
-												$state.go("clientHome.applyNewAccount");
-//												$location
-//														.path("/clientHome/applyNewAccount");
+												$state
+														.go("clientHome.applyNewAccount");
+												// $location
+												// .path("/clientHome/applyNewAccount");
 											});
 
 						}
