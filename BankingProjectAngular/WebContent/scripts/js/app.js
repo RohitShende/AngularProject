@@ -24,7 +24,7 @@
 			templateUrl : 'htmlpages/adminLogin.html',
 			controller : 'adminLoginController'
 		}).state('branchManagerLogin', {
-			url : '/branchManagerLogin',
+			url : '/branchmanager/login',
 			templateUrl : 'htmlpages/branchManagerLogin.html',
 			controller : 'branchManagerController'
 		}).state('adminHome', {
