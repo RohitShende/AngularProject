@@ -9,7 +9,7 @@
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
 					'applicationForm','createBranch','viewBranchManagers','viewBranches',
-					'verifyUnregisteredUsers'])
+					'verifyUnregisteredUsers','contact'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
