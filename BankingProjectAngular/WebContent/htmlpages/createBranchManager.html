@@ -1,65 +1,56 @@
 <div class="row voffset10">
-   <div class="col-md-3"></div>
-   <div class="col-md-6" align="center">
-      <h4>Create Branch Manager</h4>
-      <hr>
-      <form class="login-inner" ng-submit="addmanager()">
-         <label class="pull-left">First name: </label><input type="text" pattern="[A-Za-z]*"
-            title="characters only" class="form-control text" ng-model="firstName"
-            placeholder="Enter First name" required> <label class="pull-left">Last name:
-         </label class="pull-left"><input type="text" pattern="[A-Za-z]*" title="characters only"
-            class="form-control text" ng-model="lastName"
-            placeholder="Enter Last name" required> <label class="pull-left">Email:
-         </label class="pull-left"><input type="email" class="form-control email" ng-model="email"
-            placeholder="Enter Email" required> <label class="pull-left">Phone: </label><input
-            type="text" class="form-control text" ng-model="phone"
-            pattern="[0-9]{8,10}" placeholder="Enter Phone Number" required>
-         
-         <label class="pull-left">Address: </label><input type="text" class="form-control text"
-            ng-model="address" placeholder="Enter Address" required> 
-        
-         <label class="pull-left">Date of birth: </label>
-         <!-- <input type="date" class="form-control text"
+	<div class="col-md-3"></div>
+	<div class="col-md-6" align="center">
+		
+		<legend>Create form - Branch Manager</legend>
+		<hr>
+		<form class="login-inner" ng-submit="addmanager()">
+			<label class="pull-left">First name: <span
+				class="redasterik ">*</span></label><input type="text" pattern="[A-Za-z]*"
+				title="characters only" class="form-control text"
+				ng-model="firstName" placeholder="Enter First name" required>
+			<label class="pull-left">Last name: <span class="redasterik ">*</span>
+			</label><input type="text" pattern="[A-Za-z]*" title="characters only"
+				class="form-control text" ng-model="lastName"
+				placeholder="Enter Last name" required> <label
+				class="pull-left">Email: <span class="redasterik ">*</span>
+			</label><input type="email" class="form-control email" ng-model="email"
+				placeholder="Enter Email" required> <label class="pull-left">Phone:
+				<span class="redasterik ">*</span>
+			</label><input type="text" class="form-control text" ng-model="phone"
+				pattern="[0-9]{8,10}" placeholder="Enter Phone Number" required>
+			<label class="pull-left">Address: <span class="redasterik ">*</span></label><input
+				type="text" class="form-control text" ng-model="address"
+				placeholder="Enter Address" required> <label
+				class="pull-left">Date of birth: <span class="redasterik ">*</span></label>
+			<!-- <input type="date" class="form-control text"
             ng-model="dateOfBirth" 
             title="dd/mm/yyyy" placeholder="Enter Date of birth" required> -->
-         
-         
-        <input type="date" class="form-control date"
-            name="dateOfBirth" placeholder="Enter Date Of Birth" ng-model="dateOfBirth" required/> 
-         
-         
-         <label class="pull-left">User name: </label><input type="text" class="form-control text"
-            ng-model="userName" placeholder="Enter Username" required> 
-            
-            
-            
-            
-         <label class="pull-left">Password:</label>
-         <input type="password" pattern=".{8,}"
-            title="Password should be at least 8 characters"
-            class="form-control password" ng-model="password" placeholder="Enter Password"
-            required> 
-            
-              <label class="pull-left">Verify password:</label>
-         <input type="password" pattern=".{8,}"
-            title="Password should be at least 8 characters"
-            class="form-control password" ng-model="verifyPassword" placeholder="Confirm Password"
-            required> 
-            
-            <uib-alert type="danger" ng-show="password != verifyPassword"
-         class="col-md-6 col-md-offset-3">Password does not match
-      </uib-alert>
-      
-      
-            <input
-            class="btn btn-block btn-lg btn-primary submit voffset10" type="submit"
-            value="Create">
-            
-            
-      </form>
-      <uib-alert type="danger" ng-show="true"
-         class="col-md-6 col-md-offset-3">Username or password is
-         invalid.
-      </uib-alert>
-   </div>
+			<input type="date" class="form-control date" name="dateOfBirth"
+				placeholder="Enter Date Of Birth" ng-model="dateOfBirth" required />
+			<label class="pull-left">User name: <span class="redasterik ">*</span></label><input
+				type="text" class="form-control text" ng-model="userName"
+				placeholder="Enter Username" required> <label
+				class="pull-left">Password:<span class="redasterik ">*</span></label>
+			<input type="password" pattern=".{8,}"
+				title="Password should be at least 8 characters"
+				class="form-control password" ng-model="password"
+				placeholder="Enter Password" required> <span
+				class="help-block">Password has to be of 8 character </span> <label
+				class="pull-left">Verify password:<span class="redasterik ">*</span></label>
+			<input type="password" pattern=".{8,}"
+				title="Password should be at least 8 characters"
+				class="form-control password" ng-model="verifyPassword"
+				placeholder="Confirm Password" required>
+			<uib-alert type="danger" ng-show="password != verifyPassword"
+				class="col-md-6 col-md-offset-3">Password does not match
+			</uib-alert>
+			<input class="btn btn-block btn-lg btn-primary submit voffset10"
+				type="submit" value="Create">
+		</form>
+		<div class="row voffset10" >
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">Username or password is
+		invalid. </uib-alert></div>
+	</div>
 </div>

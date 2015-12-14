@@ -11,18 +11,18 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">User
-						Name</label>
+						Name<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="userName" type="text"
 							placeholder="Enter your username here"
 							class="form-control input-md" required>
-
+						
 					</div>
 				</div>
 
 				<!-- Password input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Password</label>
+					<label class="col-md-4 control-label" for="password">Password<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="password" ng-model="password" type="password"
 							placeholder="Enter password here" class="form-control input-md"
@@ -41,9 +41,10 @@
 
 			</fieldset>
 		</form>
-		 <uib-alert type="danger" ng-show="true" class="col-md-6 col-md-offset-3">Username or password is invalid.</uib-alert>
-	 
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
 
+		
 	</div>
 
 </div>

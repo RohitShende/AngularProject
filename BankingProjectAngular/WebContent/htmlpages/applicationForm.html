@@ -2,7 +2,8 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8" align="left">
 
-		<form class="form-horizontal" ng-submit="apply()">
+		<form class="form-horizontal" ng-submit="apply()"
+			ng-show="submitted==null">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -11,10 +12,11 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">First
-						Name</label>
+						Name<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="firstName" type="text"
-							placeholder="Enter your username here"
+							placeholder="Enter your first name here"
 							class="form-control input-md" required>
 
 
@@ -22,10 +24,11 @@
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">Last
-						Name</label>
+						Name<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="lastName" type="text"
-							placeholder="Enter your username here"
+							placeholder="Enter your last name here"
 							class="form-control input-md" required>
 
 					</div>
@@ -33,10 +36,11 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="email">Email</label>
+					<label class="col-md-4 control-label" for="email">Email<span
+						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="email" type="text"
-							placeholder="Enter password here" class="form-control input-md"
+						<input id="password" ng-model="email" type="email"
+							placeholder="Enter email here" class="form-control input-md"
 							required>
 
 					</div>
@@ -44,51 +48,61 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Phone</label>
+					<label class="col-md-4 control-label" for="password">Phone<span
+						class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="password" ng-model="phone" type="number"
-							placeholder="Enter password here" class="form-control input-md"
+							placeholder="Enter phone here" class="form-control input-md"
 							required>
 
 					</div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Address</label>
+					<label class="col-md-4 control-label" for="password">Address<span
+						class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="password" ng-model="address" type="address"
-							placeholder="Enter password here" class="form-control input-md"
+							placeholder="Enter address here" class="form-control input-md"
 							required>
 
 					</div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Date of birth</label>
+					<label class="col-md-4 control-label" for="password">Date
+						of birth<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
-						<input id="password" ng-model="dateOfBirth" type="calender"
-							placeholder="Enter password here" class="form-control input-md"
-							required>
+						<input id="date" ng-model="dateOfBirth" type="date"
+							placeholder="Enter date of birth here"
+							class="form-control input-md" required>
 
 					</div>
 				</div>
-				
-					<div class="form-group">
+
+				<div class="form-group">
 					<label class="col-md-4 control-label" for="selectbasic">Select
-						Branch</label>
+						Branch<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName" class="form-control">
+						<select id="selectbasic" ng-model="branchName"
+							 class="form-control">
+							<option value="">--Select Branch--</option>
 							<option value="1">Pune_Loc</option>
 							<option value="2">Mumbai_loc</option>
 						</select>
 					</div>
 				</div>
-				
-					<div class="form-group">
+
+				<div class="form-group">
 					<label class="col-md-4 control-label" for="selectbasic">Select
-						Accout Type</label>
+						Accout Type<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="accountType" class="form-control">
+						<select id="selectbasic" 
+							ng-model="accountType" class="form-control">
+							<option value="">--Select Account Type--</option>
 							<option value="SAVINGACCOUNT">Savings Account</option>
 							<option value="CURRENTACCOUNT">Currents Account</option>
 						</select>
@@ -99,15 +113,20 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
-						<button id="submit" name="submit" class="btn btn-primary">Apply</button>
+						<button id="submit" name="submit"
+							ng-disabled="dateOfBirth==null || firstName==null || lastName===null || email==null ||accountType==null ||branchName==null"
+							class="btn btn-primary">Apply</button>
 					</div>
 				</div>
 			</fieldset>
 		</form>
-		<uib-alert type="danger" ng-show="error!=null || error!=''"
-			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
-			<uib-alert type="success" ng-show="success!=null || success!=''"
-			class="col-md-6 col-md-offset-3">{{successMessage}}</uib-alert>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}<hr><span ng-show="enquiryId!=null">Enquiry id :{{enquiryid}}</span></uib-alert>
+		<uib-alert type="success" ng-show="successMessage!=null "
+			class="col-md-6 col-md-offset-3">{{successMessage}}<br>
+		<br>
+		<a ng-click="uploadClick()" class="btn btn-primary pull-right">Upload
+			Documents Now</a></uib-alert>
 
 
 	</div>

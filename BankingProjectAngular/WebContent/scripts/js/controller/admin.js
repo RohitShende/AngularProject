@@ -1,15 +1,13 @@
 /***	Common Elements - Header / Footer	***/
 /** * Directives ** */
 
-
 var app = angular.module('admin', []);
 
 app.controller("adminLoginController", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
-	
-	
 	$localStorage.currentPage = "LoginAdmin";
 	$scope.$storage = $localStorage;
+	console.log("--->" + $scope.$storage.baseURI);
 	$scope.login = function() {
 		$http({
 			method : 'post',
@@ -24,9 +22,9 @@ app.controller("adminLoginController", function($scope, $log, $stateParams,
 		}).then(function successCallback(response) {
 			var data = response.data;
 			if (response.data.id != null) {
-				$rootScope.role = "Admin";
+				delete $scope.errorMessage;
 				$localStorage.id = response.data.id;
-				$localStorage.role = "Admin";
+				$localStorage.role = "admin";
 				$location.path("/adminHome");
 			} else {
 				$scope.errorMessage = "Invalid Creditnals";
@@ -39,7 +37,16 @@ app.controller("adminLoginController", function($scope, $log, $stateParams,
 	}
 
 });
-app.controller("adminHome", function($scope, $localStorage, $rootScope) {
+app.controller("adminHome", function($scope, $localStorage, $location, $rootScope) {
+	if ($localStorage.role != "admin") {
+		$location.path("/home");
+	}
 	$scope.$storage = $localStorage;
-	$scope.id =$scope.$storage.id;
+	$scope.id = $scope.$storage.id;
+
 });
+//
+//window.onbeforeunload = function() {
+//	localStorage.removeItem("ngStorage-role");
+//	localStorage.removeItem("ngStorage-id");
+//}

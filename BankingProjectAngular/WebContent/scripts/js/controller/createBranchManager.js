@@ -33,9 +33,10 @@ app.controller("createBranchManagerController", function($scope, $log,
 				else{
 					$scope.errorMessage = "Already Exists";
 				}
-				$location.path("/newBranchManager");
+				delete $scope.errorMessage;
+				
 			} else {
-				console.log("Create New Manager" + response.data);
+				
 				$location.path("/adminHome");
 			}
 		}, function errorCallback(response) {

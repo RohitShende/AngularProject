@@ -97,3 +97,12 @@ footer {
 .voffset10 {
 	margin-top: 30px;
 }
+.redasterik
+{
+	color:red;
+	margin-top : -5px;
+}
+.container-body
+{
+	min-height: 550px;
+}

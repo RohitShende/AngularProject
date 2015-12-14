@@ -8,17 +8,16 @@
 			'inbApp',
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
-					'applicationForm','createBranch','viewBranchManagers','viewBranches',
-					'verifyUnregisteredUsers','contact'])
+					'applicationForm', 'createBranch', 'viewBranchManagers',
+					'viewBranches', 'basicModule' , 'client' ])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
-
 		$urlRouterProvider.otherwise('/home');
-
 		$stateProvider.state('home', {
 			url : '/home',
 			templateUrl : 'htmlpages/home.html',
+			controller : 'appController'
 		}).state('adminLogin', {
 			url : '/adminLogin',
 			templateUrl : 'htmlpages/adminLogin.html',
@@ -32,11 +31,11 @@
 			templateUrl : 'htmlpages/adminHome.html',
 			controller : 'adminHome'
 		})
-		 .state('branchManagerHome', {
-		 url : '/branchManagerHome',
-		 templateUrl : 'htmlpages/branchManagerHome.html',
-		 controller : 'branchManagerHome'
-		 })
+		// .state('branchManagerHome', {
+		// url : '/branchManagerHome',
+		// templateUrl : 'htmlpages/branchManagerHome.html',
+		// controller : 'branchManagerHome'
+		// })
 		.state('adminHome.newBranchManager', {
 			url : '/newBranchManager',
 			templateUrl : 'htmlpages/createBranchManager.html',
@@ -49,10 +48,6 @@
 			url : '/createBranch',
 			templateUrl : 'htmlpages/createBranch.html',
 			controller : 'createBranchController'
-		}).state('contact', {
-			url : '/contact',
-			templateUrl : 'htmlpages/contact.html',
-			controller : 'contact'
 		}).state('adminHome.viewBranches', {
 			url : '/viewBranches',
 			templateUrl : 'htmlpages/viewBranches.html',
@@ -61,15 +56,15 @@
 			url : '/viewBranchManagers',
 			templateUrl : 'htmlpages/viewBranchManagers.html',
 			controller : 'viewBranchManagersController'
-		}).state('branchManagerHome.verifyUnregisteredUsers', {
-			url : '/verifyUnregisteredUsers',
-			templateUrl : 'htmlpages/verifyUnregisteredUsers.html',
-			controller : 'verifyUnregisteredUsersController'
-		}).state('branchManagerHome.viewUnregisteredUserDetails', {
-			url : '/viewUnregisteredUserDetails',
-			templateUrl : 'htmlpages/viewUnregisteredUserDetails.html',
-			controller : 'verifyUnregisteredUsersController'
-		});// .state('error', {
+		}).state('uploadDocument', {
+			url : '/uploadDocument',
+			templateUrl : 'htmlpages/uploadDocuments.html',
+			controller : 'uploadDocuments'
+		}).state('clientHome', {
+			url : '/clientHome',
+			templateUrl : 'htmlpages/clientHome.html',
+			controller : 'clientController'
+		})// .state('error', {
 		// url : '/error',
 		// templateUrl : 'htmlpages/adminHome.html',
 		// controller : 'adminHome'
@@ -77,11 +72,24 @@
 		// url : '/openNewAccount',
 		// templateUrl : 'htmlpages/openNewAccount.html',
 		// controller : 'registerUser'
-		// }).state('logout', {
-		// url : '/logout',
-		// templateUrl : 'home.html',
-		// controller : 'logout'
-		// });
+		// })
+		.state('clientHome.applyNewAccount', {
+			url : '/clientHome.applyNewAccount',
+			templateUrl : 'htmlpages/applicationForm.html',
+			controller : 'applicationFormController'
+		}).state('logout', {
+			url : '/logout',
+			controller : 'logoutController'
+		});
 
-	})
+	}).controller("appController", function($scope,$location, $rootScope, $localStorage) {
+		$rootScope.clientLoginRequest = false;
+		$localStorage.baseURI = "http://localhost:8080/";
+		$scope.$storage = $localStorage;
+		$scope.loginClient = function()
+		{
+			$localStorage.clientId = $scope.clientID;
+			$location.path("clientHome");
+		}
+	});
 })();

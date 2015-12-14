@@ -9,7 +9,6 @@ var app = angular.module('loginBranchManager', []);
 app.controller("branchManagerController", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
 	$localStorage.currentPage = "LoginBM";
-	$scope.$storage = $localStorage;
 	$scope.loginBranchManager = function() {
 		$http({
 			method : 'post',
@@ -24,20 +23,12 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 		}).then(function successCallback(response) {
 			var data = response.data;
 			if (response.data.id != null) {
-				/*console.log("success : ");
-				$rootScope.role = "BranchManager";
-				console.log("root : " + $rootScope.role);
-				$rootScope.id = response.data.id;
-				$rootScope.$apply();
-				$location.path("/branchManagerHome");*/
-				
-				
-				$rootScope.role = "BranchManager";
+							
 				$localStorage.id = response.data.id;
-				$localStorage.role = "BranchManager";
+				$localStorage.role = "branchManager";
 				$location.path("/branchManagerHome");
 			} else {
-				$scope.errorMessage = "Invalid Creditnals";
+				$scope.errorMessage = "Server Error. Try After Some time";
 				$location.path("/branchManagerLogin");
 			}
 		}, function errorCallback(response) {
@@ -48,8 +39,7 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 	}
 
 });
-app.controller("branchManagerHome", function($scope, $rootScope,$localStorage) {
-	$scope.$storage = $localStorage;
+app.controller("branchManagerHome", function($scope, $rootScope) {
 	$scope.id = $rootScope.id;
 
 });

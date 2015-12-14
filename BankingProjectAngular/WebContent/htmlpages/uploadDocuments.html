@@ -1,54 +1,70 @@
-<div class="row voffset10">
+<div class="row voffset10" >
 	<div class="col-md-3"></div>
 	<div class="col-md-6" align="center">
-		<form class="form-horizontal">
+		<form class="form-horizontal" ng-submit="upload()" ng-show="submitted==null">
 			<fieldset>
 
-				<!-- Form Name -->
-				<legend>Form Name</legend>
+				
+				<legend>Upload Documents</legend>
 
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="textinput">Text
-						Input</label>
+				
+				<div class="form-group" ng-show="request=='continue'">
+					<label class="col-md-4 control-label" for="textinput">Id
+						</label>
 					<div class="col-md-4">
-						<input id="textinput" ng-model="" type="text"
-							placeholder="placeholder" class="form-control input-md">
-						<span class="help-block">help</span>
+						<span class="btn btn-default">{{enquiryId}}</span>
+					</div>
+				</div>
+				
+				
+				<div class="form-group" ng-show="request=='new'">
+					<label class="col-md-4 control-label" for="textinput">Id<span class="redasterik ">*</span>
+						</label>
+					<div class="col-md-4">
+						<input id="id" ng-model="enquiryId" type="text" value=""
+							placeholder="Enter your Enquiry Id here"
+							class="form-control input-md" required>
 					</div>
 				</div>
 
-				<!-- File Button -->
+				
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="filebutton">File
-						Button</label>
+					<label class="col-md-4 control-label" for="filebutton">Address Proof<span class="redasterik ">*</span>
+						</label>
 					<div class="col-md-4">
-						<input id="filebutton" name="filebutton" class="input-file"
+						<input id="addressProof" file-model="addressProof" class="input-file"
 							type="file">
 					</div>
 				</div>
 
-				<!-- File Button -->
+				
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="filebutton">File
-						Button</label>
+					<label class="col-md-4 control-label" for="filebutton">Age
+						Proof<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="filebutton" name="filebutton" class="input-file"
+						<input id="ageProof" file-model="ageProof" class="input-file"
 							type="file">
 					</div>
 				</div>
 
-				<!-- Button -->
+				
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="singlebutton">Single
-						Button</label>
+					<label class="col-md-4 control-label" for="singlebutton"></label>
 					<div class="col-md-4">
-						<button id="singlebutton" name="singlebutton"
-							class="btn btn-primary">Button</button>
+						<button id="singlebutton" type="submit" ng-disabled="(request=='new' && enquiryId==null) || addressProof==null || ageProof==null"
+							class="btn btn-primary">Upload</button>
 					</div>
 				</div>
 
 			</fieldset>
+						
 		</form>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
+			<uib-alert type="success" ng-show="successMessage!=null "
+			class="col-md-6 col-md-offset-3">{{successMessage}}</uib-alert>
 	</div>
 </div>
+
+
+

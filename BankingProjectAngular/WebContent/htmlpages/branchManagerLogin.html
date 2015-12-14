@@ -11,7 +11,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">User
-						Name</label>
+						Name<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="userName" type="text"
 							placeholder="Enter your username here"
@@ -22,7 +22,7 @@
 
 				<!-- Password input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Password</label>
+					<label class="col-md-4 control-label" for="password">Password<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="password" ng-model="password" type="password"
 							placeholder="Enter password here" class="form-control input-md"
@@ -33,9 +33,9 @@
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="selectbasic">Select
-						Branch</label>
+						Branch<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName" class="form-control">
+						<select id="selectbasic" ng-model="branchName" class="form-control" required>
 							<option value="1">Pune_Loc</option>
 							<option value="2">Mumbai_loc</option>
 						</select>
@@ -55,7 +55,7 @@
 			</fieldset>
 		</form>
 		
-		<uib-alert type="danger" ng-show="true"
+		<uib-alert type="danger" ng-show="errorMessage!=null"
 			class="col-md-6 col-md-offset-3">Invalid Credentials</uib-alert>
 
 
