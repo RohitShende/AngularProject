@@ -38,4 +38,5 @@ app.controller("adminController", function($scope, $log, $stateParams,
 });
 app.controller("adminHome", function($scope, $rootScope) {
 	$scope.id = $rootScope.id;
+	
 });
