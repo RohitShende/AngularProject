@@ -108,24 +108,23 @@ app
 													$scope.enquiryId = data.id;
 													
 													delete $scope.errorMessage;
-													$location
-															.path("/clientHome.applyNewAccount");
+													$state.go("clientHome.applyNewAccount");
 												} else {
 													console.log("---------->In exceptiion");
 													$scope.errorMessage = data.Exception;
 													if (data.EnquiryId != null) {
 														$scope.enquiryId = data.enquiryId;
 													}
-													$location
-															.path("/clientHome.applyNewAccount");
+													$state.go("clientHome.applyNewAccount");
 												}
 											},
 											function errorCallback(response) {
 												console.log("---------->In error");
 												console.log(response)
 												$scope.errorMessage = "Server Error. Try After Some time";
-												$location
-														.path("/clientHome.applyNewAccount");
+												$state.go("clientHome.applyNewAccount");
+//												$location
+//														.path("/clientHome/applyNewAccount");
 											});
 
 						}

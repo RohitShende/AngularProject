@@ -74,7 +74,7 @@
 		// controller : 'registerUser'
 		// })
 		.state('clientHome.applyNewAccount', {
-			url : '/clientHome.applyNewAccount',
+			url : '/clientHome/applyNewAccount',
 			templateUrl : 'htmlpages/applicationForm.html',
 			controller : 'applicationFormController'
 		}).state('logout', {
