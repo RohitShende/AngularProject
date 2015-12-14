@@ -49,6 +49,10 @@
 			url : '/createBranch',
 			templateUrl : 'htmlpages/createBranch.html',
 			controller : 'createBranchController'
+		}).state('contact', {
+			url : '/contact',
+			templateUrl : 'htmlpages/contact.html',
+			controller : 'contact'
 		}).state('adminHome.viewBranches', {
 			url : '/viewBranches',
 			templateUrl : 'htmlpages/viewBranches.html',
