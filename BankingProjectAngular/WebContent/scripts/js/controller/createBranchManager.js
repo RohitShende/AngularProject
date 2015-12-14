@@ -7,7 +7,7 @@ app.controller("createBranchManagerController", function($scope, $log,
 	$scope.addmanager = function() {
 		$http({
 			method : 'post',
-			url : $scope.$storage.baseURI + 'branchmanager',
+			url : $scope.$storage.baseURI + 'branchmanager/',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
