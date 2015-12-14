@@ -1,5 +1,10 @@
 <div class="text-center">
 <legend>Branch Managers</legend>
+<div class="row"></div>
+<div class="row">
+Search: <input type="text" data-ng-model="name"/>
+</div>
+<div class="row"></div> <br>
  <table class="table table-bordered">
  <thead>
       <tr>
@@ -10,7 +15,7 @@
       </tr>
     </thead>
  	<tbody>
-      <tr ng-repeat="branchManager in branchManagers">
+      <tr ng-repeat="branchManager in branchManagers | filter : name">
         <td>{{branchManager.firstName}}</td>
         <td>{{branchManager.lastName}}</td>
         <td>{{branchManager.branch}}</td>
