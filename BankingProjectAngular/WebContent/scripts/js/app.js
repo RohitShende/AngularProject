@@ -20,7 +20,7 @@
 			templateUrl : 'htmlpages/home.html',
 			controller : 'appController'
 		}).state('adminLogin', {
-			url : '/adminLogin',
+			url : '/admin/login',
 			templateUrl : 'htmlpages/adminLogin.html',
 			controller : 'adminLoginController'
 		}).state('branchManagerLogin', {
