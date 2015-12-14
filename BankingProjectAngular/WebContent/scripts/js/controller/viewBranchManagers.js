@@ -5,7 +5,7 @@ var app = angular.module('viewBranchManagers', []);
 app.controller("viewBranchManagersController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http) {
 	console.log($scope.$storage);
-	var url = $scope.$storage.baseURI + 'viewBranchManagers'
+	var url = $scope.$storage.baseURI + 'branchmanager/'
 	console.log(url)
 	$scope.branchManagers = [];
 	$http.get(url).success(function(data, status) {

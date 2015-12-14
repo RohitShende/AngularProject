@@ -1,8 +1,11 @@
-<div class="text-center voffset10" >
-<legend>List of branches </legend>
+<div class="text-center">
+<legend>Branches</legend>
+<div class="row">
+Search: <input type="text" data-ng-model="name"/>
+</div>
  <table class="table table-bordered">
  <thead>
-      <tr class="success">
+      <tr>
         <th  class="text-center">IFSC code</th>
         <th  class="text-center">Branch name</th>
         <th  class="text-center">Address</th>
@@ -10,7 +13,7 @@
       </tr>
     </thead>
  	<tbody>
-      <tr ng-repeat="branch in branches">
+      <tr ng-repeat="branch in branches | filter:name">
         <td>{{branch.ifscCode}}</td>
         <td>{{branch.branchName}}</td>
         <td>{{branch.address}}</td>

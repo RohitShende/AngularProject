@@ -7,7 +7,7 @@ app.controller("createBranchManagerController", function($scope, $log,
 	$scope.addmanager = function() {
 		$http({
 			method : 'post',
-			url : $scope.$storage.baseURI + 'addBranchManager',
+			url : $scope.$storage.baseURI + 'branchmanager',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
@@ -33,10 +33,9 @@ app.controller("createBranchManagerController", function($scope, $log,
 				else{
 					$scope.errorMessage = "Already Exists";
 				}
-				delete $scope.errorMessage;
-				
+				$location.path("/newBranchManager");
 			} else {
-				
+				console.log("Create New Manager" + response.data);
 				$location.path("/adminHome");
 			}
 		}, function errorCallback(response) {
