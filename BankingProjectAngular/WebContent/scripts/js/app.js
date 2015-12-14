@@ -8,7 +8,8 @@
 			'inbApp',
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
-					'applicationForm','createBranch' ])
+					'applicationForm','createBranch','viewBranchManagers','viewBranches',
+					'verifyUnregisteredUsers'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
@@ -31,11 +32,11 @@
 			templateUrl : 'htmlpages/adminHome.html',
 			controller : 'adminHome'
 		})
-		// .state('branchManagerHome', {
-		// url : '/branchManagerHome',
-		// templateUrl : 'htmlpages/branchManagerHome.html',
-		// controller : 'branchManagerHome'
-		// })
+		 .state('branchManagerHome', {
+		 url : '/branchManagerHome',
+		 templateUrl : 'htmlpages/branchManagerHome.html',
+		 controller : 'branchManagerHome'
+		 })
 		.state('adminHome.newBranchManager', {
 			url : '/newBranchManager',
 			templateUrl : 'htmlpages/createBranchManager.html',
@@ -48,6 +49,22 @@
 			url : '/createBranch',
 			templateUrl : 'htmlpages/createBranch.html',
 			controller : 'createBranchController'
+		}).state('adminHome.viewBranches', {
+			url : '/viewBranches',
+			templateUrl : 'htmlpages/viewBranches.html',
+			controller : 'viewBranchesController'
+		}).state('adminHome.viewBranchManagers', {
+			url : '/viewBranchManagers',
+			templateUrl : 'htmlpages/viewBranchManagers.html',
+			controller : 'viewBranchManagersController'
+		}).state('branchManagerHome.verifyUnregisteredUsers', {
+			url : '/verifyUnregisteredUsers',
+			templateUrl : 'htmlpages/verifyUnregisteredUsers.html',
+			controller : 'verifyUnregisteredUsersController'
+		}).state('branchManagerHome.viewUnregisteredUserDetails', {
+			url : '/viewUnregisteredUserDetails',
+			templateUrl : 'htmlpages/viewUnregisteredUserDetails.html',
+			controller : 'verifyUnregisteredUsersController'
 		});// .state('error', {
 		// url : '/error',
 		// templateUrl : 'htmlpages/adminHome.html',

@@ -6,16 +6,20 @@
 			<hr>
 			<form class="login-inner" ng-submit="createBranch()" >
 
-				<label class="pull-left">IFSC **ode: </label><input type="text"
-					class="form-control text" ng-model="ifscCode"
+				<label class="pull-left">IFSC code: </label><input type="text"
+					class="form-control text" pattern="^[^\s]{4}\d{6}$" title="eg. IFSC code: ANDB000147 as first 4 are alphabets and last 6 are numerics" ng-model="ifscCode" placeholder="Enter IFSC Code" 
+					ng-model="ifscCode"
 					placeholder="Enter IFSC Code" required> 
 				<label class="pull-left">Branch name: </label>
 				<input type="text" class="form-control text"
+					pattern="[A-Za-z]*" title="Enter Characters Only" 
 					ng-model="branchName" placeholder="Enter Branch Name" required>
 				<label class="pull-left">Phone: </label><input type="text" class="form-control text"
+					pattern="[0-9]{8,10}" title="Enter Number of 8-10 digits Only" 
 					ng-model="phone" placeholder="Enter Phone Number" required> 
 				<label class="pull-left">Address:
-				</label><input type="text" class="form-control text" ng-model="address"
+				</label><input type="text" class="form-control text" title="Enter Valid Address" pattern=".{3,}" 
+				ng-model="address"
 					placeholder="Enter Address" required> <br>
 				<br>
 				<br> <input class="btn btn-block btn-lg btn-primary submit"

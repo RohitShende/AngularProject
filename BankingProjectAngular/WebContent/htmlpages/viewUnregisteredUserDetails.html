@@ -1,0 +1,50 @@
+
+
+<div class="text-center">
+
+    <div class="row">
+        <div class="col-xs-6">
+<table class="table table-bordered">
+ <thead>
+      <tr>
+        <th  class="text-center">First name</th>
+        <th  class="text-center">Last name</th>
+        <th  class="text-center">Branch</th>
+        <th  class="text-center">Phone</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="details in userDetails">
+        <td> {{details.firstName}}</td>
+        <td>{{details.lastName}}</td>
+        <td>{{details.email}}</td>
+        <td>{{details.phone}}</td>
+      </tr>
+     </tbody>
+     
+     
+      <thead>
+      <tr>
+        <th  class="text-center">Address</th>
+        <th  class="text-center">Date of birth</th>
+        <th  class="text-center">Branch</th>
+        <th  class="text-center">Phone</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="details in userDetails">
+        <td> {{details.address}}</td>
+        <td>{{details.dateOfBirth}}</td>
+        <td>{{details.branch}}</td>
+        <td>{{details.phone}}</td>
+      </tr>
+     </tbody>
+ </table>
+        </div>
+        <div class="col-xs-6">
+            TWO
+        </div>
+    </div>
+
+
+</div>

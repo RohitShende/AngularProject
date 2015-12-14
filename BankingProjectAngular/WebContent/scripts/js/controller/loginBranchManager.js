@@ -9,6 +9,7 @@ var app = angular.module('loginBranchManager', []);
 app.controller("branchManagerController", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
 	$localStorage.currentPage = "LoginBM";
+	$scope.$storage = $localStorage;
 	$scope.loginBranchManager = function() {
 		$http({
 			method : 'post',
@@ -47,7 +48,8 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 	}
 
 });
-app.controller("branchManagerHome", function($scope, $rootScope) {
+app.controller("branchManagerHome", function($scope, $rootScope,$localStorage) {
+	$scope.$storage = $localStorage;
 	$scope.id = $rootScope.id;
 
 });
