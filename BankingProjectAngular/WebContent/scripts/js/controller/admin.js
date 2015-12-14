@@ -45,8 +45,8 @@ app.controller("adminHome", function($scope, $localStorage, $location, $rootScop
 	$scope.id = $scope.$storage.id;
 
 });
-//
-//window.onbeforeunload = function() {
-//	localStorage.removeItem("ngStorage-role");
-//	localStorage.removeItem("ngStorage-id");
-//}
+
+window.onbeforeunload = function() {
+	localStorage.removeItem("ngStorage-role");
+	localStorage.removeItem("ngStorage-id");
+}

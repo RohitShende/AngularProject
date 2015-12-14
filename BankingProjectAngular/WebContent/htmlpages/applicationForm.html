@@ -2,7 +2,7 @@
 	<div class="col-md-2"></div>
 	<div class="col-md-8" align="left">
 
-		<form class="form-horizontal" ng-submit="apply()"
+		<form class="form-horizontal" ng-submit="apply()" name="myForm"
 			ng-show="submitted==null">
 			<fieldset>
 
@@ -18,9 +18,9 @@
 						<input id="userName" ng-model="firstName" type="text"
 							placeholder="Enter your first name here"
 							class="form-control input-md" required>
-
-
 					</div>
+					<div class="text-left-align btn col-md-4 btn btn-info" ng-show="firstName==null"><i class="fa fa-info-circle"></i>&nbsp;First name cannot be empty</div>
+					<div class="text-left-align btn" ng-show="firstName!=null"><i class="fa fa-check-square"></i></div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">Last
@@ -32,6 +32,8 @@
 							class="form-control input-md" required>
 
 					</div>
+					<div class="text-left-align btn col-md-4 btn btn-info" ng-show="lastName==null"><i class="fa fa-info-circle"></i>&nbsp;Last name cannot be empty</div>
+					<div class="text-left-align btn" ng-show="lastName!=null"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				<!-- Text input-->
@@ -39,34 +41,41 @@
 					<label class="col-md-4 control-label" for="email">Email<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="email" type="email"
+						<input id="password" ng-model="email" type="email" name="email"
 							placeholder="Enter email here" class="form-control input-md"
 							required>
-
 					</div>
+					<div class="col-md-4 btn btn-danger " ng-show="myForm.email.$error.email" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email</div>
+					<div class="col-md-4 btn btn-info text-left-align"  ng-show="myForm.email.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Email cannot be empty</div>
+					
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Phone<span
+					<label class="col-md-4 control-label" for="password">Mobile Phone<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="phone" type="number"
-							placeholder="Enter phone here" class="form-control input-md"
+						<input id="password" ng-model="phone" type="text" name="phone" ng-minlength="10" ng-maxlength="10"
+							placeholder="Enter phone here" class="form-control input-md" 
 							required>
 
 					</div>
+					<div class="text-left-align col-md-4 btn btn-info" ng-show="myForm.phone.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Phone Number cannot be empty</div>
+					<div class="text-left-align col-md-4 btn btn-danger" ng-show="myForm.phone.$error.minlength || myForm.phone.$error.maxlength" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid phone Number</div>
+					<div class="text-left-align btn" ng-show="!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength "><i class="fa fa-check-square"></i></div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Address<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="address" type="address"
+						<textarea id="password" ng-model="address" type="textarea" name="area"
 							placeholder="Enter address here" class="form-control input-md"
-							required>
+							required></textarea>
 
 					</div>
+					<div class="text-left-align col-md-4 btn btn-info" ng-show="myForm.area.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Address cannot be empty</div>
+					<div class="text-left-align btn" ng-show="!myForm.area.$error.required"><i class="fa fa-check-square"></i></div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
@@ -74,11 +83,12 @@
 						of birth<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<input id="date" ng-model="dateOfBirth" type="date"
+						<input id="date" ng-model="dateOfBirth" type="date" name="date"
 							placeholder="Enter date of birth here"
 							class="form-control input-md" required>
-
 					</div>
+					<div class="text-left-align col-md-4 btn btn-info" ng-show="myForm.date.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Date cannot be empty</div>
+					<div class="text-left-align btn" ng-show="!myForm.date.$error.required"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				<div class="form-group">
@@ -86,13 +96,16 @@
 						Branch<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName"
+						<select id="selectbasic" ng-model="branchName" 
 							 class="form-control">
 							<option value="">--Select Branch--</option>
-							<option value="1">Pune_Loc</option>
-							<option value="2">Mumbai_loc</option>
+							<option value="Pune_loc">Pune_Loc</option>
+							<option value="Mumbai_loc">Mumbai_loc</option>
 						</select>
 					</div>
+					
+					<div class="text-left-align col-md-4 btn btn-info" ng-show="branchName==null || branchName==''" " ><i class="fa fa-info-circle"></i>&nbsp;Branch has to be selected</div>
+					<div class="text-left-align btn" ng-show="branchName!=null && branchName != ''"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				<div class="form-group">
@@ -106,7 +119,10 @@
 							<option value="SAVINGACCOUNT">Savings Account</option>
 							<option value="CURRENTACCOUNT">Currents Account</option>
 						</select>
-					</div>
+					</div>	
+					
+					<div class="text-left-align col-md-4 btn btn-info" ng-show="accountType==null || accountType==''" ><i class="fa fa-info-circle"></i>&nbsp;Account type has to be selected</div>
+					<div class="text-left-align btn" ng-show="accountType!=null && accountType != '' "><i class="fa fa-check-square"></i></div>
 				</div>
 
 				<!-- Button -->

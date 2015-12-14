@@ -1,7 +1,7 @@
 <div class="row voffset10" >
 	<div class="col-md-3"></div>
 	<div class="col-md-6" align="center">
-		<form class="form-horizontal" ng-submit="upload()" ng-show="submitted==null">
+		<form class="form-horizontal" ng-submit="upload()" name="uploadForm" ng-show="submitted==null">
 			<fieldset>
 
 				
@@ -21,10 +21,13 @@
 					<label class="col-md-4 control-label" for="textinput">Id<span class="redasterik ">*</span>
 						</label>
 					<div class="col-md-4">
-						<input id="id" ng-model="enquiryId" type="text" value=""
+						<input id="id" ng-model="enquiryId" type="text" value="" name="enquiryId"
 							placeholder="Enter your Enquiry Id here"
 							class="form-control input-md" required>
 					</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="uploadForm.enquiryId.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id has to be submitted</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
+					<div class="text-left-align btn-sm" ng-show="!uploadForm.enquiryId.$error.required"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				
@@ -32,9 +35,12 @@
 					<label class="col-md-4 control-label" for="filebutton">Address Proof<span class="redasterik ">*</span>
 						</label>
 					<div class="col-md-4">
-						<input id="addressProof" file-model="addressProof" class="input-file"
-							type="file">
+						<input id="addressProof" file-model="addressProof" class="input-file" name="addressProof"
+							type="file" required>
 					</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="addressProof==null" ><i class="fa fa-info-circle"></i>&nbsp;addressProof has to be submitted</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
+					<div class="text-left-align btn-sm" ng-show="addressProof!=null"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				
@@ -42,9 +48,12 @@
 					<label class="col-md-4 control-label" for="filebutton">Age
 						Proof<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="ageProof" file-model="ageProof" class="input-file"
-							type="file">
+						<input id="ageProof" file-model="ageProof" class="input-file" name="ageProof"
+							type="file" required>
 					</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="ageProof==null" ><i class="fa fa-info-circle"></i>&nbsp;ageProof has to be submitted</div>
+					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
+					<div class="text-left-align btn-sm" ng-show="ageProof!=null"><i class="fa fa-check-square"></i></div>
 				</div>
 
 				

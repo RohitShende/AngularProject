@@ -106,3 +106,7 @@ footer {
 {
 	min-height: 550px;
 }
+.text-left-align
+{
+	text-align: left;
+}
