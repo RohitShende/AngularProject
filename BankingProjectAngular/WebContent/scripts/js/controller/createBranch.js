@@ -8,7 +8,7 @@ app.controller("createBranchController", function($scope, $log, $stateParams,$lo
 	$scope.createBranch = function() {
 		$http({
 			method : 'post',
-			url : $scope.$storage.baseURI +'createBranch',
+			url : $scope.$storage.baseURI +'branch/',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
