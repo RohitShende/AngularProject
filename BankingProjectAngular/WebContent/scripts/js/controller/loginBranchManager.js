@@ -32,9 +32,9 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 				$location.path("/branchManagerHome");*/
 				
 				
-				$rootScope.role = "BranchManager";
+				$rootScope.role = "branchManager";
 				$localStorage.id = response.data.id;
-				$localStorage.role = "BranchManager";
+				$localStorage.role = "branchManager";
 				$location.path("/branchManagerHome");
 			} else {
 				$scope.errorMessage = "Invalid Creditnals";
