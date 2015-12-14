@@ -5,7 +5,7 @@ var app = angular.module('contact', []);
 app.controller("contactController", function($scope, $log, $stateParams,$localStorage,
 		$location, $state, $rootScope, $http) {
 	$scope.$storage = $localStorage;
-	$scope.createBranch = function() {
+	$scope.contact = function() {
 		$http({
 			method : 'post',
 			url : $scope.$storage.baseURI +'contact',
@@ -13,7 +13,7 @@ app.controller("contactController", function($scope, $log, $stateParams,$localSt
 				'Content-Type' : 'application/json'
 			},
 			data : {
-				firstname : $scope.firstname,
+				firstName : $scope.firstName,
 				lastName : $scope.lastName,
 				email : $scope.email,
 				phone : $scope.phone,

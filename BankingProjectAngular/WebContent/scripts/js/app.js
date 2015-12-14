@@ -9,7 +9,8 @@
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
 					'applicationForm', 'createBranch', 'viewBranchManagers',
-					'viewBranches', 'basicModule' , 'client','verifyUnregisteredUsers' ])
+					'viewBranches', 'basicModule' , 'client','verifyUnregisteredUsers',
+					'contact'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
@@ -89,6 +90,10 @@
 			url : '/clientHome/applyNewAccount',
 			templateUrl : 'htmlpages/applicationForm.html',
 			controller : 'applicationFormController'
+		}).state('contact', {
+			url : '/contact',
+			templateUrl : 'htmlpages/contact.html',
+			controller : 'contactController'
 		}).state('logout', {
 			url : '/logout',
 			controller : 'logoutController'
