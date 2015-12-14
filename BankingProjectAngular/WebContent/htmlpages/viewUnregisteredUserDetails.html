@@ -39,6 +39,13 @@
 				   {{details.email}}
 				  </div>
 			  </div>
+			  
+			   <div class="panel panel-default">
+			  <div class="panel-heading">Date of Birth</div>
+				  <div class="panel-body">
+				   {{details.dateOfBirth | date:'dd/MM/yyyy'}}
+				  </div>
+			  </div>
 		<button type="button" class="btn btn-success pull-right" data-ng-click="sendEmail(details.id)">Verify</button>	
  		</div>
 <div class="col-xs-9">
