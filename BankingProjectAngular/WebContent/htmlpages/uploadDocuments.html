@@ -25,7 +25,7 @@
 							placeholder="Enter your Enquiry Id here"
 							class="form-control input-md" required>
 					</div>
-					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="uploadForm.enquiryId.$error.required" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id has to be submitted</div>
+					
 					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
 					<div class="text-left-align btn-sm" ng-show="!uploadForm.enquiryId.$error.required"><i class="fa fa-check-square"></i></div>
 				</div>
@@ -38,7 +38,7 @@
 						<input id="addressProof" file-model="addressProof" class="input-file" name="addressProof"
 							type="file" required>
 					</div>
-					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="addressProof==null" ><i class="fa fa-info-circle"></i>&nbsp;addressProof has to be submitted</div>
+					
 					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
 					<div class="text-left-align btn-sm" ng-show="addressProof!=null"><i class="fa fa-check-square"></i></div>
 				</div>
@@ -51,7 +51,8 @@
 						<input id="ageProof" file-model="ageProof" class="input-file" name="ageProof"
 							type="file" required>
 					</div>
-					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="ageProof==null" ><i class="fa fa-info-circle"></i>&nbsp;ageProof has to be submitted</div>
+					
+					
 					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
 					<div class="text-left-align btn-sm" ng-show="ageProof!=null"><i class="fa fa-check-square"></i></div>
 				</div>
@@ -71,7 +72,7 @@
 		<uib-alert type="danger" ng-show="errorMessage!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
 			<uib-alert type="success" ng-show="successMessage!=null "
-			class="col-md-6 col-md-offset-3">{{successMessage}}</uib-alert>
+			class="col-md-6 col-md-offset-3">{{successMessage}}<hr><a ui-sref="home" class="btn btn-primary pull-right">View our services&nbsp;&nbsp;<i class="fa fa-home"></i></a></uib-alert>
 	</div>
 </div>
 

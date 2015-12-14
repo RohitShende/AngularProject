@@ -38,7 +38,7 @@
 						<li><a ui-sref="adminLogin">As Admin</a></li>
 						<li><a ui-sref='branchManagerLogin'>As Branch Manager</a></li>
 						<li><a ui-sref="home"
-							ng-click="$rootScope.clientLoginRequest = !$rootScope.clientLoginRequest">As
+							ng-click="$rootScope.clientLoginRequest = true">As
 								Customer</a></li>
 
 					</ul></li>
@@ -60,7 +60,7 @@
 						<li><a>Bill Payment</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">MyAccount&nbsp;<b class="caret"></b></a>
+					data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;MyAccount&nbsp;<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="portfolio-2-col.html">Statements</a></li>
 						<li><a href="portfolio-2-col.html">Raise Ticket</a></li>
@@ -75,7 +75,7 @@
 				ng-show="$storage.role=='admin'">
 
 
-				<li><a href="">Admin Home</a></li>
+				<li><a ui-sref="adminHome">Admin Home</a></li>
 
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Services <b class="caret"></b></a>
@@ -85,7 +85,7 @@
 						<li><a>General Report</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown">MyAccount&nbsp;<b class="caret"></b></a>
+					data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;MyAccount&nbsp;<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="portfolio-2-col.html">Update Password</a></li>
 						<li><a ui-sref="logout">Logout</a></li>

@@ -13,7 +13,7 @@
 					<label class="col-md-4 control-label" for="userName">Username<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="userName" type="text"
-							placeholder="Enter Username"
+							placeholder="Enter Username"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your username"
 							class="form-control input-md" required>
 						
 					</div>
@@ -23,9 +23,8 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Password<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="password" type="password"
-							placeholder="Enter Password" class="form-control input-md"
-							required>
+						<input id="password" ng-model="password" type="password" 
+							placeholder="Enter Password" class="form-control input-md" popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your password" required>
 
 					</div>
 				</div>
@@ -34,7 +33,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
-						<button id="submit" name="submit" class="btn btn-primary">Login</button>
+						<button id="submit" name="submit" ng-disabled="userName==null || password==null" class="btn btn-primary">Login</button>
 					</div>
 				</div>
 

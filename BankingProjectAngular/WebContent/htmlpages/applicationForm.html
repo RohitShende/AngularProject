@@ -16,10 +16,11 @@
 					</label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="firstName" type="text"
-							placeholder="Enter your first name here"
-							class="form-control input-md" required>
+							placeholder="Enter your first name here" name="firstName"
+							class="form-control input-md" ng-pattern="[a-zA-Z].*" required>
 					</div>
 					
+					<div class="col-md-4 btn btn-danger " ng-show="myForm.firstName.$error.pattern" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Name</div>
 					<div class="text-left-align btn" ng-show="firstName!=null"><i class="fa fa-check-square"></i></div>
 				</div>
 				<div class="form-group">
@@ -80,7 +81,7 @@
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Date
-						of birth<span class="redasterik ">*</span>
+						of Birth<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
@@ -100,7 +101,7 @@
 							 class="form-control">
 							<option value="">--Select Branch--</option>
 							<option value="Pune_loc">Pune_Loc</option>
-							<option value="Mumbai_loc">Mumbai_loc</option>
+							<option value="Mumbai_loc">Mumbai_Loc</option>
 						</select>
 					</div>
 					
@@ -142,7 +143,7 @@
 		<uib-alert type="success" ng-show="successMessage!=null "
 			class="col-md-6 col-md-offset-3">{{successMessage}}<br>
 		<br>
-		<a ng-click="uploadClick()" class="btn btn-primary pull-right">Upload
+		<a ng-click="uploadClick()" class="btn btn-primary pull-right"><i class="fa fa-upload"></i>&nbsp;Upload
 			Documents Now</a></uib-alert>
 
 

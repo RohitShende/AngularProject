@@ -198,7 +198,7 @@ app.controller("uploadDocuments", function($scope, $log, $stateParams,
 		}).success(function() {
 			delete $localStorage.enquiryId;
 			$scope.submitted = "submitted";
-			$scope.successMessage = "Document uploaded"
+			$scope.successMessage = "Your documents are successfully sent for verification. We will mail you once your provided documents are verified by us."
 		}).error(function() {
 			$scope.errorMessage = "Uploading failed"
 		});

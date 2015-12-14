@@ -5,6 +5,10 @@ var app = angular.module('admin', []);
 
 app.controller("adminLoginController", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
+	if ($localStorage.role == "admin") {
+		console.log("--------->"+$localStorage.role);
+		location.path("/adminHome");
+	}
 	$localStorage.currentPage = "LoginAdmin";
 	$scope.$storage = $localStorage;
 	console.log("--->" + $scope.$storage.baseURI);
@@ -37,7 +41,8 @@ app.controller("adminLoginController", function($scope, $log, $stateParams,
 	}
 
 });
-app.controller("adminHome", function($scope, $localStorage, $location, $rootScope) {
+app.controller("adminHome", function($scope, $localStorage, $location,
+		$rootScope) {
 	if ($localStorage.role != "admin") {
 		$location.path("/home");
 	}

@@ -61,20 +61,20 @@
 	</div>
 <!-- Client Id Input Form Starts -->
 	<uib-alert type="info" class="row" ng-show="$rootScope.clientLoginRequest">
-		<div class="col-md-4 btn"><span class="glyphicon glyphicon-user btn-lg"></span><span class="btn-lg" >Client Login Form</span></div>
-		<div class="col-md-7 btn">
+		<div class="col-md-4 "><span class="glyphicon glyphicon-user btn-lg"></span><span class="btn-lg"><b>Customer Login Form</b></span></div>
+		<div class="col-md-7 ">
 
 			<form class="form-horizontal" ng-submit="loginClient()">
 				<fieldset>
 
 					<!-- Text input-->
 					<div class="form-group pull-right">
-						<label class="col-md-4 control-label" for="userName">Client
-							Id<span class="redasterik ">*</span>
+						<label class="col-md-4 control-label" for="userName">Customer
+							Id<span class="redasterik">*</span>
 						</label>
 						<div class="col-md-4">
-							<input id="userName" ng-model="clientID" type="text"
-								placeholder="Client Id " size="30" class="form-control input-md"
+							<input id="userName" ng-model="clientID" type="text"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your ID"
+								placeholder="Customer Id " size="30" class="form-control input-md"
 								required>
 
 						</div>
@@ -101,22 +101,22 @@
 			<h2 class="page-header">Services We Offer</h2>
 		</div>
 		<div class="col-md-4 col-sm-6">
-			<a href="portfolio-item.html"> <img
+			 <img
 				class="img-responsive img-portfolio img-hover"
 				src="img/billpayment.jpg" alt="Bill Payment">
-			</a>
+			
 		</div>
 		<div class="col-md-4 col-sm-6">
-			<a href="portfolio-item.html"> <img
+			 <img
 				class="img-responsive img-portfolio img-hover"
 				src="img/chequedeposit.jpg" alt="Cheque Deposit">
-			</a>
+			
 		</div>
 		<div class="col-md-4 col-sm-6">
-			<a href="portfolio-item.html"> <img
+			<img
 				class="img-responsive img-portfolio img-hover"
 				src="img/moneytransfer.jpg" alt="Money Transfer">
-			</a>
+			
 		</div>
 
 	</div>
@@ -172,12 +172,12 @@
 	</div>
 	<!-- /.row -->
 	<!-- /.row -->
+ 
 
+	<!-- Call to Action Section -->	
+<!--<hr>
 
-
-	<hr>
-
-	<!-- Call to Action Section -->
+	
 	<div class="well">
 		<div class="row">
 			<div class="col-md-8">
@@ -189,8 +189,8 @@
 			</div>
 		</div>
 	</div>
+ -->
 
-	<hr>
 
 
 

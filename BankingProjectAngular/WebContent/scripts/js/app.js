@@ -9,8 +9,8 @@
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
 					'applicationForm', 'createBranch', 'viewBranchManagers',
-					'viewBranches', 'basicModule' , 'client','verifyUnregisteredUsers',
-					'contact'])
+					'viewBranches', 'basicModule', 'client',
+					'verifyUnregisteredUsers', 'contact' ])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
@@ -27,7 +27,7 @@
 			url : '/about',
 			templateUrl : 'htmlpages/about.html',
 		}).state('branchManagerLogin', {
-			url : '/branchmanager/login',
+			url : '/branchManagerLogin',
 			templateUrl : 'htmlpages/branchManagerLogin.html',
 			controller : 'branchManagerController'
 		}).state('adminHome', {
@@ -35,10 +35,10 @@
 			templateUrl : 'htmlpages/adminHome.html',
 			controller : 'adminHome'
 		}).state('branchManagerHome', {
-			 url : '/branchManagerHome',
-			 templateUrl : 'htmlpages/branchManagerHome.html',
-			 controller : 'branchManagerHome'
-			 })
+			url : '/branchManagerHome',
+			templateUrl : 'htmlpages/branchManagerHome.html',
+			controller : 'branchManagerHome'
+		})
 		// .state('branchManagerHome', {
 		// url : '/branchManagerHome',
 		// templateUrl : 'htmlpages/branchManagerHome.html',
@@ -57,7 +57,7 @@
 			templateUrl : 'htmlpages/createBranch.html',
 			controller : 'createBranchController'
 		}).state('adminHome.viewBranches', {
-			url : '/viewBranches',
+			url : '/adminHome/viewBranches',
 			templateUrl : 'htmlpages/viewBranches.html',
 			controller : 'viewBranchesController'
 		}).state('adminHome.viewBranchManagers', {
@@ -102,14 +102,18 @@
 			controller : 'logoutController'
 		});
 
-	}).controller("appController", function($scope,$location, $rootScope, $localStorage) {
-		$rootScope.clientLoginRequest = false;
-		$localStorage.baseURI = "http://localhost:8080/";
-		$scope.$storage = $localStorage;
-		$scope.loginClient = function()
-		{
-			$localStorage.clientId = $scope.clientID;
-			$location.path("clientHome");
-		}
-	});
+	}).controller("appController",
+			function($scope, $location, $rootScope, $localStorage) {
+				$rootScope.clientLoginRequest = false;
+				$localStorage.baseURI = "http://localhost:8080/";
+				$scope.$storage = $localStorage;
+				if ($localStorage.role == 'admin') {
+					$location.path("adminHome");
+				}
+				
+				$scope.loginClient = function() {
+					$localStorage.clientId = $scope.clientID;
+					$location.path("clientHome");
+				}
+			});
 })();
