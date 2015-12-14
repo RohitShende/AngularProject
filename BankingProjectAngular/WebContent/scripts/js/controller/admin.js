@@ -11,7 +11,7 @@ app.controller("adminLoginController", function($scope, $log, $stateParams,
 	$scope.login = function() {
 		$http({
 			method : 'post',
-			url : $scope.$storage.baseURI + 'loginAdmin',
+			url : $scope.$storage.baseURI + 'admin\login',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
