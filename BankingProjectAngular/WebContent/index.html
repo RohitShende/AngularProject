@@ -11,8 +11,7 @@
 
 <title>iNB - Internet Banking</title>
 
- <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  
  <!-- Bootstrap Core CSS -->
  <link href="bower_components\bootstrap\bootstrap.min.css"
@@ -25,9 +24,9 @@
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="scripts\fonts\font-awesome.min.css" rel="stylesheet"
-	type="text/css">
+<link href="scripts\fonts\font-awesome.min.css" rel="stylesheet" type="text/css">
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.css" rel="stylesheet" />
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -39,14 +38,14 @@
 
 </head>
 
-<body ng-app="inbApp" ng-controller="appController">
+	<body ng-app="inbApp" ng-controller="appController">
 
 	<app-header></app-header>
 
 	<div ui-view class="container-body"></div>
 	<legend></legend>
 	<app-footer></app-footer>
-<toaster-container></toaster-container>
+	<toaster-container></toaster-container>
 
 
 	<!-- jQuery -->
@@ -56,24 +55,19 @@
 
 	<script src="bower_components\bootstrap\bootstrap.min.js"></script>
 	<script src="bower_components\angular\angular.min.js"></script>
-	<script
-		src="https:\\cdnjs.cloudflare.com\ajax\libs\angular-ui-router\0.2.15\angular-ui-router.min.js"></script>
-	<script
-		src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
-
+	<script src="https:\\cdnjs.cloudflare.com\ajax\libs\angular-ui-router\0.2.15\angular-ui-router.min.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
 	<script src="bower_components\angular\ui-bootstrap-tpls-0.14.3.min.js"></script>
-	<script
-		src="https:\\cdnjs.cloudflare.com\ajax\libs\angular.js\1.5.0-rc.0\angular-animate.min.js"></script>
+	<script src="https:\\cdnjs.cloudflare.com\ajax\libs\angular.js\1.5.0-rc.0\angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+	<script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.js"></script>
 
 	<!-- Banking Project JS files -->
-<script src="scripts/js/app.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js">
-		
-	</script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.css" rel="stylesheet" />
-<script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.js"></script>
+	<script src="scripts/js/app.js"></script>
+	
+
+
 	<script src="scripts/js/directive/common.js"></script>
 	<script src="scripts/js/controller/admin.js"></script>
 	<script src="scripts/js/controller/loginBranchManager.js"></script>
