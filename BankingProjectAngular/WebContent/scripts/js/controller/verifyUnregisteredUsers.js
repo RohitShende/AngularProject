@@ -5,7 +5,7 @@ var app = angular.module('verifyUnregisteredUsers', []);
 app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http,$window) {
 	$scope.userd = $rootScope.userDetails;
-	var url = $scope.$storage.baseURI + 'verifyUnregisteredUsers'
+	var url = $scope.$storage.baseURI + 'unregisteredusers'
 	console.log(url)
 	$scope.documents = [];
 	$http.get(url).success(function(data, status) {
@@ -20,14 +20,8 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 	{
 
 		$http({
-			method : 'post',
-			url : $scope.$storage.baseURI + 'viewUnregisteredUsers',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : {
-				id:id
-			}
+			method : 'get',
+			url : $scope.$storage.baseURI + 'unregisteredusers/'+id			
 		}).then(function successCallback(response) {
 		
 			 $rootScope.userDetails = response.data;
@@ -36,14 +30,9 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		});
 		
 		$http({
-			method : 'post',
-			url : $scope.$storage.baseURI + 'retrieveAddressProofDocuments',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : {
-				id:id
-			}
+			method : 'get',
+			url : $scope.$storage.baseURI + 'addressproofdocument/'+id,
+		
 		}).then(function successCallback(response) {
 	
 			 $rootScope.userAddressDocuments = response.data;
@@ -52,14 +41,9 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		});
 		
 		$http({
-			method : 'post',
-			url : $scope.$storage.baseURI + 'retrieveAgeProofDocuments',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-			data : {
-				id:id
-			}
+			method : 'get',
+			url : $scope.$storage.baseURI + 'ageproofdocument/'+id,
+		
 		}).then(function successCallback(response) {
 	
 			 $rootScope.userAgeDocuments = response.data;
@@ -74,14 +58,8 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 	   {
 		   console.log(id);
 		   $http({
-				method : 'post',
-				url : $scope.$storage.baseURI + 'sendRegistrationEmail',
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				data : {
-					id:id
-				}
+				method : 'get',
+				url : $scope.$storage.baseURI + 'unregisteredusers/email/'+id,
 			}).then(function successCallback(response) {
 				var data = response.data;
 				console.log("id returned "+data.id);

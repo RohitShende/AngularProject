@@ -20,13 +20,9 @@ app
 						console.log("---------->In check");
 						delete $scope.errorMessage;
 						$http({
-							method : 'post',
-							url : $scope.$storage.baseURI + 'customer',
-							data : {
-								email : $scope.email
-							}
-
-						})
+							method : 'get',
+							url : $scope.$storage.baseURI + 'unregistereduser?email='+$scope.email,
+							})
 								.then(
 										function successCallback(response) {
 											
@@ -58,7 +54,7 @@ app
 									{
 										method : 'post',
 										url : $scope.$storage.baseURI
-												+ '/registerUser',
+												+ '/unregistereduser',
 										headers : {
 											'Content-Type' : 'application/json'
 										},
@@ -109,7 +105,7 @@ app
 							$scope.clientId = $localStorage.clientId
 							$http({
 								method : 'post',
-								url : $scope.$storage.baseURI + '/newaccount',
+								url : $scope.$storage.baseURI + '/',
 								headers : {
 									'Content-Type' : 'application/json'
 								},
@@ -174,7 +170,7 @@ app
 app.controller("uploadDocuments", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
 	delete $scope.submitted;
-	$localStorage.currentPage = "uploadDocument";
+	$localStorage.currentPage = "document";
 	$scope.$storage = $localStorage;
 	if ($localStorage.enquiryId == null) {
 		$scope.request = "new";
@@ -183,7 +179,7 @@ app.controller("uploadDocuments", function($scope, $log, $stateParams,
 		$scope.request = "continue";
 	}
 	console.log("--dfgsd->" + $scope.enquiryId);
-	var url = $scope.$storage.baseURI + 'uploadDocuments';
+	var url = $scope.$storage.baseURI + 'document';
 	$scope.upload = function() {
 		var fd = new FormData();
 		fd.append('addressProof',
