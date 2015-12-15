@@ -1,0 +1,147 @@
+<div class="row voffset10">
+	<div class="col-md-2"></div>
+	<div class="col-md-9" align="left">
+
+		<form class="form-horizontal" ng-submit="apply()" name="myForm"
+			ng-show="submitted==null">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend align="center">Application Form - New Account</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">First
+						Name
+					</label>
+					
+					<div class="col-md-4 btn btn-info">
+						<span class="">{{client.firstName}}</span>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">Last
+						Name
+					</label>
+					<div class="col-md-4 btn btn-info">
+						<span class="">{{client.lastName}}</span>
+					</div>
+
+
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Email</label>
+					
+						<div class="col-md-4 btn btn-info">
+						<span class="">{{client.email}}</span>
+					</div>
+
+				
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Mobile
+						Phone
+					</label>
+						<div class="col-md-4 btn btn-info">
+						<span class="">{{client.phone}}</span>
+					</div>
+
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Address</label>
+						<div class="col-md-4 btn btn-info">
+						<span class="">{{client.address}}</span>
+					</div>
+
+
+					
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Date
+						of Birth
+					</label>
+						<div class="col-md-4 btn btn-info">
+						<span class=>{{client.dateOfBirth}}</span>
+					</div>
+
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.date.$error.required">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="selectbasic">Select
+						Branch
+					</label>
+					<div class="col-md-4">
+						<select id="selectbasic" ng-model="branchName"
+							ng-focus="branchFocus=true" ng-blur="branchFocus=false"
+							class="form-control">
+							<option value="">--Select Branch--</option>
+							<option value="Pune_loc">Pune_Loc</option>
+							<option value="Mumbai_loc">Mumbai_Loc</option>
+						</select>
+					</div>
+
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="branchName!=null && branchName != ''">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="selectbasic">Select
+						Accout Type
+					</label>
+					<div class="col-md-4">
+						<select id="selectbasic" ng-focus="accountFocus=true"
+							ng-blur="accountFocus=false" ng-model="accountType"
+							class="form-control">
+							<option value="">--Select Account Type--</option>
+							<option value="SAVINGACCOUNT">Savings Account</option>
+							<option value="CURRENTACCOUNT">Currents Account</option>
+						</select>
+					</div>
+
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="accountType!=null && accountType != '' ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<button id="submit" name="submit"
+							ng-disabled="!((branchName!=null && branchName != '') && (accountType!=null && accountType != ''))"
+							class="btn btn-primary">Apply</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}
+		<hr>
+		<span ng-show="enquiryId!=null">Enquiry id :{{enquiryid}}</span></uib-alert>
+		<uib-alert type="success" ng-show="successMessage!=null "
+			class="col-md-6 col-md-offset-3">{{successMessage}}<br>
+		<br>
+		<a ng-click="uploadClick()" class="btn btn-primary pull-right"><i
+			class="fa fa-upload"></i>&nbsp;Upload Documents Now</a></uib-alert>
+
+
+	</div>
+
+</div>

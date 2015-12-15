@@ -64,7 +64,7 @@
 		<div class="col-md-4 "><span class="glyphicon glyphicon-user btn-lg"></span><span class="btn-lg"><b>Customer Login Form</b></span></div>
 		<div class="col-md-7 ">
 
-			<form class="form-horizontal" ng-submit="loginClient()">
+			<form class="form-horizontal" ng-submit="loginClient(clientId)">
 				<fieldset>
 
 					<!-- Text input-->
@@ -73,7 +73,7 @@
 							Id<span class="redasterik">*</span>
 						</label>
 						<div class="col-md-4">
-							<input id="userName" ng-model="clientID" type="text"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your ID"
+							<input id="userName" ng-model="clientId" type="text"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your ID"
 								placeholder="Customer Id " size="30" class="form-control input-md"
 								required>
 
@@ -82,7 +82,7 @@
 
 
 						<div class="col-md-4">
-							<button id="submit" name="submit" class="btn btn-primary">Login</button>
+							<button id="submit" name="submit" type="submit" class="btn btn-primary">Login</button>
 						</div>
 					</div>
 

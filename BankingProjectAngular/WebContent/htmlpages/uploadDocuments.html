@@ -9,19 +9,19 @@
 
 				
 				<div class="form-group" ng-show="request=='continue'">
-					<label class="col-md-4 control-label" for="textinput">Id
+					<label class="col-md-4 control-label" for="textinput">Emaill
 						</label>
-					<div class="col-md-4">
-						<span class="btn btn-default">{{enquiryId}}</span>
+					<div class="col-md-4 ">
+						<span class="btn btn-default">{{enquiryemail}}</span>
 					</div>
 				</div>
 				
 				
 				<div class="form-group" ng-show="request=='new'">
-					<label class="col-md-4 control-label" for="textinput">Id<span class="redasterik ">*</span>
+					<label class="col-md-4 control-label" for="textinput">Email<span class="redasterik ">*</span>
 						</label>
 					<div class="col-md-4">
-						<input id="id" ng-model="enquiryId" type="text" value="" name="enquiryId"
+						<input id="id" ng-model="enquiryemail" type="text" value="" name="enquiryId"
 							placeholder="Enter your Enquiry Id here"
 							class="form-control input-md" required>
 					</div>
@@ -61,7 +61,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="singlebutton"></label>
 					<div class="col-md-4">
-						<button id="singlebutton" type="submit" ng-disabled="(request=='new' && enquiryId==null) || addressProof==null || ageProof==null"
+						<button id="singlebutton" type="submit" ng-disabled="(request=='new' && enquiryemail==null) || addressProof==null || ageProof==null"
 							class="btn btn-primary">Upload</button>
 					</div>
 				</div>

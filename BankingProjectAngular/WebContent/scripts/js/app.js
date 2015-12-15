@@ -1,7 +1,3 @@
-/**
- * ngSurveys - main application script file
- */
-
 (function() {
 	'use strict';
 	angular.module(
@@ -9,8 +5,8 @@
 			[ 'ui.router', 'ui.bootstrap', 'common-elements', 'admin',
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
 					'applicationForm', 'createBranch', 'viewBranchManagers',
-					'viewBranches', 'basicModule', 'client',
-					'verifyUnregisteredUsers', 'contact','toaster', 'ngAnimate' ])
+					'viewBranches', 'basicModule', 'client','applicationForm1',
+					'verifyUnregisteredUsers', 'contact' ,'toaster', 'ngAnimate'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
@@ -103,7 +99,7 @@
 		});
 
 	}).controller("appController",
-			function($scope, $location, $rootScope, $localStorage) {
+			function($scope, $location, $rootScope, $localStorage,$http ) {
 				$rootScope.clientLoginRequest = false;
 				$localStorage.baseURI = "http://localhost:8080/";
 				$scope.$storage = $localStorage;
@@ -111,9 +107,10 @@
 					$location.path("adminHome");
 				}
 				
-				$scope.loginClient = function() {
-					$localStorage.clientId = $scope.clientID;
-					$location.path("clientHome");
-				}
+				$scope.loginClient = function(id){
+					$localStorage.clientId = id;
+					$location.path("/clientHome");
+				};
+				
 			});
 })();

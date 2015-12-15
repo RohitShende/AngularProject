@@ -1,13 +1,13 @@
 <div class="row voffset10">
 	<div class="col-md-2"></div>
-	<div class="col-md-8" align="left">
+	<div class="col-md-9" align="left">
 
 		<form class="form-horizontal" ng-submit="apply()" name="myForm"
 			ng-show="submitted==null">
 			<fieldset>
 
 				<!-- Form Name -->
-				<legend>Application Form - New Account</legend>
+				<legend align="center">Application Form - New Account</legend>
 
 				<!-- Text input-->
 				<div class="form-group">
@@ -17,11 +17,21 @@
 					<div class="col-md-4">
 						<input id="userName" ng-model="firstName" type="text"
 							placeholder="Enter your first name here" name="firstName"
-							class="form-control input-md" required>
+							ng-focus="firstNameFocus=true" ng-blur="firstNameFocus=false"
+							ng-pattern="/^[a-zA-Z\s]*$/" class="form-control input-md"
+							required>
 					</div>
 					
-					<div class="col-md-4 btn btn-danger " ng-show="myForm.firstName.$error.pattern" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Name</div>
-					<div class="text-left-align btn" ng-show="firstName!=null"><i class="fa fa-check-square"></i></div>
+
+
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(firstNameFocus!=true || firstNameFocus==null ) && myForm.firstName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid first Name
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="firstName!=null">
+						<i class="fa fa-check green-tick"></i></i>
+					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">Last
@@ -29,12 +39,20 @@
 					</label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="lastName" type="text"
+							ng-pattern="/^[a-zA-Z\s]*$/" name="lastName"
 							placeholder="Enter your last name here"
+							ng-focus="lastNameFocus=true" ng-blur="lastNameFocus=false"
 							class="form-control input-md" required>
 
 					</div>
-					
-					<div class="text-left-align btn" ng-show="lastName!=null"><i class="fa fa-check-square"></i></div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(lastNameFocus!=true || lastNameFocus==null ) && myForm.lastName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid last Name
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="lastName!=null">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 				<!-- Text input-->
@@ -42,41 +60,68 @@
 					<label class="col-md-4 control-label" for="email">Email<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="email" type="email" name="email" ng-change="checkEmail()"
-							placeholder="Enter email here" class="form-control input-md"
-							required>
+						<input id="password" ng-model="email" type="email" name="email"
+							ng-change="checkEmail()" placeholder="Enter email here"
+							class="form-control input-md" ng-focus="emailFocus=true"
+							ng-blur="emailFocus=false" required>
 					</div>
-					<div class="col-md-4 btn btn-danger " ng-show="myForm.email.$error.email" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email</div>
-					<div class="col-md-4 btn-sm btn-danger " ng-show="alreadyExists=='true'" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Email already registered with another account.</div>
-					<div class="text-left-align btn" ng-show="email!=null && email!= '' && alreadyExists=='false'"><i class="fa fa-check-square"></i></div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(emailFocus!=true || emailFocus==null )&& myForm.email.$error.email">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="alreadyExists=='true'">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Email already
+						registered with another account.
+					</div>
+					<div class="text-left-align btn-sm  text-left-align alertBoxHeight"
+						ng-show="email!=null && email!= '' && alreadyExists=='false'">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Mobile Phone<span
-						class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="password">Mobile
+						Phone<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
-						<input id="password" ng-model="phone" type="text" name="phone" ng-minlength="10" ng-maxlength="10"
-							placeholder="Enter phone here" class="form-control input-md" 
-							required>
+						<input id="password" ng-model="phone" type="number" name="phone"
+							ng-minlength="10" ng-maxlength="10"
+							placeholder="Enter phone here" class="form-control input-md"
+							ng-focus="mobileFocus=true" ng-blur="mobileFocus=false" required>
 
 					</div>
-					
-					<div class="col-md-4 btn btn-danger" ng-show="myForm.phone.$error.minlength || myForm.phone.$error.maxlength" ><i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid phone Number</div>
-					<div class="text-left-align btn" ng-show="!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength "><i class="fa fa-check-square"></i></div>
+
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(mobileFocus!=true || mobileFocus==null )&&  (myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid phone
+						Number
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Address<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<textarea id="password" ng-model="address" type="textarea" name="area"
-							placeholder="Enter address here" class="form-control input-md"
-							required></textarea>
+						<textarea id="password" ng-model="address" type="textarea"
+							name="area" ng-focus="addressFocus=true"
+							ng-blur="addressFocus=false" placeholder="Enter address here"
+							class="form-control input-md" required></textarea>
 
 					</div>
-					
-					<div class="text-left-align btn" ng-show="!myForm.area.$error.required"><i class="fa fa-check-square"></i></div>
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.area.$error.required">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 				<!-- Text input-->
 				<div class="form-group">
@@ -85,11 +130,15 @@
 					</label>
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
+							ng-focus="dateFocus=true" ng-blur="dateFocus=false"
 							placeholder="Enter date of birth here"
 							class="form-control input-md" required>
 					</div>
-					
-					<div class="text-left-align btn" ng-show="!myForm.date.$error.required"><i class="fa fa-check-square"></i></div>
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.date.$error.required">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -97,16 +146,20 @@
 						Branch<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName" 
-							 class="form-control">
+						<select id="selectbasic" ng-model="branchName"
+							ng-focus="branchFocus=true" ng-blur="branchFocus=false"
+							class="form-control">
 							<option value="">--Select Branch--</option>
 							<option value="Pune_loc">Pune_Loc</option>
 							<option value="Mumbai_loc">Mumbai_Loc</option>
 						</select>
 					</div>
-					
-					
-					<div class="text-left-align btn" ng-show="branchName!=null && branchName != ''"><i class="fa fa-check-square"></i></div>
+
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="branchName!=null && branchName != ''">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 				<div class="form-group">
@@ -114,16 +167,20 @@
 						Accout Type<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" 
-							ng-model="accountType" class="form-control">
+						<select id="selectbasic" ng-focus="accountFocus=true"
+							ng-blur="accountFocus=false" ng-model="accountType"
+							class="form-control">
 							<option value="">--Select Account Type--</option>
 							<option value="SAVINGACCOUNT">Savings Account</option>
 							<option value="CURRENTACCOUNT">Currents Account</option>
 						</select>
-					</div>	
-					
-					
-					<div class="text-left-align btn" ng-show="accountType!=null && accountType != '' "><i class="fa fa-check-square"></i></div>
+					</div>
+
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="accountType!=null && accountType != '' ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 				<!-- Button -->
@@ -139,12 +196,14 @@
 			</fieldset>
 		</form>
 		<uib-alert type="danger" ng-show="errorMessage!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessage}}<hr><span ng-show="enquiryId!=null">Enquiry id :{{enquiryid}}</span></uib-alert>
+			class="col-md-6 col-md-offset-3">{{errorMessage}}
+		<hr>
+		<span ng-show="enquiryId!=null">Enquiry id :{{enquiryid}}</span></uib-alert>
 		<uib-alert type="success" ng-show="successMessage!=null "
 			class="col-md-6 col-md-offset-3">{{successMessage}}<br>
 		<br>
-		<a ng-click="uploadClick()" class="btn btn-primary pull-right"><i class="fa fa-upload"></i>&nbsp;Upload
-			Documents Now</a></uib-alert>
+		<a ng-click="uploadClick()" class="btn btn-primary pull-right"><i
+			class="fa fa-upload"></i>&nbsp;Upload Documents Now</a></uib-alert>
 
 
 	</div>

@@ -3,10 +3,9 @@
 
 var app = angular.module('client', []);
 
-app.controller("clientController", function($scope, $log, $stateParams,
-		$localStorage, $state, $state, $rootScope, $http) {
-	$localStorage.clientId = "123456789";
-	$state.go("clientHome");
+app.controller("clientController", function($scope, $log, $stateParams,$location,
+		$localStorage, $state, $state, $rootScope, $http ) {
+	
 });
 //
 // window.onbeforeunload = function() {
