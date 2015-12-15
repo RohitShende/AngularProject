@@ -3,7 +3,7 @@
 
 var app = angular.module('contact', []);
 app.controller("contactController", function($scope, $log, $stateParams,$localStorage,
-		$location, $state, $rootScope, $http) {
+		$location, $state, $rootScope, $http,toaster) {
 	$scope.$storage = $localStorage;
 	$scope.contact = function() {
 		$http({
@@ -32,6 +32,9 @@ app.controller("contactController", function($scope, $log, $stateParams,$localSt
 			console.log("hello..");
 			$scope.errorMessage = "Server Error. Try After Some time";
 		});
+	}
+	$scope.contactToast=function(){
+		toaster.pop('success', "Message", "Contact entry done!");
 	}
 
 });
