@@ -127,3 +127,13 @@ footer {
 {
 	border:2px solid #C8C8C8 ;
 }
+.full-height
+{
+	height: 902px;
+	margin-top: -5px;
+	
+}
+.top-offset
+{
+	margin-top: -60px;
+}
