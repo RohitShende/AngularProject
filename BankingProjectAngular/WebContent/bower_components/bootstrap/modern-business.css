@@ -97,19 +97,29 @@ footer {
 .voffset10 {
 	margin-top: 30px;
 }
-.redasterik
-{
-	color:red;
-	margin-top : -5px;
+
+.redasterik {
+	color: red;
+	margin-top: -5px;
 }
-.container-body
-{
+
+.container-body {
 	min-height: 550px;
 }
-.text-left-align
-{
+
+.text-left-align {
 	text-align: left;
 }
+
 .voffset-30 {
 	margin-top: -30px;
+}
+
+.alertBoxHeight {
+	margin-top: 5px;
+	height: 30px;
+}
+.green-tick
+{
+	color : green;
 }
