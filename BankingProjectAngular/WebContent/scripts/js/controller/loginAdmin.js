@@ -24,7 +24,7 @@ app.controller("adminController", function($scope, $log, $stateParams,
 				$rootScope.role = "Admin";
 				$rootScope.id = response.data.id;
 				$rootScope.$apply();
-				$location.path("/adminHome");
+				$state.go("adminHome.viewBranches");
 			} else {
 				$scope.errormsg = "Invalid Creditnals";
 				$location.path("/adminLogin");
@@ -34,9 +34,9 @@ app.controller("adminController", function($scope, $log, $stateParams,
 
 		});
 	}
-
+	
 });
 app.controller("adminHome", function($scope, $rootScope) {
 	$scope.id = $rootScope.id;
-	
+
 });

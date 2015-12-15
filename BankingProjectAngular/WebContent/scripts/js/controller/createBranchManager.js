@@ -3,7 +3,7 @@
 
 var app = angular.module('createBranchManager', []);
 app.controller("createBranchManagerController", function($scope, $log,
-		$stateParams, $location, $state, $rootScope, $http) {
+		$stateParams, $location, $state, $rootScope, $http, toaster) {
 	$scope.addmanager = function() {
 		$http({
 			method : 'post',
@@ -35,12 +35,14 @@ app.controller("createBranchManagerController", function($scope, $log,
 				}
 				$location.path("/newBranchManager");
 			} else {
-				console.log("Create New Manager" + response.data);
+				console.log("New Branch Manager Created" + response.data);
 				$location.path("/adminHome");
+				toaster.pop('success', "Message", "Branch Manager has been created succesfully!");
+				
 			}
 		}, function errorCallback(response) {
 			$scope.errorMessage = "Server Error. Try After Some time";
 		});
 	}
-
+	
 });

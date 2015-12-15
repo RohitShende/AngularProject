@@ -2,8 +2,8 @@
 /** * Directives ** */
 
 var app = angular.module('createBranch', []);
-app.controller("createBranchController", function($scope, $log, $stateParams,$localStorage,
-		$location, $state, $rootScope, $http) {
+app.controller("createBranchController", function($scope, $log, $stateParams, $localStorage,
+		$location, $state, $rootScope, $http, toaster) {
 	$scope.$storage = $localStorage;
 	$scope.createBranch = function() {
 		$http({
@@ -25,14 +25,16 @@ app.controller("createBranchController", function($scope, $log, $stateParams,$lo
 				console.log("error : " + response.data.error);
 				$scope.errorMessage = "Branch Already Exists";
 			} else {
-				console.log("Create New Manager" + response.data);
+				console.log("New Branch Created" + response.data);
 				$location.path("/adminHome");
+				toaster.pop('success', "Message", "Branch has been created succesfully!");
+			
 			}
 		}, function errorCallback(response) {
 			console.log("hello..");
 			$scope.errorMessage = "Server Error. Try After Some time";
 		});
 	}
-
+	
 });
 

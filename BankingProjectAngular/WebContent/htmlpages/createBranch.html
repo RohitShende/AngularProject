@@ -18,14 +18,14 @@
 					
 				<label class="pull-left">Phone:<span class="redasterik ">*</span> </label>
 					<input type="text" class="form-control text" pattern="[0-9]{8,10}" title="Enter Number of 8-10 digits Only" 
-					ng-model="phone" placeholder="Enter Phone Number" required>
+					ng-model="contact" placeholder="Enter Phone Number" required>
 					 
 				<label class="pull-left">Address:<span class="redasterik ">*</span></label>
 				<input type="text" class="form-control text" title="Enter Valid Address" pattern=".{3,}" ng-model="address"
 					placeholder="Enter Address" required> <br>
 					
 				<input class="btn btn-block btn-lg btn-primary submit"
-					type="submit" value="Create">
+					type="submit" value="Create" ng-click="createBranchToast()">
 			</form><br>
 			
 			<br><uib-alert type="danger" ng-show="errorMessage!=null"

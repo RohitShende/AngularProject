@@ -39,16 +39,17 @@ app.controller("adminLoginController", function($scope, $log, $stateParams,
 			$location.path("/adminLogin");
 		});
 	}
+	
 
 });
 app.controller("adminHome", function($scope, $localStorage, $location,
-		$rootScope) {
+		$rootScope,$state) {
 	if ($localStorage.role != "admin") {
 		$location.path("/home");
 	}
 	$scope.$storage = $localStorage;
 	$scope.id = $scope.$storage.id;
-
+	$state.go("adminHome.viewBranches");
 });
 
 window.onbeforeunload = function() {

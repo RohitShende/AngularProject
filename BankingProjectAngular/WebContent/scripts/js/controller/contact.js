@@ -34,7 +34,8 @@ app.controller("contactController", function($scope, $log, $stateParams,$localSt
 		});
 	}
 	$scope.contactToast=function(){
-		toaster.pop('success', "Message", "Contact entry done!");
+		toaster.pop('success', "Message", "Your message sent successfully!");
+		$state.go("home");
 	}
 
 });
