@@ -5,7 +5,7 @@ var app = angular.module('verifyUnregisteredUsers', []);
 app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http,$window) {
 	$scope.userd = $rootScope.userDetails;
-	var url = $scope.$storage.baseURI + 'unregisteredusers'
+	var url = $scope.$storage.baseURI + 'unregistereduser/'+1+'/'+10;
 	console.log(url)
 	$scope.documents = [];
 	$http.get(url).success(function(data, status) {
