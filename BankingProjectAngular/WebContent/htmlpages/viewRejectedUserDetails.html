@@ -1,0 +1,53 @@
+
+
+<div class="text-center">
+
+   <div class="row">
+    	<div class="col-md-8 col-md-offset-2" ng-repeat="details in rejectedUserList">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Enquiry Id</div>
+				  <div class="panel-body">
+				   {{details.id}}
+				  </div>
+			  </div>
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">First name</div>
+				  <div class="panel-body">
+				   {{details.firstName}}
+				  </div>
+			  </div>
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">Last name</div>
+				  <div class="panel-body">
+				    {{details.lastName}}
+				  </div>
+			  </div>
+			
+			
+			<div class="panel panel-default">
+			  <div class="panel-heading">Address</div>
+				  <div class="panel-body">
+				   {{details.address}}
+				  </div>
+			  </div>
+			  
+			  <div class="panel panel-default">
+			  <div class="panel-heading">Email</div>
+				  <div class="panel-body">
+				   {{details.email}}
+				  </div>
+			  </div>
+			  
+			   <div class="panel panel-default">
+			  <div class="panel-heading">Date of Birth</div>
+				  <div class="panel-body">
+				   {{details.dateOfBirth | date:'dd/MM/yyyy'}}
+				  </div>
+			  </div>
+		
+		
+ 		</div>
+</div>
+</div>

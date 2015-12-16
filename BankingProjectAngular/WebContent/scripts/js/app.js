@@ -76,6 +76,22 @@
 			url : '/viewUnregisteredUserDetails',
 			templateUrl : 'htmlpages/viewUnregisteredUserDetails.html',
 			controller : 'verifyUnregisteredUsersController'
+		}).state('branchManagerHome.viewVerifiedCustomers', {
+			url : '/viewVerifiedCustomers',
+			templateUrl : 'htmlpages/viewVerifiedCustomers.html',
+			controller : 'viewRegisteredUsersController'
+		}).state('branchManagerHome.viewRejectedApplications', {
+			url : '/viewRejectedApplications',
+			templateUrl : 'htmlpages/viewRejectedApplications.html',
+			controller : 'verifyUnregisteredUsersController'
+		}).state('branchManagerHome.viewRejectedUserDetails', {
+			url : '/viewRejectedUserDetails',
+			templateUrl : 'htmlpages/viewRejectedUserDetails.html',
+			controller : 'verifyUnregisteredUsersController'
+		}).state('branchManagerHome.viewVerifiedUserDetails', {
+			url : '/viewVerifiedUserDetails',
+			templateUrl : 'htmlpages/viewVerifiedUserDetails.html',
+			controller : 'viewRegisteredUsersController'
 		})// .state('error', {
 		// url : '/error',
 		// templateUrl : 'htmlpages/adminHome.html',

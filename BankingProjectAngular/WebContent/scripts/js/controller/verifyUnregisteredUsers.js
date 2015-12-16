@@ -7,13 +7,43 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 	$scope.userd = $rootScope.userDetails;
 	var url = $scope.$storage.baseURI + 'unregistereduser/'+1+'/'+10;
 	console.log(url)
-	$scope.documents = [];
+	$scope.userList = [];
+	$scope.userPendingList = [];
+	$scope.userRejectedList = [];
+
 	$http.get(url).success(function(data, status) {
 	    //$scope.data = data;
-	    $scope.documents = data;
-	    $rootScope.size=$scope.documents.length;
+	    $scope.userList = data;
+	    
+	    angular.forEach($scope.userList, function(value, key) {
+	    	  console.log(key + ': ' + value.applicationStatus);
+	    	  if(value.applicationStatus==="Pending")
+	    	  {
+	    		 $scope.userPendingList.push(value); 	
+	    	  }
+	    	  else
+	    	  {
+	    		  console.log("inside else");
+	    		 $scope.userRejectedList.push(value);
+	    		 console.log(value);
+	    	  }
+	    	  
+	    	});
+	     
+	    console.log($scope.userPendingList);
+	    $rootScope.size=$scope.userList.length;
 	    console.log("rootscope "+$rootScope.size);
+	    if($scope.userPendingList.length==0)
+	    {
+	    	$scope.errorMessagePending="No requests to display at this point!"
+	    }
+	    else if($scope.userRejectedList.length==0)
+	    {
+	    	$scope.errorMessageRejected="No results to display at this point!"
+	    }
 	    $log.log($scope.data); 
+	       
+	    
 	});
 
 	$scope.viewUnregisteredUserDetails=function(id)
@@ -21,7 +51,7 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 
 		$http({
 			method : 'get',
-			url : $scope.$storage.baseURI + 'unregisteredusers/'+id			
+			url : $scope.$storage.baseURI + 'unregistereduser/'+id			
 		}).then(function successCallback(response) {
 		
 			 $rootScope.userDetails = response.data;
@@ -54,17 +84,45 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		
 	}
 	
-	$scope.sendEmail=function(id)
+	$scope.sendEmail=function(id,applicationStatus)
 	   {
-		   console.log(id);
+		   console.log(id+" idddd"+applicationStatus+" status");
 		   $http({
-				method : 'get',
-				url : $scope.$storage.baseURI + 'unregisteredusers/email/'+id,
+				method : 'get',  
+				url : $scope.$storage.baseURI + 'unregistereduser/email/'+id+'/'+applicationStatus,
 			}).then(function successCallback(response) {
 				var data = response.data;
 				console.log("id returned "+data.id);
 			})
+			$state.go("branchManagerHome.verifyUnregisteredUsers");
 	   }
+	$scope.viewRejectedUserDetails=function(id)
+	{
+
+		$http({
+			method : 'get',
+			url : $scope.$storage.baseURI + 'unregistereduser/'+id			
+		}).then(function successCallback(response) {
+			
+			 $scope.rejectedApplications = response.data;
+			 $rootScope.rejectedUserList=[];
+			 angular.forEach($scope.rejectedApplications, function(value, key) {
+		    	  console.log(key + ': ' + value.applicationStatus);
+		    	  if(value.applicationStatus==="Rejected")
+		    	  {
+		    		 $rootScope.rejectedUserList.push(value);
+		    		 console.log($rootScope.rejectedUserList);
+		    	  }
+		    	  
+		    	});
+			 $state.go("branchManagerHome.viewRejectedUserDetails"); 
+		});
+	}
+	
+
+	
+
+	
 });
 
 

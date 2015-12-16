@@ -1,23 +1,21 @@
 <div class="text-center">
 
 <div class="clear"> </div>
-   <ul style="list-style:none" class="list-group" ng-show="errorMessagePending==null">
+   <ul style="list-style:none" class="list-group" ng-show="errorMessageRejected==null">
    
-   		<li class="list-group-item" ng-repeat="user in userPendingList">
+   		<li class="list-group-item" ng-repeat="user in userRejectedList">
    			<ul style="list-style:none" class="list-group">
    				<li class="pull-left"> EnquiryID: {{user.id}}  </li>
    				<br>
    				<li class="pull-left">Name: {{user.firstName}} {{user.lastName}} </li>
-   			
-   		 	
-   		<li><button type="button" class="btn btn-success pull-right" data-ng-click="viewUnregisteredUserDetails(user.id)">View</button></li>
+   		<li><button type="button" class="btn btn-success pull-right" data-ng-click="viewRejectedUserDetails(user.id)">View</button></li>
    		</ul>
    		<br>
    		</li>
    </ul>
   
-  <uib-alert type="danger" ng-show="errorMessagePending!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessagePending}}</uib-alert>
+  <uib-alert type="danger" ng-show="errorMessageRejected!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessageRejected}}</uib-alert>
 
   <!-- Pagination --> 
    

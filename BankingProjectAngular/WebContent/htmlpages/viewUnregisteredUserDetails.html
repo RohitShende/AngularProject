@@ -3,7 +3,7 @@
 <div class="text-center">
 
    <div class="row">
-    	<div class="col-xs-3" ng-repeat="details in userDetails">
+    	<div class="col-xs-5 col-md-offset-1" ng-repeat="details in userDetails">
 			<div class="panel panel-default">
 			  <div class="panel-heading">Enquiry Id</div>
 				  <div class="panel-body">
@@ -46,11 +46,16 @@
 				   {{details.dateOfBirth | date:'dd/MM/yyyy'}}
 				  </div>
 			  </div>
-		<button type="button" class="btn btn-success pull-right" data-ng-click="sendEmail(details.id)">Verify</button>	
+			  
+		<button type="button" class="btn btn-danger pull-right" data-ng-click="sendEmail(details.id,'reject')">Reject</button>
+		<button type="button" class="btn btn-success pull-left" data-ng-click="sendEmail(details.id,'verify')">Verify</button>	
+		
  		</div>
-<div class="col-xs-9">
+ 	
+ 	
+<div class="col-xs-6">
 
-<table class="table table-bordered">
+<!-- <table class="table table-bordered">
  <thead>
       <tr>
       	<th  class="text-center">Address Proof</th>
@@ -59,7 +64,7 @@
  	<tbody>
       <tr>
      	<td> <img ng-src="data:image/JPEG;base64,{{userAddressDocuments}}" height="600" width="600"></td>
-       <!--  <td> <img alt="not loaded" ng-src="{{userDocuments}}"></td> -->
+        <td> <img alt="not loaded" ng-src="{{userDocuments}}"></td>
       </tr>
      </tbody>
 </table>
@@ -74,12 +79,45 @@
  	<tbody>
       <tr>
      	<td> <img ng-src="data:image/JPEG;base64,{{userAgeDocuments}}"></td>
-       <!--  <td> <img alt="not loaded" ng-src="{{userDocuments}}"></td> -->
+        <td> <img alt="not loaded" ng-src="{{userDocuments}}"></td>
       </tr>
      </tbody>
 </table>
-        </div>
-    </div>
+        </div> -->
+<div class="col-md-2"></div>
+ <div class="row">
+<div class = "col-sm-5 col-md-7">
+      <div class = "thumbnail">
+         <img alt="address proof" ng-src="data:image/JPEG;base64,{{userAddressDocuments}}">
+ 
+      </div>
+      
+      <div class = "caption">
+         <h3 align="center">Address Proof</h3>
+        
+         
+      </div>
+   </div>
+ </div>
 
+<div class="row voffset10 voffset10 voffset10"></div>
+
+ <div class="col-md-2"></div>
+ 
+ <div class="row">
+   <div class = "col-sm-5 col-md-7">
+      <div class = "thumbnail">
+          <img alt="age proof" ng-src="data:image/JPEG;base64,{{userAgeDocuments}}">
+      </div>
+      
+      <div class = "caption">
+         <h3 align="center">Age Proof</h3>
+      
+         
+      </div>
+   </div>        
+ </div>       
+</div>
+	</div>
 
 </div>

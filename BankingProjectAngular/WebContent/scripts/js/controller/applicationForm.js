@@ -56,7 +56,7 @@ app
 								{
 									method : 'post',
 									url : $scope.$storage.baseURI
-											+ '/unregistereduser/',
+											+ 'unregistereduser/',
 									headers : {
 										'Content-Type' : 'application/json'
 									},
