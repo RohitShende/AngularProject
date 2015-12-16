@@ -11,6 +11,7 @@
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
 		$urlRouterProvider.otherwise('/home');
+		
 		$stateProvider.state('home', {
 			url : '/home',
 			templateUrl : 'htmlpages/home.html',
