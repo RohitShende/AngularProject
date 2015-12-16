@@ -1,10 +1,9 @@
 <div class="row voffset10">
-	<div class="col-md-3">
-	-{{clientId}}-{{image}}--{{text}}
-	</div>
+	<div class="col-md-3">-{{clientId}}-{{image}}--{{text}}</div>
 	<div class="col-md-6" align="center">
 
-		<form class="form-horizontal" ng-submit="setauthorise()">
+		<form class="form-horizontal" ng-submit="setauthorise()"
+			ng-show="successMessage==null">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -69,15 +68,15 @@
 						Image :</label>
 					<div class="col-md-4">
 						<div class="radio">
-							<label for="radios-0"> <input type="radio"
-								name="radios" ng-model="image" id="radios-0" value="1"
-								checked="checked"> <img src="img/five.jpg" height="100px" width="100px">
+							<label for="radios-0"> <input type="radio" name="radios"
+								ng-model="image" id="radios-0" value="1" checked="checked">
+								<img src="img/five.jpg" height="100px" width="100px">
 							</label>
 						</div>
 						<div class="radio">
-							<label for="radios-1"> <input type="radio"
-								name="radios" ng-model="image" id="radios-1" value="2"
-								checked="checked"> <img src="img/seven.jpg" height="100px" width="100px">
+							<label for="radios-1"> <input type="radio" name="radios"
+								ng-model="image" id="radios-1" value="2" checked="checked">
+								<img src="img/seven.jpg" height="100px" width="100px">
 							</label>
 						</div>
 					</div>
@@ -98,7 +97,8 @@
 		<uib-alert type="danger" ng-show="errorMessage!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
 
-
+		<uib-alert type="success" ng-show="successMessage!=null"
+			class="col-md-6 col-md-offset-3">{{successMessage}}</uib-alert>
 	</div>
 
 </div>

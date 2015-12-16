@@ -113,7 +113,7 @@
 		}).state('logout', {
 			url : '/logout',
 			controller : 'logoutController'
-		})}).state('clientLogin', {
+		}).state('clientLogin', {
 			url : '/clientLogin',
 			templateUrl : 'htmlpages/clientAuthorisation.html',
 			controller : 'clientLoginControllers'
@@ -130,7 +130,10 @@
 		});
 		
 
-	}).controller("appController",
+	})
+	
+	
+	.controller("appController",
 			function($scope, $location, $rootScope, $localStorage,$http ) {
 				$rootScope.clientLoginRequest = false;
 				$localStorage.baseURI = "http://localhost:8080/";
@@ -159,5 +162,5 @@
 					});
 					
 				};
-				
+	})
 			})();
