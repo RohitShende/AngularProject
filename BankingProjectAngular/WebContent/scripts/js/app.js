@@ -125,7 +125,7 @@
 				}
 				
 				$scope.loginClient = function(id){
-					console.log("-->"+id);
+					//console.log("-->"+id);
 					$localStorage.clientId = id;
 					$location.path("/clientHome");
 				};

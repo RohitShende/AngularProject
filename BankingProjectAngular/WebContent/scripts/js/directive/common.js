@@ -18,6 +18,13 @@
 			templateUrl : 'htmlpages/common/app-footer.html'
 		};
 	})
+	//Modal-template directive
+	.directive('modal-template', function() {
+		return {
+			restrict : 'E',
+			templateUrl : 'htmlpages/common/modal-template.html'
+		};
+	})
 	.directive('fileModel', [ '$parse', function($parse) {
 		return {
 			restrict : 'A',

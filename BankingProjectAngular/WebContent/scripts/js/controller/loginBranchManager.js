@@ -12,7 +12,7 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 	$scope.$storage = $localStorage;
 	$scope.loginBranchManager = function() {
 		$http({
-			method : 'post',
+			method : 'put',
 			url : $scope.$storage.baseURI + 'branchmanager/login',
 			headers : {
 				'Content-Type' : 'application/json'
@@ -32,9 +32,9 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 				$location.path("/branchManagerHome");*/
 				
 				
-				$rootScope.role = "branchManager";
+				$rootScope.role = "branchmanager";
 				$localStorage.id = response.data.id;
-				$localStorage.role = "branchManager";
+				$localStorage.role = "branchmanager";
 				$location.path("/branchManagerHome");
 			} else {
 				$scope.errorMessage = "Invalid Creditnals";
