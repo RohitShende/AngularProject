@@ -32,8 +32,8 @@ app.controller("contactController", function($scope, $log, $stateParams,$localSt
 			} else {
 				$scope.errorMessage = data.Exception;
 				//$location.path("/contact");
-				toaster.pop('error', "Message", "Sorry! Your message not sent");
-				$state.go("contact");
+						toaster.pop('error', "Message", "Sorry! Your message not sent");
+						$state.go("home");
 			}		
 		}, function errorCallback(response) {
 			console.log("hello..");
