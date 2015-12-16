@@ -1,18 +1,3 @@
-<!doctype html>
-<html ng-app="ui.bootstrap.demo">
-
-<!-- <Pagination CDNs> <head>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js"></script>
-  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
-  <script src="scripts/js/controller/createBranch.js"></script>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
- -->
-
-
-
 <div class="text-center">
 <legend>Branches</legend>
 <div class="row"></div>
@@ -37,35 +22,6 @@ Search: <input type="text" data-ng-model="name"/>
       </tr>
      </tbody>
  </table>
-  
-
-  <!-- Pagination --> 
-<!-- 
-	<div ng-controller="PaginationDemoCtrl">
-   		<uib-pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></uib-pagination>
+<uib-pagination ng-change="pageChanged()" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></uib-pagination>
    			<pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
-  	</div> -->
-  	
-  <!--  <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
-
-
-</div>
-</html>
+</div>  	

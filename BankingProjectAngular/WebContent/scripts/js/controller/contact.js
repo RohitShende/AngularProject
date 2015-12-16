@@ -21,22 +21,27 @@ app.controller("contactController", function($scope, $log, $stateParams,$localSt
 			}
 		}).then(function successCallback(response) {
 			var data = response.data;
-			if (response.data.id != null) {
+			if (response.data.email != null) {
 				$scope.successMessage="Your Message Submitted";
-				$location.path("/contact");
+				toaster.pop('success', "Message", "Your message sent successfully!");
+				$state.go("home");
+				/*$scope.contactToast=function(){
+					
+				}*/
+			
 			} else {
 				$scope.errorMessage = data.Exception;
-				$location.path("/contact");
+				//$location.path("/contact");
+				toaster.pop('error', "Message", "Sorry! Your message not sent");
+				$state.go("contact");
 			}		
 		}, function errorCallback(response) {
 			console.log("hello..");
 			$scope.errorMessage = "Server Error. Try After Some time";
 		});
 	}
-	$scope.contactToast=function(){
-		toaster.pop('success', "Message", "Your message sent successfully!");
-		$state.go("home");
-	}
+	
+	
 
 });
 
