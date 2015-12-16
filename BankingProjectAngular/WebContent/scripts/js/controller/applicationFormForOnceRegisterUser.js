@@ -10,6 +10,8 @@ app
 						 $state, $rootScope, $http) {
 					
 					$scope.clientId = $localStorage.clientId;
+					console.log("--->"+$localStorage.clientId);
+					console.log("--->"+$scope.clientId);
 					$scope.uploadClick = function(id) {
 						$localStorage.enquiryId = $scope.enquiryId;
 						$localStorage.enquiryemail = $scope.email;
@@ -33,59 +35,13 @@ app
 							$location.path("/home");
 						}
 					}, function errorCallback(response) {
+						console.log("--><-->"+error);
 						//$scope.errorMessage = "Server Error. Try After Some time";
 						$location.path("/home");
 					});
 					
 					
-					
-						$scope.checkEmail = function() {
-							$http({
-								method : 'get',
-								url : $scope.$storage.baseURI + 'registeredcustomer/' +id
-
-							}).then(function successCallback(response) {
-								var data = response.data;
-								if (response.data.id != null) {
-									$scope.client = reponse.data;
-									delete $scope.errorMessage;
-									$state.go("clientHome");
-								} else {
-									console.log("---->nai aiaya");
-									//$scope.errorMessage = "Invalid Creditnals";
-									$location.path("/home");
-								}
-							}, function errorCallback(response) {
-								//$scope.errorMessage = "Server Error. Try After Some time";
-								$location.path("/home");
-							});
-						delete $scope.errorMessage;
-						$http(
-								{
-									method : 'get',
-									url : $scope.$storage.baseURI
-											+ 'unregistereduser?email='
-											+ $scope.email,
-								})
-								.then(
-										function successCallback(response) {
-
-											if (response.data.alreadyExists == "true") {
-												$scope.alreadyExists = "true";
-
-											} else {
-												$scope.alreadyExists = "false";
-
-											}
-
-										},
-										function errorCallback(response) {
-
-											$scope.errorMessage = "Server Error. Try After Some time";
-										});
-
-					};
-
+	
 					$scope.apply = function() {
 						console.log("-->in funcytion");
 						$scope.clientId = $localStorage.clientId

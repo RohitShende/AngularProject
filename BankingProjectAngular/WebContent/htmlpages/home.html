@@ -83,7 +83,8 @@
 
 						<div class="col-md-4">
 							<button id="submit" name="submit" type="submit" class="btn btn-primary">Login</button>
-						</div>
+						</div><uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
 					</div>
 
 				</fieldset>

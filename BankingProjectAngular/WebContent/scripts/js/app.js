@@ -113,7 +113,22 @@
 		}).state('logout', {
 			url : '/logout',
 			controller : 'logoutController'
+		})}).state('clientLogin', {
+			url : '/clientLogin',
+			templateUrl : 'htmlpages/clientAuthorisation.html',
+			controller : 'clientLoginControllers'
+		})
+		.state('setAuthoriseData', {
+			url : '/setAuthoriseData',
+			templateUrl : 'htmlpages/setAuthoriseData.html',
+			controller : 'clientSetAuthoriseDataControllers'
+		})
+		.state('emailsubmission',{
+			url : '/emailsubmission',
+			templateUrl : 'htmlpages/takeEmailForApplication.html',
+			controller : 'emailSubmission'
 		});
+		
 
 	}).controller("appController",
 			function($scope, $location, $rootScope, $localStorage,$http ) {
@@ -125,10 +140,24 @@
 				}
 				
 				$scope.loginClient = function(id){
-					//console.log("-->"+id);
 					$localStorage.clientId = id;
-					$location.path("/clientHome");
+					$http({
+						method : 'get',
+						url : $scope.$storage.baseURI + 'authorisation/' + id,
+					}).then(function successCallback(response) {
+						var data = response.data;
+						if (response.data.id != null) {
+							$location.path("/clientLogin");
+						} else {
+							console.log("Client nai hai..");
+							$scope.errorMessage = response.data.Exception;
+							$location.path("/home");
+						}
+					}, function errorCallback(response) {
+						$scope.errorMessage = "Server Error. Try After Some time";
+						$location.path("/home");
+					});
+					
 				};
 				
-			});
-})();
+			})();

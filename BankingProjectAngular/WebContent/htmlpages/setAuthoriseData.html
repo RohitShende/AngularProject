@@ -1,0 +1,104 @@
+<div class="row voffset10">
+	<div class="col-md-3">
+	-{{clientId}}-{{image}}--{{text}}
+	</div>
+	<div class="col-md-6" align="center">
+
+		<form class="form-horizontal" ng-submit="setauthorise()">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>First Login Form - Customer</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">Customer
+						ID:</label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="clientId" type="text"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="Enter your username" class="form-control input-md"
+							readonly="readonly">
+
+					</div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Password:<span
+						class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="password" ng-model="password" type="password"
+							placeholder="Enter Password" class="form-control input-md"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="Enter your password" required>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Verify
+						Password:<span class="redasterik ">*</span>
+					</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="verifypassword" type="password"
+							placeholder="verify Password" class="form-control input-md"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="Enter your password" required>
+
+					</div>
+				</div>
+
+
+
+				<!-- Text Authorisation-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Authorization
+						Text :</label>
+					<div class="col-md-4">
+						<input id="password" ng-model="text" type="text"
+							class="form-control input-md" popover-trigger="mouseenter"
+							popover-placement="bottom" uib-popover="Enter your password"
+							required>
+
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Authorization
+						Image :</label>
+					<div class="col-md-4">
+						<div class="radio">
+							<label for="radios-0"> <input type="radio"
+								name="radios" ng-model="image" id="radios-0" value="1"
+								checked="checked"> <img src="img/five.jpg" height="100px" width="100px">
+							</label>
+						</div>
+						<div class="radio">
+							<label for="radios-1"> <input type="radio"
+								name="radios" ng-model="image" id="radios-1" value="2"
+								checked="checked"> <img src="img/seven.jpg" height="100px" width="100px">
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- radio button -->
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<button id="submit" name="submit" type="submit"
+							ng-disabled="false" class="btn btn-primary">Login</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
+
+
+	</div>
+
+</div>
