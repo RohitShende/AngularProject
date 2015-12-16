@@ -1,7 +1,7 @@
 <div class="text-center">
 
 <div class="clear"> </div>
-   <ul style="list-style:none" class="list-group" ng-show="errorMessagePending==null">
+   <!-- <ul style="list-style:none" class="list-group" ng-show="errorMessagePending==null">
    
    		<li class="list-group-item" ng-repeat="user in userPendingList">
    			<ul style="list-style:none" class="list-group">
@@ -14,7 +14,30 @@
    		</ul>
    		<br>
    		</li>
-   </ul>
+   </ul> -->
+  
+  Search: <input type="text" data-ng-model="name"/>
+</div> <div class="row"></div><br>
+ <table class="table table-bordered" ng-show="errorMessagePending==null">
+ <thead>
+      <tr>
+        <th  class="text-center">Enquiry ID</th>
+        <th  class="text-center">Name</th>
+        <th  class="text-center">Address</th>
+        <th  class="text-center">Contact</th>
+        <th  class="text-center">Verify/Decline</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="user in userPendingList | filter:name" class="text-center"> 
+        <td>{{user.id}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.phone}}</td>
+        <td> <button type="button" class="btn btn-success" data-ng-click="viewUnregisteredUserDetails(user.id)">View</button> </td>
+      </tr>
+     </tbody>
+ </table>
   
   <uib-alert type="danger" ng-show="errorMessagePending!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessagePending}}</uib-alert>

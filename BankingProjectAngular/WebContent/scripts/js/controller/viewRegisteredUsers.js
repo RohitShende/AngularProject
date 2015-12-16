@@ -25,14 +25,7 @@ app.controller("viewRegisteredUsersController", function($scope, $log,
 	    $scope.viewVerifiedUserDetails=function(id)
 		{
 
-			$http({
-				method : 'get',
-				url : $scope.$storage.baseURI + 'registeredcustomer/details/'+id			
-			}).then(function successCallback(response) {
-				
-				 $rootScope.verifiedCustomerDetails = response.data;
-				 $state.go("branchManagerHome.viewVerifiedUserDetails"); 
-			});
+			 $state.go("branchManagerHome.viewVerifiedUserDetails",{id:id}); 
 		}
 	    
 	    

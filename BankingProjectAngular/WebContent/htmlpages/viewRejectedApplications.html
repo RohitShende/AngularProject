@@ -1,7 +1,7 @@
 <div class="text-center">
 
 <div class="clear"> </div>
-   <ul style="list-style:none" class="list-group" ng-show="errorMessageRejected==null">
+   <!-- <ul style="list-style:none" class="list-group" ng-show="errorMessageRejected==null">
    
    		<li class="list-group-item" ng-repeat="user in userRejectedList">
    			<ul style="list-style:none" class="list-group">
@@ -12,7 +12,29 @@
    		</ul>
    		<br>
    		</li>
-   </ul>
+   </ul> -->
+  
+  Search: <input type="text" data-ng-model="name"/>
+</div> <div class="row"></div><br>
+ <table class="table table-bordered">
+ <thead>
+      <tr>
+        <th  class="text-center">Enquiry ID</th>
+        <th  class="text-center">Name</th>
+        <th  class="text-center">Address</th>
+        <th  class="text-center">Phone</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="user in userRejectedList | filter:name">
+        <td> {{user.id}} </td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+     </tbody>
+ </table>
+  
   
   <uib-alert type="danger" ng-show="errorMessageRejected!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessageRejected}}</uib-alert>

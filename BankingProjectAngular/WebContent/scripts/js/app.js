@@ -74,9 +74,9 @@
 			templateUrl : 'htmlpages/verifyUnregisteredUsers.html',
 			controller : 'verifyUnregisteredUsersController'
 		}).state('branchManagerHome.viewUnregisteredUserDetails', {
-			url : '/viewUnregisteredUserDetails',
+			url : '/viewUnregisteredUserDetails/:id',
 			templateUrl : 'htmlpages/viewUnregisteredUserDetails.html',
-			controller : 'verifyUnregisteredUsersController'
+			controller : 'viewUnregisteredUsersController'
 		}).state('branchManagerHome.viewVerifiedCustomers', {
 			url : '/viewVerifiedCustomers',
 			templateUrl : 'htmlpages/viewVerifiedCustomers.html',
@@ -86,13 +86,13 @@
 			templateUrl : 'htmlpages/viewRejectedApplications.html',
 			controller : 'verifyUnregisteredUsersController'
 		}).state('branchManagerHome.viewRejectedUserDetails', {
-			url : '/viewRejectedUserDetails',
+			url : '/viewRejectedUserDetails/:id',
 			templateUrl : 'htmlpages/viewRejectedUserDetails.html',
-			controller : 'verifyUnregisteredUsersController'
+			controller : 'viewRejectedUsersController'
 		}).state('branchManagerHome.viewVerifiedUserDetails', {
-			url : '/viewVerifiedUserDetails',
+			url : '/viewVerifiedUserDetails/:id',
 			templateUrl : 'htmlpages/viewVerifiedUserDetails.html',
-			controller : 'viewRegisteredUsersController'
+			controller : 'viewRegisteredUserDetailsController'
 		})// .state('error', {
 		// url : '/error',
 		// templateUrl : 'htmlpages/adminHome.html',

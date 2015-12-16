@@ -1,7 +1,7 @@
 <div class="text-center">
 
 <div class="clear"> </div>
-   <ul style="list-style:none" class="list-group" ng-show="errorMessageVerified==null">
+   <!-- <ul style="list-style:none" class="list-group" ng-show="errorMessageVerified==null">
    
    		<li class="list-group-item" ng-repeat="user in verifiedCustomers">
    			<ul style="list-style:none" class="list-group">
@@ -12,8 +12,34 @@
    		</ul>
    		<br>
    		</li>
-   </ul>
-  
+   </ul> -->
+
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control glyphicon glyphicon-search" placeholder="Search" >
+  </div>
+</form>
+
+
+</div> <div class="row"></div><br>
+ <table class="table table-bordered">
+ <thead>
+      <tr>
+        <th  class="text-center">Customer ID</th>
+        <th  class="text-center">Name</th>
+        <th  class="text-center">Address</th>
+        <th  class="text-center">Contact</th>
+      </tr>
+    </thead>
+ 	<tbody>
+      <tr ng-repeat="user in verifiedCustomers | filter:name" class="text-center"> 
+        <td>{{user.customerId}}</td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+     </tbody>
+ </table>
   <uib-alert type="danger" ng-show="errorMessageVerified!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessageVerified}}</uib-alert>
 
