@@ -1,39 +1,135 @@
+
+
+
+
 <div class="row voffset10">
-   <div class="col-md-3"></div>
-   <div class="col-md-6" align="center">
-		<div class="login">
-			
-			<legend>Create Form - Branch</legend>
-			<hr>
-			<form class="login-inner" ng-submit="createBranch()" >
+	<div class="col-md-2"></div>
+	<div class="col-md-9" align="left">
 
-				<label class="pull-left">IFSC Code:<span class="redasterik ">*</span> </label>
-					<input type="text" class="form-control text" pattern="^[^\s]{4}\d{6}$" 
-					title="eg. IFSC code: ANDB000147 as first 4 are alphabets and last 6 are numerics" 
-					ng-model="ifscCode" placeholder="Enter IFSC Code" required> 
-					
-				<label class="pull-left">Branch Name:<span class="redasterik ">*</span> </label>
-					<input type="text" class="form-control text" pattern="[A-Za-z]*" title="Enter Characters Only" 
-					ng-model="branchName" placeholder="Enter Branch Name" required>
-					
-				<label class="pull-left">Phone:<span class="redasterik ">*</span> </label>
-					<input type="text" class="form-control text" pattern="[0-9]{8,10}" title="Enter Number of 8-10 digits Only" 
-					ng-model="contact" placeholder="Enter Phone Number" required>
-					 
-				<label class="pull-left">Address:<span class="redasterik ">*</span></label>
-				<input type="text" class="form-control text" title="Enter Valid Address" pattern=".{3,}" ng-model="address"
-					placeholder="Enter Address" required> <br>
-					
-				<input class="btn btn-block btn-lg btn-primary submit"
-					type="submit" value="Create" ng-click="createBranchToast()">
-			</form><br>
-			
-			<br><uib-alert type="danger" ng-show="errorMessage!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
+		<form class="form-horizontal" ng-submit="createBranch()"
+			name="myForm" ng-show="submitted==null">
+			<fieldset>
 
-		</div>
+				<!-- Form Name -->
+				<legend align="center">Create Form - Branch</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">IFSC
+						Code:<span class="redasterik ">*</span>
+					</label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="ifscCode" type="text"
+							placeholder="Enter IFSC Code" name="ifscCode"
+							ng-focus="ifscCodeFocus=true" ng-blur="ifscCodeFocus=false"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="eg. IFSC code: ANDB000147 as first 4 are alphabets and last 6 are numerics"
+							ng-pattern="/^[a-zA-Z]{4}[\d]{6}]*$/" class="form-control input-md"
+							required>
+							<!-- "^[^\s]{4}\d{6}$" -->
+					</div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(ifscCodeFocus!=true || ifscCodeFocus==null ) && myForm.ifscCode.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Ifsc code
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="ifscCode!=null && !myForm.ifscCode.$error.pattern ">
+						<i class="fa fa-check green-tick"></i></i>
+					</div>
+				</div>
+
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="BrachName">Branch
+						Name:<span class="redasterik ">*</span>
+					</label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="branchName" type="text"   
+							ng-pattern="/^[a-zA-Z\s]*$/" name="branchName"
+							placeholder="Enter Branch Name" ng-focus="branchNameFocus=true"
+							ng-blur="branchNameFocus=false" popover-trigger="mouseenter"
+							popover-placement="bottom" 
+							uib-popover="Enter Branch Name"
+							class="form-control input-md" required>
+
+					</div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(branchNameFocus!=true || branchNameFocus==null ) && myForm.branchName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid branch name
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="branchName!=null">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Phone:<span
+						class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="password" ng-model="phone" type="number" name="phone"
+							placeholder="Enter Phone Number" class="form-control input-md"
+							ng-focus="phoneFocus=true" ng-blur="phoneFocus=false" ng-minlength="10" ng-maxlength="10"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="Enter Number of 8-10 digits Only"
+							ng-blur="phoneFocus=false" required>
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(phoneFocus!=true || phoneFocus==null )&& (myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid phone number
+					</div>
+					
+					<div class="text-left-align btn-sm  text-left-align alertBoxHeight"
+						ng-show="phone!=null && phone!= '' && !(myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="Adress">Address:<span
+						class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<textarea id="password" ng-model="address" type="textarea"
+							name="address" ng-focus="addressFocus=true"
+							ng-blur="addressFocus=false" placeholder="Enter address here"
+							ng-focus="addressFocus=true" popover-trigger="mouseenter"
+							popover-placement="bottom" uib-popover="Enter Valid Address"
+							class="form-control input-md" required></textarea>
+
+					</div>
+
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.address.$error.required">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<button id="submit" name="submit"
+							ng-disabled="!((!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength) && 
+(!myForm.address.$error.required) && (branchName!=null && branchName != ''))"
+							class="btn btn-primary">Apply</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}
+		<hr>
+		</uib-alert>
+		<uib-alert type="success" ng-show="successMessage!=null "
+			class="col-md-6 col-md-offset-3">{{successMessage}}<br>
+		<br></uib-alert>
+
+
 	</div>
+
 </div>
-
-
-	

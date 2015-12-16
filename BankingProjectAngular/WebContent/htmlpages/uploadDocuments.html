@@ -17,19 +17,22 @@
 				</div>
 				
 				
-				<div class="form-group" ng-show="request=='new'">
-					<label class="col-md-4 control-label" for="textinput">Email<span class="redasterik ">*</span>
-						</label>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Email<span
+						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="id" ng-model="enquiryemail" type="text" value="" name="enquiryId"
-							placeholder="Enter your Enquiry Id here"
-							class="form-control input-md" required>
+						<input id="password" ng-model="email" type="email" name="email"
+							ng-change="checkEmail()" placeholder="Enter email here"
+							class="form-control input-md" ng-focus="emailFocus=true"
+							ng-blur="emailFocus=false" required>
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="alreadyExists !='true' && emailFocus!=true && email!=null">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email
 					</div>
 					
-					<div class="text-left-align col-md-4 btn-sm btn-info" ng-show="false" ><i class="fa fa-info-circle"></i>&nbsp;Enquiry Id is invalid</div>
-					<div class="text-left-align btn-sm" ng-show="!uploadForm.enquiryId.$error.required"><i class="fa fa-check-square"></i></div>
 				</div>
-
 				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="filebutton">Address Proof<span class="redasterik ">*</span>
@@ -61,7 +64,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="singlebutton"></label>
 					<div class="col-md-4">
-						<button id="singlebutton" type="submit" ng-disabled="(request=='new' && enquiryemail==null) || addressProof==null || ageProof==null"
+						<button id="singlebutton" type="submit" ng-disabled="(request=='new' && email==null) || addressProof==null || ageProof==null"
 							class="btn btn-primary">Upload</button>
 					</div>
 				</div>

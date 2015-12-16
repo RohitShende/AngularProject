@@ -1,6 +1,15 @@
 <div class="row voffset10">
-	<div class="col-md-2"></div>
-	<div class="col-md-9" align="left">
+	<div class="col-md-3">
+		<div class="panel panel-primary margin-left-1 voffset10" ng-show="submitted==null">
+			<div class="panel-body">
+			
+			If you already applied and submission of documents is left. Click here to Submit Documents.<br><br>
+			<a ng-click="uploadClick()" class="btn btn-primary pull-right"><i
+			class="fa fa-upload"></i>&nbsp;Upload Documents Now</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8" align="left">
 
 		<form class="form-horizontal" ng-submit="apply()" name="myForm"
 			ng-show="submitted==null">
@@ -21,7 +30,7 @@
 							ng-pattern="/^[a-zA-Z\s]*$/" class="form-control input-md"
 							required>
 					</div>
-					
+
 
 
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
@@ -29,7 +38,7 @@
 						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid first Name
 					</div>
 					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
-						ng-show="firstName!=null">
+						ng-show="firstName!=null && !myForm.firstName.$error.pattern">
 						<i class="fa fa-check green-tick"></i></i>
 					</div>
 				</div>
@@ -131,12 +140,11 @@
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
 							ng-focus="dateFocus=true" ng-blur="dateFocus=false"
-							placeholder="Enter date of birth here"
+							placeholder="Enter date of birth here" min="1900-01-01" max="{{today}}"
 							class="form-control input-md" required>
 					</div>
-
 					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
-						ng-show="!myForm.date.$error.required">
+						ng-show="!myForm.date.$error.required && myForm.date.$valid && !dateFocus ">
 						<i class="fa fa-check green-tick"></i>
 					</div>
 				</div>
@@ -189,7 +197,7 @@
 					<div class="col-md-4">
 						<button id="submit" name="submit"
 							ng-disabled="!((email!=null && email!= '' && alreadyExists=='false') && (!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength) && 
-(!myForm.area.$error.required) && (!myForm.date.$error.required) && (branchName!=null && branchName != '') && (accountType!=null && accountType != ''))"
+(!myForm.area.$error.required) && (!myForm.date.$error.required) && (branchName!=null && branchName != '') && (accountType!=null && accountType != '')&& myForm.date.$valid)"
 							class="btn btn-primary">Apply</button>
 					</div>
 				</div>

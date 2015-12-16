@@ -87,8 +87,8 @@
 		// })
 		.state('clientHome.applyNewAccount', {
 			url : '/clientHome/applyNewAccount',
-			templateUrl : 'htmlpages/applicationForm.html',
-			controller : 'applicationFormController'
+			templateUrl : 'htmlpages/applicationFormForOnceRegisteredUser.html',
+			controller : 'applicationFormForRegisteredController'
 		}).state('contact', {
 			url : '/contact',
 			templateUrl : 'htmlpages/contact.html',
@@ -108,6 +108,7 @@
 				}
 				
 				$scope.loginClient = function(id){
+					console.log("-->"+id);
 					$localStorage.clientId = id;
 					$location.path("/clientHome");
 				};

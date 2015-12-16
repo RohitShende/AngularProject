@@ -8,6 +8,8 @@ app
 				"applicationFormController",
 				function($scope, $log, $stateParams, $localStorage, $location,
 						$state, $rootScope, $http) {
+					var today = new Date();
+					$scope.today = today.toISOString();
 					delete $scope.submitted;
 					$scope.$storage = $localStorage;
 					$scope.alreadyExists = false;
@@ -79,8 +81,8 @@ app
 											if (response.data.id != null) {
 												$scope.submitted = "submitted";
 
-												$scope.successMessage = "Aplication Submitted. Your Enquiry Id : "
-														+ data.id;
+												$scope.successMessage = "Aplication Submitted. Please upload the address proof and age proof . Your point of contact is your email :"
+														+ data.email;
 												$scope.enquiryId = data.id;
 												$scope.enquiryemail = data.email;
 												delete $scope.errorMessage;
@@ -112,6 +114,37 @@ app
 						$state, $rootScope, $http) {
 					delete $scope.submitted;
 					$localStorage.currentPage = "document";
+					$scope.checkEmail = function() {
+
+						delete $scope.errorMessage;
+						$http(
+								{
+									method : 'get',
+									url : $scope.$storage.baseURI
+											+ 'unregistereduser?email='
+											+ $scope.email,
+								})
+								.then(
+										function successCallback(response) {
+
+											if (response.data.alreadyExists == false) {
+												$scope.alreadyExists = "false";
+											} else {
+												if (response.data.id != null) {
+													$scope.alreadyExists = "true";
+												} else {
+													$scope.alreadyExists = "false";
+												}
+											}
+
+										},
+										function errorCallback(response) {
+
+											$scope.errorMessage = "Server Error. Try After Some time";
+										});
+
+					};
+
 					$scope.$storage = $localStorage;
 					if ($localStorage.enquiryId == null) {
 						$scope.request = "new";

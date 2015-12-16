@@ -71,16 +71,11 @@
 						<span class=>{{client.dateOfBirth}}</span>
 					</div>
 
-
-					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
-						ng-show="!myForm.date.$error.required">
-						<i class="fa fa-check green-tick"></i>
-					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="selectbasic">Select
-						Branch
+						Branch<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
 						<select id="selectbasic" ng-model="branchName"
@@ -101,7 +96,7 @@
 
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="selectbasic">Select
-						Accout Type
+						Accout Type<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
 						<select id="selectbasic" ng-focus="accountFocus=true"
