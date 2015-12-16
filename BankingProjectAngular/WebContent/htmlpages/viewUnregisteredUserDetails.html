@@ -46,8 +46,8 @@
 				   {{details.dateOfBirth | date:'dd/MM/yyyy'}}
 				  </div>
 			  </div> 
-		<button type="button" class="btn btn-danger pull-right" data-ng-click="sendEmail(details.id,'reject')">Reject</button>
-		<button type="button" class="btn btn-success pull-left" data-ng-click="sendEmail(details.id,'verify')">Verify</button>	
+		<button type="button" data-ng-disabled="{{addressProofErrorMessage!=null}}" class="btn btn-danger pull-right" data-ng-click="sendEmail(details.id,'reject')">Reject</button>
+		<button type="button" data-ng-disabled="{{addressProofErrorMessage!=null}}" class="btn btn-success pull-left" data-ng-click="sendEmail(details.id,'verify')">Verify</button>	
 		
  		</div>
  	
@@ -55,17 +55,15 @@
 <div class="col-xs-6">
 
 <div class="col-md-2"></div>
- <div class="row">
+ <div class="row" ng-show="addressProofErrorMessage==null">
 
-  <div class="col-sm-7 col-md-9">
+  <div class="col-sm-7 col-md-9" >
             
             <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Address Proof" data-image="data:image/JPEG;base64,{{userAddressDocuments}}" 
             data-target="#image-gallery">
                 <img class="img-responsive" ng-src="data:image/JPEG;base64,{{userAddressDocuments}}">
             </a>
-       
-</div>
-
+       </div>
 
 <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -80,16 +78,13 @@
         </div>
     </div>
 </div>
-  
- 
-   
 </div>
 
 <div class="row"></div>
 
  <div class="col-md-2"></div>
   
- <div class="row">
+ <div class="row" ng-show="ageProofErrorMessage==null">
 
   <div class="col-sm-7 col-md-9">
             
@@ -101,7 +96,7 @@
 </div>
 
 
-<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -114,12 +109,20 @@
         </div>
     </div>
 </div>
-  
- 
-   
 </div>
+
+<div class="row voffset10">
+<uib-alert type="danger" ng-show="addressProofErrorMessage!=null"
+			class="col-md-7 col-md-offset-3 text-center">{{addressProofErrorMessage}}</uib-alert> <br>
+
+
+<div class="row voffset10"></div><br> <br>
+<uib-alert type="danger" ng-show="ageProofErrorMessage!=null"
+			class="col-md-7 col-md-offset-3 text-center">{{ageProofErrorMessage}}</uib-alert>
+			
 
 </div>
 </div>
 </div>
+
 <script src="bower_components/bootstrap/modal.js"> </script> 

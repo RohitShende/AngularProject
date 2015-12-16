@@ -14,9 +14,13 @@
    		</li>
    </ul> -->
   
-  Search: <input type="text" data-ng-model="name"/>
-</div> <div class="row"></div><br>
- <table class="table table-bordered">
+ <br><br>
+<div class="col-md-11 col-md-offset-1" ng-show="errorMessageRejected==null">
+		<div class="form-group has-feedback">
+    	<input type="text" class="form-control" placeholder="Search" data-ng-model="name"/>
+    	<i class="glyphicon glyphicon-search form-control-feedback"></i>
+</div></div>
+ <table class="table table-bordered" ng-show="errorMessageRejected==null">
  <thead>
       <tr>
         <th  class="text-center">Enquiry ID</th>
@@ -37,7 +41,7 @@
   
   
   <uib-alert type="danger" ng-show="errorMessageRejected!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessageRejected}}</uib-alert>
+			class="col-md-7 col-md-offset-3">{{errorMessageRejected}}</uib-alert>
 
   <!-- Pagination --> 
    

@@ -32,12 +32,12 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 				$location.path("/branchManagerHome");*/
 				
 				
-				$rootScope.role = "branchmanager";
+				$rootScope.role = "branchManager";		//changed branchmanager into branchManager -> Palakh
 				$localStorage.id = response.data.id;
-				$localStorage.role = "branchmanager";
-				$location.path("/branchManagerHome");
+				$localStorage.role = "branchManager";	//changed branchmanager into branchManager -> Palakh
+				$location.path("/branchManagerHome.verifyUnregisteredUsers.html");
 			} else {
-				$scope.errorMessage = "Invalid Creditnals";
+				$scope.errorMessage = "Invalid Credentials";
 				$location.path("/branchManagerLogin");
 			}
 		}, function errorCallback(response) {

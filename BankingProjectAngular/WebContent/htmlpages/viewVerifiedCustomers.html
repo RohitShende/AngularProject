@@ -14,15 +14,21 @@
    		</li>
    </ul> -->
 
-<form class="navbar-form navbar-left" role="search">
+<!-- <form class="navbar-form navbar-left" role="search">
   <div class="form-group">
     <input type="text" class="form-control glyphicon glyphicon-search" placeholder="Search" >
   </div>
-</form>
+</form> -->
 
-
+<br>
+<div class="col-md-11 col-md-offset-1" ng-show="errorMessageVerified==null">
+		<div class="form-group has-feedback">
+    	<input type="text" class="form-control" placeholder="Search" data-ng-model="name"/>
+    	<i class="glyphicon glyphicon-search form-control-feedback"></i>
+</div>
+</div>
 </div> <div class="row"></div><br>
- <table class="table table-bordered">
+ <table class="table table-bordered" ng-show="errorMessageVerified==null">
  <thead>
       <tr>
         <th  class="text-center">Customer ID</th>
@@ -41,7 +47,7 @@
      </tbody>
  </table>
   <uib-alert type="danger" ng-show="errorMessageVerified!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessageVerified}}</uib-alert>
+			class="col-md-7 col-md-offset-3 text-center">{{errorMessageVerified}}</uib-alert>
 
   <!-- Pagination --> 
    

@@ -73,7 +73,7 @@ app.controller("verifyUnregisteredUsersController", function($scope, $log,
 	    {
 	    	$scope.errorMessagePending="No requests to display at this point!"
 	    }
-	    else if($scope.userRejectedList.length==0)
+	    if($scope.userRejectedList.length==0)
 	    {
 	    	$scope.errorMessageRejected="No results to display at this point!"
 	    }

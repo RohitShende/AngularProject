@@ -6,7 +6,8 @@
 					'ngStorage', 'loginBranchManager', 'createBranchManager',
 					'applicationForm', 'createBranch', 'viewBranchManagers',
 					'viewBranches', 'basicModule', 'client','applicationForm1',
-					'verifyUnregisteredUsers', 'contact' ,'toaster', 'ngAnimate','viewRegisteredUsers'])
+					'verifyUnregisteredUsers', 'contact' ,'toaster', 'ngAnimate','viewRegisteredUsers',
+					'viewUnregisteredUsers'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {

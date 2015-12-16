@@ -19,7 +19,15 @@ app.controller("viewUnregisteredUsersController", function($scope, $log,
 	
 	}).then(function successCallback(response) {
 
-		 $rootScope.userAddressDocuments = response.data;
+		if(response.data.Error==null)
+		{
+			$rootScope.userAddressDocuments = response.data;
+		}
+		else
+		{
+			$scope.addressProofErrorMessage="No address proof document has been submitted yet!"
+		}
+		 
 		
 
 	});
@@ -29,16 +37,25 @@ app.controller("viewUnregisteredUsersController", function($scope, $log,
 		url : $scope.$storage.baseURI + 'ageproofdocument/'+$stateParams.id,
 	
 	}).then(function successCallback(response) {
-
-		 $rootScope.userAgeDocuments = response.data;
-	    
+		if(response.data.Error==null)
+		{
+			$rootScope.userAgeDocuments = response.data;
+		}
+		else
+		{
+			$scope.ageProofErrorMessage="No age proof document has been submitted yet!"
+		}
+//	    if($scope.ageProofErrorMessage!=null || $scope.addressProofErrorMessage!=null)
+//	    {
+//	    	$scope.documentsMissing=true;
+//	    }
 	});
 
 	$scope.sendEmail=function(id,applicationStatus)
 	   {
 		   console.log(id+" idddd"+applicationStatus+" status");
 		   $http({
-				method : 'get',  
+				method : 'put',  
 				url : $scope.$storage.baseURI + 'unregistereduser/email/'+id+'/'+applicationStatus,
 			}).then(function successCallback(response) {
 				var data = response.data;
