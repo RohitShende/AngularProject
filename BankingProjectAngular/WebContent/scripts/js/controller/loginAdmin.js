@@ -9,7 +9,7 @@ app.controller("adminController", function($scope, $log, $stateParams,
 		$location, $state, $rootScope, $http) {
 	$scope.login = function() {
 		$http({
-			method : 'post',
+			method : 'put',
 			url : 'http://localhost:8080/admin/login',
 			headers : {
 				'Content-Type' : 'application/json'
