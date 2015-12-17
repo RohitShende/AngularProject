@@ -9,6 +9,7 @@ app
 				function($scope, $log, $stateParams, $localStorage, $location,
 						$state, $rootScope, $http) {
 					var today = new Date();
+					today.setFullYear(today.getFullYear() - 5);
 					$scope.today = today.toISOString();
 					delete $scope.submitted;
 					if ($localStorage.email != null) {
@@ -218,7 +219,7 @@ app
 		.controller(
 				"emailSubmission",
 				function($scope, $log, $stateParams, $localStorage, $location,
-						$state, $rootScope, $http) {
+						$state, $rootScope, $http,toaster) {
 
 					$scope.submitEmail = function() {
 
@@ -236,7 +237,7 @@ app
 											if (response.data.alreadyExists == 'false') {
 												$localStorage.email = $scope.email;
 
-												console.log(response.data);
+												toaster.pop('error',"Not registered","This email Id is not registered. Please registered.");
 
 												$location
 														.path("/applicationFormUnregistered");

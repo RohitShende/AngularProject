@@ -75,7 +75,7 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 });
 
 app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
-		$stateParams, $location, $localStorage, $state, $state, $rootScope,
+		$stateParams, $location, $localStorage, $state, $state, $rootScope,toaster,
 		$http) {
 	$scope.clientId = $localStorage.clientId;
 	$scope.getActiveClass = function(id) {
@@ -124,21 +124,20 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 						console.log("data Inserted hai..");
 						$scope.successMessage = "Info Updated."
 					} else {
-						console.log("Client nai hai..");
-						$scope.errorMessage = response.data.Exception;
+						toaster.pop("error","Login failed","Invalid Credentials");
 						$location.path("/clientLogin");
 					}
 				}, function errorCallback(response) {
-					$scope.errorMessage = "Server Error. Try After Some time";
+					toaster.pop('error',"Login failed","Invalid Credentials");
 					$location.path("/clientLogin");
 				});
 			} else {
 				console.log("Client nai hai..");
-				$scope.errorMessage = response.data.Exception;
+				toaster.pop('error',"Login failed","Invalid Credentials");
 				$location.path("/clientLogin");
 			}
 		}, function errorCallback(response) {
-			$scope.errorMessage = "Server Error. Try After Some time";
+			toaster.pop("error","Login failed","Invalid Credentials");
 			$location.path("/clientLogin");
 		});
 
