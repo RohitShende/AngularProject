@@ -11,9 +11,9 @@ app
 					var today = new Date();
 					$scope.today = today.toISOString();
 					delete $scope.submitted;
-					if($localStorage.email != null){
+					if ($localStorage.email != null) {
 						$scope.rootemail = $localStorage.email;
-						$scope.email =  $localStorage.email;
+						$scope.email = $localStorage.email;
 						delete $localStorage.email;
 						$scope.alreadyExists = "false";
 					}
@@ -24,6 +24,16 @@ app
 						$localStorage.enquiryemail = $scope.email;
 						$location.path("/uploadDocument");
 					};
+					$scope.branches = ['Branch1','Branch2'];
+					$http({
+						method : 'get',
+						url : $scope.$storage.baseURI + 'branch/'
+					})
+							.then(
+									function successCallback(response) {
+										$scope.branches = response.data;
+										console.log($scope.branches);
+									});
 
 					$scope.checkEmail = function() {
 
@@ -37,9 +47,13 @@ app
 								})
 								.then(
 										function successCallback(response) {
-
-											if (response.data.alreadyExists == false) {
-												$scope.alreadyExists = "false";
+											if (response.data.alreadyExists == 'false'
+													|| response.data.alreadyExists == null) {
+												if (response.data.AlreadyUser == "true") {
+													$scope.alreadyExists = "true";
+												} else {
+													$scope.alreadyExists = "false";
+												}
 											} else {
 												if (response.data.id != null) {
 													$scope.alreadyExists = "true";
@@ -211,17 +225,18 @@ app
 								.then(
 										function successCallback(response) {
 
-											if (response.data.alreadyExists =='false') {
+											if (response.data.alreadyExists == 'false') {
 												$localStorage.email = $scope.email;
-												
+
 												console.log(response.data);
-												
-												$location.path("/applicationFormUnregistered");
+
+												$location
+														.path("/applicationFormUnregistered");
 											} else {
-												
+
 												if (response.data.id != null) {
 													$scope.alreadyExists = "true";
-													
+
 													if (response.data.Status == "DocumentSubmitted") {
 														$scope.errorMessage = "We have recived your documents. We will inform you at "
 																+ $scope.email
@@ -229,7 +244,8 @@ app
 													} else {
 														$localStorage.enquiryemail = response.data.email;
 														$localStorage.enquiryId = response.data.id;
-														$location.path("/uploadDocument");
+														$location
+																.path("/uploadDocument");
 													}
 												} else {
 													$scope.alreadyExists = "false";

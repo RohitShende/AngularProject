@@ -164,11 +164,11 @@
 					</label>
 					<div class="col-md-4">
 						<select id="selectbasic" ng-model="branchName"
-							ng-focus="branchFocus=true" ng-blur="branchFocus=false"
+							ng-focus="branchFocus=true" ng-blur="branchFocus=false" 
 							class="form-control">
-							<option value="">--Select Branch--</option>
-							<option value="Pune_loc">Pune_Loc</option>
-							<option value="Mumbai_loc">Mumbai_Loc</option>
+							<option  value="">--Select Branch--</option>
+							<option ng-repeat="branch in branches" value="branch.branchName">{{branch.branchName}}</option>
+							
 						</select>
 					</div>
 
