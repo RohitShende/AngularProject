@@ -32,9 +32,9 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 				$location.path("/branchManagerHome");*/
 				
 				
-				$rootScope.role = "branchManager";		//changed branchmanager into branchManager -> Palakh
+				$rootScope.role = "branchmanager";		//changed branchmanager into branchManager -> Palakh
 				$localStorage.id = response.data.id;
-				$localStorage.role = "branch_manager";	//changed branchmanager into branchManager -> Palakh
+				$localStorage.role = "branchmanager";	//changed branchmanager into branchManager -> Palakh
 				$state.go("branchManagerHome.verifyUnregisteredUsers");
 			} else {
 				$scope.errorMessage = "Invalid Credentials";

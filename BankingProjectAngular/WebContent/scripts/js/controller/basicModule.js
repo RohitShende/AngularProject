@@ -24,12 +24,13 @@
 			}
 		}).then(
 				function successCallback(response) {
-					toaster.pop('success',"Logout","Successfully Logout");
+					var data = response.data;
+					toaster.pop('success',"Logout",data.logoutMsg);
 					delete $localStorage.role;
 					$location.path("\home");
 					
 				}, function errorCallback(response) {
-					toaster.pop('success',"Logout","Successfully not Logout");
+					toaster.pop('success',"Logout",data.logoutMsg);
 //					/delete $localStorage.role;
 					$location.path("\home");
 				});
