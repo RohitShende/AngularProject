@@ -133,9 +133,15 @@
 			url : '/emailsubmission',
 			templateUrl : 'htmlpages/takeEmailForApplication.html',
 			controller : 'emailSubmission'
+		})
+		.state('clientHome.transferMoney',{
+			url : '/clientHome/transferMoney',
+			templateUrl : 'htmlpages/transferMoney.html',
+			controller : 'transferMoney'
 		});
 		
 
+		
 	})
 	
 	

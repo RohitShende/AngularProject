@@ -1,0 +1,58 @@
+<div class="row voffset10">
+	<div class="col-md-3"></div>
+	<div class="col-md-9" align="center">
+
+		<form class="form-horizontal" id="transferMoneyForm" ng-submit="transferMoney()">
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Transfer Money</legend>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="userName">Sender Account No<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="userName" ng-model="sender" type="text"
+							placeholder="Enter Username"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your username"
+							class="form-control input-md" required>
+						
+					</div>
+				</div>
+
+				<!-- long input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Receiver Account No<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="password" ng-model="receiver" type="text" 
+							placeholder="Enter Password" class="form-control input-md" popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your password" required>
+
+					</div>
+				</div>
+				
+				<!-- long input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Amount<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="password" ng-model="amount" type="text" 
+							placeholder="Enter Password" class="form-control input-md" popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your password" required>
+
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+					<div class="col-md-4">
+						<button id="submit" name="submit" ng-disabled=""  class="btn btn-primary">Transfer Money</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+		<uib-alert type="danger" ng-show="errorMessage!=null"
+			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
+
+		
+	</div>
+
+</div>
