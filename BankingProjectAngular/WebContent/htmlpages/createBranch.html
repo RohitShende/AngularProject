@@ -14,7 +14,7 @@
 					
 					<label class="col-md-4 control-label" for="ifscCode">IFSC Code:<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="userName" ng-model="ifscCode" type="text"
+						<input id="ifscCode" ng-model="ifscCode" type="text"
 							placeholder="Enter IFSC Code" name="ifscCode"
 							ng-focus="ifscCodeFocus=true" ng-blur="ifscCodeFocus=false"
 							popover-trigger="mouseenter" popover-placement="bottom"
@@ -61,24 +61,24 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="email">Phone:<span
+					<label class="col-md-4 control-label" for="contact">Phone:<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="contact" ng-model="contact" type="number" name="contact"
 							placeholder="Enter Phone Number" class="form-control input-md"
-							ng-focus="phoneFocus=true" ng-blur="phoneFocus=false" ng-minlength="10" ng-maxlength="10"
+							ng-focus="contactFocus=true" ng-blur="contactFocus=false" ng-minlength="10" ng-maxlength="10"
 							popover-trigger="mouseenter" popover-placement="bottom"
 							uib-popover="Enter Number of 8-10 digits Only"
-							ng-blur="phoneFocus=false" required>
+							ng-blur="contactFocus=false" required>
 					</div>
 					<div
 						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
-						ng-show="(phoneFocus!=true || phoneFocus==null )&& (myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
-						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid phone number
+						ng-show="(contactFocus!=true || contactFocus==null) && (myForm.contact.$error.minlength || myForm.contact.$error.maxlength)">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Phone Number
 					</div>
 					
 					<div class="text-left-align btn-sm  text-left-align alertBoxHeight"
-						ng-show="phone!=null && phone!= '' && !(myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
+						ng-show="contact!=null && contact!='' && !(myForm.contact.$error.minlength || myForm.contact.$error.maxlength)">
 						<i class="fa fa-check green-tick"></i>
 					</div>
 				</div>
