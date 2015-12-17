@@ -13,7 +13,7 @@
 					</label>
 					<div class="col-md-4">
 						<input id="firstName" ng-model="firstName" type="text"
-							placeholder="Enter your first name here" name="firstName"
+							placeholder="Enter First Name" name="firstName"
 							ng-focus="firstNameFocus=true" ng-blur="firstNameFocus=false"
 							ng-pattern="/^[a-zA-Z\s]*$/" class="form-control input-md"
 							required>
@@ -35,7 +35,7 @@
 					<div class="col-md-4">
 						<input id="lastName" ng-model="lastName" type="text"
 							ng-pattern="/^[a-zA-Z\s]*$/" name="lastName"
-							placeholder="Enter your last name here"
+							placeholder="Enter Last Name"
 							ng-focus="lastNameFocus=true" ng-blur="lastNameFocus=false"
 							class="form-control input-md" required>
 					</div>
@@ -115,14 +115,17 @@
 				</div>
 
 				<!-- Text input-->
+				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Date of Birth: <span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="password">Date of Birth: <span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
 							ng-focus="dateFocus=true" ng-blur="dateFocus=false"
 							placeholder="Enter date of birth here" min="1900-01-01" max="{{today}}"
 							class="form-control input-md" required>
 					</div>
+					
 					<div
 						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
 						ng-show="(!myForm.date.$valid) && !dateFocus && dateFocus != null">
@@ -134,7 +137,7 @@
 						<i class="fa fa-check green-tick"></i>
 					</div>
 				</div>
-			
+
 			<!-- Text input-->
 				<div class="form-group">
 					
@@ -173,7 +176,7 @@
 						placeholder="Confirm Password" required>
 					</div>
 					<uib-alert type="danger" ng-show="password != verifyPassword"
-						class="col-md-6 col-md-offset-3">Password does not match
+						class="col-md-6 col-md-offset-3">Password should be at least 8 characters
 					</uib-alert>
 				</div>
 				
@@ -190,7 +193,7 @@
 						ng-disabled="!(((email!=null && email!= '')&& 
 						(!myForm.phone.$error.required && !myForm.phone.$error.minlength && 
 						!myForm.phone.$error.maxlength) && (!myForm.address.$error.required) && 
-						(!myForm.dateOfBirth.$error.required) && myForm.dateOfBirth.$valid && 
+						(!myForm.date.$error.required) && myForm.date.$valid && 
 						!myForm.address.$error.minlength)">Create</button>
 					</div>
 				</div>
