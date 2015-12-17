@@ -4,6 +4,10 @@
 var app = angular.module('createBranchManager', []);
 app.controller("createBranchManagerController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http, toaster) {
+	
+	var today = new Date();
+	$scope.today = today.toISOString();
+	delete $scope.submitted;
 	$scope.addManager = function() {
 		$http({
 			method : 'post',
