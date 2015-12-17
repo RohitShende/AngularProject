@@ -94,8 +94,8 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 	$scope.setauthorise = function() {
 
 		$http({
-			method : 'post',
-			url : $scope.$storage.baseURI + 'registeredcustomer/login',
+			method : 'put',
+			url : $scope.$storage.baseURI + 'registeredcustomer/',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
