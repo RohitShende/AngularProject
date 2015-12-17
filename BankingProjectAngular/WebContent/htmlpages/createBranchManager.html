@@ -5,20 +5,22 @@
 			<fieldset>
 				
 				<!-- Form Name  -->
-				<legend>Create Form - Branch Manager</legend>
+				<legend align="center">Create Form - Branch Manager</legend>
 				
 				<!-- Text input-->
-				<div class="form-group">
-					
-					<label class="col-md-4 control-label" for="firstName">First name: <span class="redasterik ">*</span></label>
-					<div class="col-md-4">	
-						<input type="text" id="firstName" ng-pattern="/^[a-zA-Z\s]*$/"
-						title="Enter characters only" class="form-control input-md" ng-focus="firstNameFocus=true"
-						ng-blur="firstNameFocus=false" ng-model="firstName" placeholder="Enter First Name" required>
+								<div class="form-group">
+					<label class="col-md-4 control-label" for="firstName">First Name<span class="redasterik ">*</span>
+					</label>
+					<div class="col-md-4">
+						<input id="firstName" ng-model="firstName" type="text"
+							placeholder="Enter your first name here" name="firstName"
+							ng-focus="firstNameFocus=true" ng-blur="firstNameFocus=false"
+							ng-pattern="/^[a-zA-Z\s]*$/" class="form-control input-md"
+							required>
 					</div>
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
 						ng-show="(firstNameFocus!=true || firstNameFocus==null ) && myForm.firstName.$error.pattern">
-						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid First Name
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid first Name
 					</div>
 					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
 						ng-show="firstName!=null && !myForm.firstName.$error.pattern">
@@ -27,26 +29,29 @@
 				</div>
 				
 				<div class="form-group">
-				
-					<label class="col-md-4 control-label" for="lastName">Last name: <span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="lastName">Last
+						Name<span class="redasterik ">*</span>
+					</label>
 					<div class="col-md-4">
-						<input type="text" id="lastName" ng-pattern="/^[a-zA-Z\s]*$/" title="Enter characters only" 
-						class="form-control input-md" ng-focus="lastNameFocus=true" ng-blur="lastNameFocus=false"
-						ng-model="lastName" placeholder="Enter Last Name" required> 
+						<input id="lastName" ng-model="lastName" type="text"
+							ng-pattern="/^[a-zA-Z\s]*$/" name="lastName"
+							placeholder="Enter your last name here"
+							ng-focus="lastNameFocus=true" ng-blur="lastNameFocus=false"
+							class="form-control input-md" required>
 					</div>
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
 						ng-show="(lastNameFocus!=true || lastNameFocus==null ) && myForm.lastName.$error.pattern">
-						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Last Name
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid last Name
 					</div>
 					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
-						ng-show="lastName!=null && !myForm.lastName.$error.pattern"">
+						ng-show="lastName!=null">
 						<i class="fa fa-check green-tick"></i>
 					</div>
 				</div>
 				
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="email">Email<span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="email">Email: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="email" ng-model="email" type="email" name="email"
 							ng-change="checkEmail()" placeholder="Enter email here"
@@ -73,7 +78,7 @@
 				
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="phone">Phone:<span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="phone">Phone: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="phone" ng-model="phone" type="number" name="phone"
 							ng-minlength="10" ng-maxlength="10"
@@ -94,7 +99,7 @@
 				
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="address">Address<span
+					<label class="col-md-4 control-label" for="address">Address: <span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<textarea id="address" ng-model="address" type="textarea" ng-minlength="20"
@@ -111,7 +116,7 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Date of Birth<span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="password">Date of Birth: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
 							ng-focus="dateFocus=true" ng-blur="dateFocus=false"
@@ -161,7 +166,7 @@
 				</div>
 			
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="verifyPassword">Verify password:<span class="redasterik ">*</span></label>
+					<label class="col-md-4 control-label" for="verifyPassword">Verify password: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">	
 						<input type="password" pattern=".{8,}" title="Password should be at least 8 characters"
 						class="form-control password" ng-model="verifyPassword"
