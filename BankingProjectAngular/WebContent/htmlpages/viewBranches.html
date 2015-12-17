@@ -22,6 +22,8 @@ Search: <input type="text" data-ng-model="name"/>
       </tr>
      </tbody>
  </table>
-<uib-pagination ng-change="pageChanged()" total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></uib-pagination>
-   			<pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+<uib-pagination ng-change="pageChanged()" total-items="50" 
+ng-model="currentPage" max-size="numberOfPages" class="pagination-sm" 
+boundary-links="true" rotate="false" num-pages="numberOfPages"></uib-pagination>
+   		<!-- <pre>Page: {{currentPage+1}} / {{numberOfPages}}</pre> -->
 </div>  	
