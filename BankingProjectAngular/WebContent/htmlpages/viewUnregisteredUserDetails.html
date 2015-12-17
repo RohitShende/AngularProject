@@ -46,9 +46,8 @@
 				   {{details.dateOfBirth | date:'dd/MM/yyyy'}}
 				  </div>
 			  </div> 
-		<button type="button" data-ng-disabled="{{addressProofErrorMessage!=null}}" class="btn btn-danger pull-right" data-ng-click="sendEmail(details.id,'reject')">Reject</button>
-		<button type="button" data-ng-disabled="{{addressProofErrorMessage!=null}}" class="btn btn-success pull-left" data-ng-click="sendEmail(details.id,'verify')">Verify</button>	
-		<div>{{addressProofErrorMessage!=null}}</div>
+		<button type="button" data-ng-disabled="!(addressProofErrorMessage==null)" class="btn btn-danger pull-right" data-ng-click="sendEmail(details.id,'reject')">Reject</button>
+		<button type="button" data-ng-disabled="!(addressProofErrorMessage==null)" class="btn btn-success pull-left" data-ng-click="sendEmail(details.id,'verify')">Verify</button>	
  		</div>
  	
  	
