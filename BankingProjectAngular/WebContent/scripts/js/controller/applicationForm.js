@@ -24,15 +24,19 @@ app
 						$localStorage.enquiryemail = $scope.email;
 						$location.path("/uploadDocument");
 					};
-					$scope.branches = ['Branch1','Branch2'];
+					$scope.branches = null;
 					$http({
 						method : 'get',
 						url : $scope.$storage.baseURI + 'branch/'
 					})
 							.then(
 									function successCallback(response) {
-										$scope.branches = response.data;
-										console.log($scope.branches);
+										if(response.data.Error == null)
+											{
+
+											$scope.branches = response.data;
+											console.log($scope.branches);
+											}
 									});
 
 					$scope.checkEmail = function() {

@@ -26,7 +26,6 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 	}).then(function successCallback(response) {
 		var data = response.data;
 		if (response.data.id != null) {
-			console.log("---first logi->" + response.data.firstTimeLogin);
 			if (response.data.firstTimeLogin == "true") {
 				$localStorage.clientId = response.data.id;
 				$location.path("/setAuthoriseData");
@@ -46,8 +45,8 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 
 	$scope.authorise = function() {
 		$http({
-			method : 'post',
-			url : $scope.$storage.baseURI + 'registeredcustomer/login',
+			method : 'put',
+			url : $scope.$storage.baseURI + 'registeredcustomer/',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
