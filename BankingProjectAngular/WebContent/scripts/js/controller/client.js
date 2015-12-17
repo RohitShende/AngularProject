@@ -8,7 +8,7 @@ app.controller("clientController", function($scope, $log, $stateParams,
 	// $scope.image = $localStorage.image;delete $localStorage.image;
 	// $scope.text = $localStorage.text;delete $localStorage.text;
 	// $scope.clientId = $localStorage.clientId;delete $localStorage.clientId;
-	
+
 });
 
 app.controller("clientLoginControllers", function($scope, $log, $stateParams,
@@ -26,18 +26,16 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 	}).then(function successCallback(response) {
 		var data = response.data;
 		if (response.data.id != null) {
-			console.log("---first logi->"+response.data.firstTimeLogin);
+			console.log("---first logi->" + response.data.firstTimeLogin);
 			if (response.data.firstTimeLogin == "true") {
 				$localStorage.clientId = response.data.id;
 				$location.path("/setAuthoriseData");
 			} else {
 				$scope.image = response.data.image;
 				$scope.text = response.data.text;
-				console.log("Client hai..");
 			}
 
 		} else {
-			console.log("Client nai hai..");
 			$scope.errorMessage = response.data.Exception;
 			$location.path("/home");
 		}
@@ -63,10 +61,9 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 			if (response.data.id != null) {
 				$scope.image = response.data.image;
 				$scope.text = response.data.text;
-				console.log("Client hai..");
+				$localStorage.firstName = ""
 				$location.path("/clientHome");
 			} else {
-				console.log("Client nai hai..");
 				$scope.errorMessage = response.data.Exception;
 				$location.path("/clientLogin");
 			}
@@ -83,24 +80,62 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 		$stateParams, $location, $localStorage, $state, $state, $rootScope,
 		$http) {
 	$scope.clientId = $localStorage.clientId;
+
+	$scope.getActiveClass = function(id) {
+		if (id === $scope.image) {
+			return "active-img";
+		}
+		else
+		{
+			return "border";
+		}
+	}
+
 	$scope.setauthorise = function() {
+
 		$http({
-			method : 'put',
-			url : $scope.$storage.baseURI + 'authorisation',
+			method : 'post',
+			url : $scope.$storage.baseURI + 'registeredcustomer/login',
 			headers : {
 				'Content-Type' : 'application/json'
 			},
 			data : {
-				authorizedImageName : $scope.image,
-				authorizedImageText : $scope.text,
-				customerId : $scope.clientId,
-				password : $scope.password
+				userName : $scope.clientId,
+				password : $scope.otppassword
 			}
+
 		}).then(function successCallback(response) {
 			var data = response.data;
 			if (response.data.id != null) {
-				console.log("data Inserted hai..");
-				$scope.successMessage = "Info Updated."
+
+				// Updating password and setting authorisation imagae and
+				// authorisation text
+				$http({
+					method : 'put',
+					url : $scope.$storage.baseURI + 'authorisation',
+					headers : {
+						'Content-Type' : 'application/json'
+					},
+					data : {
+						authorizedImageName : $scope.image,
+						authorizedImageText : $scope.text,
+						customerId : $scope.clientId,
+						password : $scope.password
+					}
+				}).then(function successCallback(response) {
+					var data = response.data;
+					if (response.data.id != null) {
+						console.log("data Inserted hai..");
+						$scope.successMessage = "Info Updated."
+					} else {
+						console.log("Client nai hai..");
+						$scope.errorMessage = response.data.Exception;
+						$location.path("/clientLogin");
+					}
+				}, function errorCallback(response) {
+					$scope.errorMessage = "Server Error. Try After Some time";
+					$location.path("/clientLogin");
+				});
 			} else {
 				console.log("Client nai hai..");
 				$scope.errorMessage = response.data.Exception;
@@ -110,6 +145,7 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 			$scope.errorMessage = "Server Error. Try After Some time";
 			$location.path("/clientLogin");
 		});
+
 	}
 });
 

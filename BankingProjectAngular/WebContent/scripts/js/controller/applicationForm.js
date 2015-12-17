@@ -11,6 +11,12 @@ app
 					var today = new Date();
 					$scope.today = today.toISOString();
 					delete $scope.submitted;
+					if($localStorage.email != null){
+						$scope.rootemail = $localStorage.email;
+						$scope.email =  $localStorage.email;
+						delete $localStorage.email;
+						$scope.alreadyExists = "false";
+					}
 					$scope.$storage = $localStorage;
 					$scope.alreadyExists = false;
 					$scope.uploadClick = function(id) {
@@ -56,7 +62,7 @@ app
 								{
 									method : 'post',
 									url : $scope.$storage.baseURI
-											+ 'unregistereduser/',
+											+ '/unregistereduser/',
 									headers : {
 										'Content-Type' : 'application/json'
 									},
@@ -132,6 +138,11 @@ app
 											} else {
 												if (response.data.id != null) {
 													$scope.alreadyExists = "true";
+													if (response.data.Status == "DocumentSubmitted") {
+														$scope.status = "documentSubmitted"
+													} else {
+														delete $scope.status;
+													}
 												} else {
 													$scope.alreadyExists = "false";
 												}
@@ -150,8 +161,9 @@ app
 						$scope.request = "new";
 					} else {
 						$scope.enquiryId = $localStorage.enquiryId;
-						$scope.enquiryemail = $localStorage.enquiryemail;
+						$scope.email = $localStorage.enquiryemail;
 						$scope.request = "continue";
+						$scope.alreadyExists = "true";
 					}
 					var url = $scope.$storage.baseURI + 'document';
 					$scope.upload = function() {
@@ -160,7 +172,7 @@ app
 								.getElementById("addressProof").files[0]);
 						fd.append('ageProof', document
 								.getElementById("ageProof").files[0]);
-						fd.append('email', $scope.enquiryemail);
+						fd.append('email', $scope.email);
 						$http
 								.post(url, fd, {
 									transformRequest : angular.identity,
@@ -179,8 +191,64 @@ app
 
 					}
 				});
+
+app
+		.controller(
+				"emailSubmission",
+				function($scope, $log, $stateParams, $localStorage, $location,
+						$state, $rootScope, $http) {
+
+					$scope.submitEmail = function() {
+
+						delete $scope.errorMessage;
+						$http(
+								{
+									method : 'get',
+									url : $scope.$storage.baseURI
+											+ 'unregistereduser?email='
+											+ $scope.email,
+								})
+								.then(
+										function successCallback(response) {
+
+											if (response.data.alreadyExists =='false') {
+												$localStorage.email = $scope.email;
+												
+												console.log(response.data);
+												
+												$location.path("/applicationFormUnregistered");
+											} else {
+												
+												if (response.data.id != null) {
+													$scope.alreadyExists = "true";
+													
+													if (response.data.Status == "DocumentSubmitted") {
+														$scope.errorMessage = "We have recived your documents. We will inform you at "
+																+ $scope.email
+																+ " once we verified your documents.";
+													} else {
+														$localStorage.enquiryemail = response.data.email;
+														$localStorage.enquiryId = response.data.id;
+														$location.path("/uploadDocument");
+													}
+												} else {
+													$scope.alreadyExists = "false";
+												}
+											}
+
+										},
+										function errorCallback(response) {
+
+											$scope.errorMessage = "Server Error. Try After Some time";
+										});
+
+					};
+
+				});
+
 window.onbeforeunload = function() {
 	localStorage.removeItem("ngStorage-enquiryId");
+	localStorage.removeItem("ngStorage-email");
 	localStorage.removeItem("ngStorage-enquiryemail");
 	localStorage.removeItem("ngStorage-clientId");
 }

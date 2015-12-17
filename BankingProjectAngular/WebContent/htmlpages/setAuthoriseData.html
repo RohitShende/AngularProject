@@ -1,8 +1,8 @@
 <div class="row voffset10">
-	<div class="col-md-3">-{{clientId}}-{{image}}--{{text}}</div>
+	<div class="col-md-3"></div>
 	<div class="col-md-6" align="center">
 
-		<form class="form-horizontal" ng-submit="setauthorise()"
+		<form class="form-horizontal" name="myForm" ng-submit="setauthorise()"
 			ng-show="successMessage==null">
 			<fieldset>
 
@@ -21,6 +21,20 @@
 
 					</div>
 				</div>
+				
+				<!-- OTP Password -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">OTP Password:<span
+						class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="password" ng-model="otppassword" type="password"
+							placeholder="Enter Password" class="form-control input-md"
+							ng-focus="passwordFocus=true" ng-blur="passwordFocus=false"
+							popover-trigger="mouseenter" popover-placement="bottom"
+							uib-popover="Enter your password" required>
+
+					</div>
+				</div>
 
 				<!-- Password input-->
 				<div class="form-group">
@@ -30,8 +44,18 @@
 						<input id="password" ng-model="password" type="password"
 							placeholder="Enter Password" class="form-control input-md"
 							popover-trigger="mouseenter" popover-placement="bottom"
+							ng-focus="passwordFocus=true" ng-blur="passwordFocus=false"
 							uib-popover="Enter your password" required>
 
+					</div>
+					
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight"
+						ng-show="verifyPassword !=null && (password != verifyPassword) && verifyPasswordFocus !=true && passwordFocus !=true">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Password Donot match
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="password!=null && verifyPassword!=null&& password == verifyPassword && verifyPasswordFocus !=true && passwordFocus !=true">
+						<i class="fa fa-check green-tick"></i>
 					</div>
 				</div>
 				<div class="form-group">
@@ -39,8 +63,9 @@
 						Password:<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<input id="password" ng-model="verifypassword" type="password"
+						<input id="password" ng-model="verifyPassword" type="password"
 							placeholder="verify Password" class="form-control input-md"
+							ng-focus="verifyPasswordFocus=true" ng-blur="verifyPasswordFocus=false"
 							popover-trigger="mouseenter" popover-placement="bottom"
 							uib-popover="Enter your password" required>
 
@@ -54,41 +79,56 @@
 					<label class="col-md-4 control-label" for="password">Authorization
 						Text :</label>
 					<div class="col-md-4">
-						<input id="password" ng-model="text" type="text"
+						<input id="password" ng-model="text" type="text" ng-minlength="10"
 							class="form-control input-md" popover-trigger="mouseenter"
 							popover-placement="bottom" uib-popover="Enter your password"
 							required>
-
+	<span class="help-block">&nbsp;&nbsp;&nbsp;*Minimum 8 character</span>
 					</div>
+					
 				</div>
 
-
-				<div class="form-group">
+		
+				<!-- <div class="form-group">
 					<label class="col-md-4 control-label" for="password">Authorization
 						Image :</label>
 					<div class="col-md-4">
 						<div class="radio">
 							<label for="radios-0"> <input type="radio" name="radios"
 								ng-model="image" id="radios-0" value="1" checked="checked">
-								<img src="img/five.jpg" height="100px" width="100px">
+								<img src="img/1.jpg" height="100px" width="100px">
 							</label>
-						</div>
-						<div class="radio">
+						
 							<label for="radios-1"> <input type="radio" name="radios"
 								ng-model="image" id="radios-1" value="2" checked="checked">
-								<img src="img/seven.jpg" height="100px" width="100px">
+								<img src="img/2.jpg" height="100px" width="100px">
 							</label>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- radio button -->
+				<div class="form-group">
+				<label class="col-md-4 control-label" for="password">Select Authorization
+						Image :</label>
+					<div class="col-md-2"><a ng-click="image=1"><img src="img/1.jpg" ng-class="getActiveClass(1)" height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=2"><img src="img/2.jpg" ng-class="getActiveClass(2)" height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=3"><img src="img/3.jpg" ng-class="getActiveClass(3)" height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=4"><img src="img/4.jpg" ng-class="getActiveClass(4)"  height="100px" width="100px"></a></div>
+				</div>
+				<div class="form-group">
+				<label class="col-md-4 control-label" for="password" ></label>
+					<div class="col-md-2"><a ng-click="image=5"><img src="img/5.jpg" ng-class="getActiveClass(5)"height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=6"><img src="img/6.jpg" ng-class="getActiveClass(6)" height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=7"><img src="img/7.jpg" ng-class="getActiveClass(7)" height="100px" width="100px"></a></div>
+					<div class="col-md-2"><a ng-click="image=8"><img src="img/8.jpg" ng-class="getActiveClass(8)" height="100px" width="100px"></a></div>
+				</div>
 
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
 						<button id="submit" name="submit" type="submit"
-							ng-disabled="false" class="btn btn-primary">Login</button>
+							ng-disabled="image!=null || password!=verifyPassword || otpPassword!=null || myForm.text.$error.minlength || text==null" class="btn btn-primary">Login</button>
 					</div>
 				</div>
 

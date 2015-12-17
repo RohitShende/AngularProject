@@ -64,7 +64,7 @@
 		<div class="col-md-4 "><span class="glyphicon glyphicon-user btn-lg"></span><span class="btn-lg"><b>Customer Login Form</b></span></div>
 		<div class="col-md-7 ">
 
-			<form class="form-horizontal" ng-submit="loginClient(clientId)">
+			<form class="form-horizontal" id="myForm" ng-submit="loginClient(clientId)">
 				<fieldset>
 
 					<!-- Text input-->
@@ -83,9 +83,7 @@
 
 						<div class="col-md-4">
 							<button id="submit" name="submit" type="submit" class="btn btn-primary">Login</button>
-						</div><uib-alert type="danger" ng-show="errorMessage!=null"
-			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
-					</div>
+						</div>
 
 				</fieldset>
 			</form>

@@ -127,6 +127,7 @@ footer {
 {
 	border:2px solid #C8C8C8 ;
 }
+
 .full-height
 {
 	height: 902px;
@@ -140,4 +141,8 @@ footer {
 .margin-left-1
 {
 	margin: 1px;
+}
+.active-img
+{
+	border:3px solid #007196 ;
 }

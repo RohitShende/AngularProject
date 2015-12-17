@@ -4,7 +4,7 @@
 	</div>
 	<div class="col-md-6" align="center">
 
-		<form class="form-horizontal" ng-submit="authorise()">
+		<form class="form-horizontal" id="authoriseForm" ng-submit="authorise()">
 			<fieldset>
 
 				<!-- Form Name -->
@@ -50,12 +50,11 @@
 					</div>
 				</div>
 
-
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Authorisation
 						Image :</label>
 					<div class="col-md-4 ">
-						<img src="img/five.jpg" class="border" height="100px" width="100px">
+						<img ng-src="img/{{image}}.jpg" class="border" height="100px" width="100px">
 					</div>
 				</div>
 				<!-- radio button -->
