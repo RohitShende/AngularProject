@@ -61,7 +61,7 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 				$scope.image = response.data.image;
 				$scope.text = response.data.text;
 				$localStorage.firstName = response.data.firstName;
-				$localStorage.role="customer";
+				$localStorage.role = "customer";
 				$location.path("/clientHome");
 			} else {
 				$scope.errorMessage = response.data.Exception;
@@ -84,9 +84,7 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 	$scope.getActiveClass = function(id) {
 		if (id === $scope.image) {
 			return "active-img";
-		}
-		else
-		{
+		} else {
 			return "border";
 		}
 	}
@@ -147,6 +145,39 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 		});
 
 	}
+});
+
+app.controller("transferMoney", function($scope, $log, $stateParams, $location,
+		$localStorage, $state, $state, $rootScope, $http) {
+	$scope.id = $localStorage.cilentId;
+	$scope.transferMoney = function()
+	{
+		$http({
+			method : 'put',
+			url : $scope.$storage.baseURI + 'registeredcustomer/transfer',
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+			data : {
+				 clientAccount : $scope.sender,
+				 recevierAccount : $scope.reciever,
+				 amount : $scope.amount
+			}
+		}).then(function successCallback(response) {
+			var data = response.data;
+			if (response.data.Status === 'Success') {
+				toaster.pop('success',"Money Transfer",response.data.Status);
+				document.getElementById("transferMoneyForm").reset();
+			} else {
+				$scope.errorMessage = "Money Transfer not failed";
+				toaster.pop('error',"Money Transfer",response.data.Status);
+				document.getElementById("transferMoneyForm").reset();
+			}
+		}, function errorCallback(response) {
+			$scope.errorMessage = "Server Error. Try After Some time";
+			document.getElementById("transferMoneyForm").reset();
+		});
+	} 	
 });
 
 //
