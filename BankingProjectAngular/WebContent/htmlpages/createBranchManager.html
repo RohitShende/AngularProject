@@ -54,7 +54,7 @@
 					<label class="col-md-4 control-label" for="email">Email: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="email" ng-model="email" type="email" name="email"
-							ng-change="checkEmail()" placeholder="Enter email here"
+							ng-change="checkEmail()" placeholder="Enter email"
 							class="form-control input-md" ng-focus="emailFocus=true"
 							ng-blur="emailFocus=false" required>
 					</div>
@@ -82,7 +82,7 @@
 					<div class="col-md-4">
 						<input id="phone" ng-model="phone" type="number" name="phone"
 							ng-minlength="10" ng-maxlength="10"
-							placeholder="Enter Phone Number Here" class="form-control input-md"
+							placeholder="Enter Phone Number" class="form-control input-md"
 							ng-focus="phoneFocus=true" ng-blur="phoneFocus=false" required>
 					</div>
 					<div
@@ -117,7 +117,8 @@
 				<!-- Text input-->
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Date of Birth: <span class="redasterik ">*</span>
+					<label class="col-md-4 control-label" for="password">Date
+						of Birth<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
 						<input id="date" ng-model="dateOfBirth" type="date" name="date"
@@ -144,7 +145,7 @@
 					<label class="col-md-4 control-label" for="userName">Username: <span class="redasterik ">*</span></label>
 					<div class="col-md-4">	
 						<input type="text" id="userName" class="form-control input-md" ng-focus="userNameFocus=true"
-						ng-blur="userNameFocus=false" ng-model="userName" placeholder="Enter Username Here" required>
+						ng-blur="userNameFocus=false" ng-model="userName" placeholder="Enter Username" required>
 					</div>
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
 						ng-show="(userNameFocus!=true || userNameFocus==null ) && myForm.userName.$error.pattern">
@@ -163,7 +164,7 @@
 						<input type="password" id="password" class="form-control password" 
 						ng-pattern=".{8,}" ng-focus="passwordFocus=true"
 						ng-blur="passwordFocus=false" ng-model="password" 
-						placeholder="Enter Password Here" title="Password should be at least 8 characters" required>
+						placeholder="Enter Password" title="Password should be at least 8 characters" required>
 						<span class="help-block">Password should be at least 8 characters </span>
 					</div>
 				</div>
