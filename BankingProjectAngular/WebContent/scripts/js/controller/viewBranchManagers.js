@@ -1,14 +1,14 @@
 /***	Common Elements - Header / Footer	***/
 /** * Directives ** */
 
-angular.module('inbApp').controller('PaginationDemoCtrl', function ($scope, $log) {
-});
+/*angular.module('inbApp').controller('PaginationDemoCtrl', function ($scope, $log) {
+});*/
 
 var app = angular.module('viewBranchManagers', []);
 app.controller("viewBranchManagersController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http) {
 	
-	 $scope.currentPage = 0;
+	/* $scope.currentPage = 0;
 	 $scope.pageSize = 5;
 	 $scope.numberOfPages=50;
 	 $http.get('http://localhost:8080/branchmanager/').then(function(data){
@@ -30,14 +30,14 @@ app.controller("viewBranchManagersController", function($scope, $log,
 		});  
 	    $log.log('Page changed to: ' + $scope.currentPage);
 	  };
-	  
+	*/  
 	
 	console.log($scope.$storage);
 	var url = $scope.$storage.baseURI + 'branchmanager/'
 	console.log(url)
 	$scope.branchManagers = [];
 	
-	$http.get(url+$scope.currentPage*parseInt($scope.pageSize)+'/'+$scope.pageSize).success(function(data, status) {
+	$http.get(url/*+$scope.currentPage*parseInt($scope.pageSize)+'/'+$scope.pageSize*/).success(function(data, status) {
 	    //$scope.data = data;
 	    $scope.branchManagers = data;
 	    $rootScope.size=$scope.branchManagers.length;

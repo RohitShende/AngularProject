@@ -10,6 +10,22 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 		$localStorage, $location, $state, $rootScope, $http) {
 	$localStorage.currentPage = "LoginBM";
 	$scope.$storage = $localStorage;
+	
+	$scope.branches = null;
+	$http({
+		method : 'get',
+		url : $scope.$storage.baseURI + 'branch/'
+	})
+			.then(
+					function successCallback(response) {
+						if(response.data.Error == null)
+							{
+
+							$scope.branches = response.data;
+							console.log($scope.branches);
+							}
+					});
+	
 	$scope.loginBranchManager = function() {
 		$http({
 			method : 'put',

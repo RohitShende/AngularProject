@@ -35,10 +35,12 @@
 					<label class="col-md-4 control-label" for="selectbasic">Select
 						Branch<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName" class="form-control" required>
-						<option value="">---Select Branch---</option>
-							<option value="Pune_Loc">Pune_Loc</option>
-							<option value="Mumbai_loc">Mumbai_loc</option>
+					<select id="selectbasic" ng-model="branchName"
+							ng-focus="branchFocus=true" ng-blur="branchFocus=false" 
+							class="form-control">
+							<option  value="">--Select Branch--</option>
+							<option ng-repeat="branch in branches" value="branch.branchName">{{branch.branchName}}</option>
+							
 						</select>
 					</div>
 				</div>
