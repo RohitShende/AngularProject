@@ -61,7 +61,8 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 			if (response.data.id != null) {
 				$scope.image = response.data.image;
 				$scope.text = response.data.text;
-				$localStorage.firstName = ""
+				$localStorage.firstName = response.data.firstName;
+				$localStorage.role="customer";
 				$location.path("/clientHome");
 			} else {
 				$scope.errorMessage = response.data.Exception;

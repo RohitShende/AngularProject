@@ -114,7 +114,12 @@
 		}).state('logout', {
 			url : '/logout',
 			controller : 'logoutController'
-		}).state('clientLogin', {
+		}).state('logoutCustomer', {
+			url : '/logoutCustomer',
+			controller : 'logoutCustomer'
+		})
+		
+		.state('clientLogin', {
 			url : '/clientLogin',
 			templateUrl : 'htmlpages/clientAuthorisation.html',
 			controller : 'clientLoginControllers'

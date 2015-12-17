@@ -30,11 +30,18 @@
 					$location.path("\home");
 					
 				}, function errorCallback(response) {
-					toaster.pop('success',"Logout",data.logoutMsg);
+					//toaster.pop('success',"Logout",data.logoutMsg);
 //					/delete $localStorage.role;
 					$location.path("\home");
 				});
 
 
 	});
+	app.controller("logoutCustomer",function($localStorage, $location,toaster){
+		delete $localStorage.role;
+		delete $localStorage.firstName;
+		toaster.pop('success',"Logout","Logout Successfully");
+		$location.path("\home");
+	});
+	
 })();
