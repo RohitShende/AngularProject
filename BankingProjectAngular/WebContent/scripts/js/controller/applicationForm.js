@@ -52,7 +52,11 @@ app
 												if (response.data.AlreadyUser == "true") {
 													$scope.alreadyExists = "true";
 												} else {
-													$scope.alreadyExists = "false";
+													if (response.data.id != null) {
+														$scope.alreadyExists = "true";
+													} else {
+														$scope.alreadyExists = "false";
+													}
 												}
 											} else {
 												if (response.data.id != null) {
