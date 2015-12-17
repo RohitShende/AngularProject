@@ -26,7 +26,7 @@
 					<tr ng-repeat="branchManager in branchManagers | filter : name">
 						<td>{{branchManager.firstName}}</td>
 						<td>{{branchManager.lastName}}</td>
-						<td>{{branchManager.branch}}</td>
+						<td>{{branchManager.branch.branchName}}</td>
 						<td>{{branchManager.phone}}</td>
 					</tr>
 				</tbody>
