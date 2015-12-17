@@ -58,7 +58,7 @@
 				ng-show="$storage.role=='branchmanager'">
 
 
-				<li><a href="">Welcome {{$storage.firstName}}</a></li>
+				<li><a ui-sref="branchManagerHome.verifyUnregisteredUsers">Branch Manager Home</a></li>
 				<li><a ui-sref="contact">Contact</a></li>
 				<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Services <b class="caret"></b></a>
@@ -83,7 +83,7 @@
 				ng-show="$storage.role=='admin'">
 
 
-				<li><a ui-sref="adminHome">Admin Home</a></li>
+				<li><a ui-sref="adminHome.viewBranches">Admin Home</a></li>
 
 				<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Services <b class="caret"></b></a>
