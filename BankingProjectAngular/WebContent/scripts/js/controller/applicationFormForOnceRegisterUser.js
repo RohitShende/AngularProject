@@ -18,7 +18,16 @@ app
 						$location.path("/uploadDocument");
 					};
 					
-					
+					$scope.branches = ['Branch1','Branch2'];
+					$http({
+						method : 'get',
+						url : $scope.$storage.baseURI + 'branch/'
+					})
+							.then(
+									function successCallback(response) {
+										$scope.branches = response.data;
+										console.log($scope.branches);
+									});
 					$http({
 						method : 'get',
 						url : $scope.$storage.baseURI + 'registeredcustomer/' +$scope.clientId

@@ -79,13 +79,16 @@
 					<label class="col-md-4 control-label" for="password">Authorization
 						Text :</label>
 					<div class="col-md-4">
-						<input id="password" ng-model="text" type="text" ng-minlength="10"
+						<input id="password" ng-model="text" type="text" ng-minlength="8"
 							class="form-control input-md" popover-trigger="mouseenter"
 							popover-placement="bottom" uib-popover="Enter your password"
 							required>
 	<span class="help-block">&nbsp;&nbsp;&nbsp;*Minimum 8 character</span>
 					</div>
-					
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.text.$error.minlength && text!=null ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
 				</div>
 
 		
