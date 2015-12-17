@@ -130,6 +130,7 @@ footer {
 
 .full-height
 {
+	
 	height: 902px;
 	margin-top: -5px;
 	
@@ -145,4 +146,9 @@ footer {
 .active-img
 {
 	border:3px solid #007196 ;
+}
+.rupee-input
+{margin-top : -5px;
+	font-size : 20px;
+    margin-top: 6px;	
 }

@@ -1,6 +1,6 @@
 <div class="row voffset10">
 	<div class="col-md-3"></div>
-	<div class="col-md-9" align="center">
+	<div class="col-md-8 col-md-offset-2" align="center">
 
 		<form class="form-horizontal" id="transferMoneyForm" ng-submit="transferMoney()">
 			<fieldset>
@@ -8,42 +8,57 @@
 				<!-- Form Name -->
 				<legend>Transfer Money</legend>
 
+
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="userName">Sender Account No<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="userName" ng-model="sender" type="text"
-							placeholder="Enter Username"  popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your username"
-							class="form-control input-md" required>
+						<select id="selectbasic" ng-model="sender"
+							ng-focus="branchFocus=true" ng-blur="branchFocus=false"  ng-change="getBalance()"
+							class="form-control">
+							<option  value="">--Select Account--</option>
+							<option ng-repeat="account in accounts" value="{{account.accountNumber}}">{{account.accountNumber}}</option>
+							
+						</select>
+						</div>
+						<div class="col-md-4 btn-info text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="accBalance!=null && accBalance>=0"><i class="fa fa-money"></i>&nbsp;&nbsp;Your Balance :{{accBalance}}</div>
 						
-					</div>
 				</div>
+	
 
 				<!-- long input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="password">Receiver Account No<span class="redasterik ">*</span></label>
-					<div class="col-md-4">
-						<input id="password" ng-model="receiver" type="text" 
-							placeholder="Enter Password" class="form-control input-md" popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your password" required>
+					<div class="col-md-5">
+						<input id="password" ng-model="reciever" type="number" 
+							placeholder="Enter receiver account no." class="form-control input-md" required>
 
 					</div>
 				</div>
 				
 				<!-- long input-->
-				<div class="form-group">
+				<div class="form-group has-feedback">
 					<label class="col-md-4 control-label" for="password">Amount<span class="redasterik ">*</span></label>
-					<div class="col-md-4">
-						<input id="password" ng-model="amount" type="text" 
-							placeholder="Enter Password" class="form-control input-md" popover-trigger="mouseenter"  popover-placement="bottom" uib-popover="Enter your password" required>
-
+					
+					<div class="col-md-5">
+					
+    <span class="fa fa-inr rupee-input  form-control-feedback"></span>
+					 <input id="password" ng-model="amount" type="number" 
+							placeholder="Enter Amount" class="form-control input-md"  required>
+					
 					</div>
+					
 				</div>
+				
+</div>
+				
 
 				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
-					<div class="col-md-4">
-						<button id="submit" name="submit" ng-disabled=""  class="btn btn-primary">Transfer Money</button>
+					<div class="col-md-5">
+						<button id="submit" name="submit" ng-disabled="amount==null || sender=='' ||sender == null || reciever ==null"  class="btn btn-primary">Transfer Money</button>
 					</div>
 				</div>
 

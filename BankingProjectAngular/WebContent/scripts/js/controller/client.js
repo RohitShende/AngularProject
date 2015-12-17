@@ -17,8 +17,6 @@ app.controller("clientLoginControllers", function($scope, $log, $stateParams,
 		$location.path("/home");
 	}
 	$scope.clientId = $localStorage.clientId;
-	$localStorage.clientId;
-
 	$http({
 		method : 'get',
 		url : $scope.$storage.baseURI + 'authorisation/' + $scope.clientId,
@@ -80,8 +78,8 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 		$stateParams, $location, $localStorage, $state, $state, $rootScope,
 		$http) {
 	$scope.clientId = $localStorage.clientId;
-
 	$scope.getActiveClass = function(id) {
+
 		if (id === $scope.image) {
 			return "active-img";
 		} else {
@@ -148,10 +146,38 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 });
 
 app.controller("transferMoney", function($scope, $log, $stateParams, $location,
-		$localStorage, $state, $state, $rootScope, $http) {
-	$scope.id = $localStorage.cilentId;
-	$scope.transferMoney = function()
-	{
+		$localStorage, $state, $state, $rootScope, $http, toaster) {
+
+	$scope.id = $localStorage.clientId
+	console.log("--->" + $scope.id + "--<>.." + $localStorage.clientId);
+	$scope.accounts = null;
+	$http(
+			{
+				method : 'get',
+				url : $scope.$storage.baseURI + 'registeredcustomer/account/'
+						+ $scope.id
+			}).then(function successCallback(response) {
+		$scope.accounts = response.data;
+	}, function errorCallback(response) {
+	});
+
+	$scope.getBalance = function() {
+
+		if ($scope.sender == "") {
+			delete $scope.accBalance;
+		} else {
+			angular.forEach($scope.accounts, function(value, key) {
+
+				if (value.accountNumber == $scope.sender) {
+					console.log(value.balance);
+					$scope.accBalance = value.balance;
+					console.log($scope.accBalance);
+				}
+			});
+		}
+	}
+
+	$scope.transferMoney = function() {
 		$http({
 			method : 'put',
 			url : $scope.$storage.baseURI + 'registeredcustomer/transfer',
@@ -159,29 +185,30 @@ app.controller("transferMoney", function($scope, $log, $stateParams, $location,
 				'Content-Type' : 'application/json'
 			},
 			data : {
-				 clientAccount : $scope.sender,
-				 recevierAccount : $scope.reciever,
-				 amount : $scope.amount
+				clientAccount : $scope.sender,
+				recevierAccount : $scope.reciever,
+				amount : $scope.amount
 			}
 		}).then(function successCallback(response) {
 			var data = response.data;
+			console.log(data);
 			if (response.data.Status === 'Success') {
-				toaster.pop('success',"Money Transfer",response.data.Status);
+				delete $scope.errorMessage;
+				toaster.pop('success', "Money Transfer", response.data.Status);
 				document.getElementById("transferMoneyForm").reset();
 			} else {
-				$scope.errorMessage = "Money Transfer not failed";
-				toaster.pop('error',"Money Transfer",response.data.Status);
+				$scope.errorMessage = response.data.Message;
+				toaster.pop('error', "Money Transfer", response.data.Status);
 				document.getElementById("transferMoneyForm").reset();
 			}
 		}, function errorCallback(response) {
 			$scope.errorMessage = "Server Error. Try After Some time";
 			document.getElementById("transferMoneyForm").reset();
 		});
-	} 	
+	}
 });
 
-//
-// window.onbeforeunload = function() {
-// localStorage.removeItem("ngStorage-role");
-// localStorage.removeItem("ngStorage-id");
-// }
+window.onbeforeunload = function() {
+	localStorage.removeItem("ngStorage-role");
+	localStorage.removeItem("ngStorage-id");
+}
