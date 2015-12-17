@@ -1,7 +1,3 @@
-
-
-
-
 <div class="row voffset10">
 	<div class="col-md-2"></div>
 	<div class="col-md-9" align="left">
@@ -15,9 +11,8 @@
 
 				<!-- Text input-->
 				<div class="form-group">
-					<label class="col-md-4 control-label" for="userName">IFSC
-						Code:<span class="redasterik ">*</span>
-					</label>
+					
+					<label class="col-md-4 control-label" for="ifscCode">IFSC Code:<span class="redasterik ">*</span></label>
 					<div class="col-md-4">
 						<input id="userName" ng-model="ifscCode" type="text"
 							placeholder="Enter IFSC Code" name="ifscCode"
@@ -30,7 +25,7 @@
 					</div>
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
 						ng-show="(ifscCodeFocus!=true || ifscCodeFocus==null ) && myForm.ifscCode.$error.pattern">
-						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Ifsc code
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid IFSC Code
 					</div>
 					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
 						ng-show="ifscCode!=null && !myForm.ifscCode.$error.pattern ">
@@ -69,7 +64,7 @@
 					<label class="col-md-4 control-label" for="email">Phone:<span
 						class="redasterik ">*</span></label>
 					<div class="col-md-4">
-						<input id="password" ng-model="phone" type="number" name="phone"
+						<input id="contact" ng-model="contact" type="number" name="contact"
 							placeholder="Enter Phone Number" class="form-control input-md"
 							ng-focus="phoneFocus=true" ng-blur="phoneFocus=false" ng-minlength="10" ng-maxlength="10"
 							popover-trigger="mouseenter" popover-placement="bottom"
@@ -116,7 +111,7 @@
 						<button id="submit" name="submit"
 							ng-disabled="!((!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength) && 
 (!myForm.address.$error.required) && (branchName!=null && branchName != ''))"
-							class="btn btn-primary">Apply</button>
+							class="btn btn-primary">Create</button>
 					</div>
 				</div>
 			</fieldset>

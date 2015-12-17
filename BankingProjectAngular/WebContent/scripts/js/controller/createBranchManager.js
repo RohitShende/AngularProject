@@ -4,7 +4,7 @@
 var app = angular.module('createBranchManager', []);
 app.controller("createBranchManagerController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http, toaster) {
-	$scope.addmanager = function() {
+	$scope.addManager = function() {
 		$http({
 			method : 'post',
 			url : $scope.$storage.baseURI + 'branchmanager/',

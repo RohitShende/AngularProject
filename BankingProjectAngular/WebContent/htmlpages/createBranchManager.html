@@ -1,65 +1,200 @@
 <div class="row voffset10">
-	<div class="col-md-3"></div>
-	<div class="col-md-6" align="center">
-		
-		<legend>Create Form - Branch Manager</legend>
-		<hr>
-		<form class="login-inner" ng-submit="addmanager()">
-			<label class="pull-left">First name: <span class="redasterik ">*</span></label>
-				<input type="text" pattern="[A-Za-z]*"
-				title="Enter characters only" class="form-control text"
-				ng-model="firstName" placeholder="Enter First name" required>
+	<div class="col-md-2"></div>
+	<div class="col-md-9" align="left">
+		<form class="form-horizontal" ng-submit="addManager()" name="myForm" ng-show="submitted==null">
+			<fieldset>
 				
-			<label class="pull-left">Last name: <span class="redasterik ">*</span></label>
-				<input type="text" pattern="[A-Za-z]*" title="Enter characters only" class="form-control text" 
-				ng-model="lastName" placeholder="Enter Last name" required> 
+				<!-- Form Name  -->
+				<legend>Create Form - Branch Manager</legend>
 				
-			<label class="pull-left">Email: <span class="redasterik ">*</span></label>
-				<input type="email" class="form-control email" ng-model="email"
-				placeholder="Enter Email" required> 
+				<!-- Text input-->
+				<div class="form-group">
+					
+					<label class="col-md-4 control-label" for="firstName">First name: <span class="redasterik ">*</span></label>
+					<div class="col-md-4">	
+						<input type="text" id="firstName" ng-pattern="/^[a-zA-Z\s]*$/"
+						title="Enter characters only" class="form-control input-md" ng-focus="firstNameFocus=true"
+						ng-blur="firstNameFocus=false" ng-model="firstName" placeholder="Enter First Name" required>
+					</div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(firstNameFocus!=true || firstNameFocus==null ) && myForm.firstName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid First Name
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="firstName!=null && !myForm.firstName.$error.pattern">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
 				
-			<label class="pull-left">Phone:	<span class="redasterik ">*</span></label>
-				<input type="text" class="form-control text" ng-model="phone"
-				pattern="[0-9]{8,10}" placeholder="Enter Phone Number" required>
+				<div class="form-group">
 				
-			<label class="pull-left">Address: <span class="redasterik ">*</span></label>
-			<input type="text" class="form-control text" ng-model="address"
-				placeholder="Enter Address" required> 
+					<label class="col-md-4 control-label" for="lastName">Last name: <span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input type="text" id="lastName" ng-pattern="/^[a-zA-Z\s]*$/" title="Enter characters only" 
+						class="form-control input-md" ng-focus="lastNameFocus=true" ng-blur="lastNameFocus=false"
+						ng-model="lastName" placeholder="Enter Last Name" required> 
+					</div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(lastNameFocus!=true || lastNameFocus==null ) && myForm.lastName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Last Name
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="lastName!=null && !myForm.lastName.$error.pattern"">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
 				
-			<label class="pull-left">Date of birth: <span class="redasterik ">*</span></label>
-			<!-- <input type="date" class="form-control text"
-            ng-model="dateOfBirth" 
-            title="dd/mm/yyyy" placeholder="Enter Date of birth" required> -->
-				<input type="date" class="form-control date" name="dateOfBirth"
-				placeholder="Enter Date Of Birth" ng-model="dateOfBirth" required />
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="email">Email<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="email" ng-model="email" type="email" name="email"
+							ng-change="checkEmail()" placeholder="Enter email here"
+							class="form-control input-md" ng-focus="emailFocus=true"
+							ng-blur="emailFocus=false" required>
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(emailFocus!=true || emailFocus==null )&& myForm.email.$error.email">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid email
+					</div>
+					<!-- <div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="alreadyExists=='true'">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Email already
+						registered with another account.
+					</div> -->
+					<div class="text-left-align btn-sm  text-left-align alertBoxHeight"
+						ng-show="email!=null && email!= ''">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
 				
-			<label class="pull-left">User name: <span class="redasterik ">*</span></label>
-				<input type="text" class="form-control text" ng-model="userName"
-				placeholder="Enter Username" required> 
+				
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="phone">Phone:<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="phone" ng-model="phone" type="number" name="phone"
+							ng-minlength="10" ng-maxlength="10"
+							placeholder="Enter Phone Number Here" class="form-control input-md"
+							ng-focus="phoneFocus=true" ng-blur="phoneFocus=false" required>
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(phoneFocus!=true || phoneFocus==null )&&  (myForm.phone.$error.minlength || myForm.phone.$error.maxlength)">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Phone Number
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.phone.$error.required && !myForm.phone.$error.minlength && !myForm.phone.$error.maxlength ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+				
+				
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="address">Address<span
+						class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<textarea id="address" ng-model="address" type="textarea" ng-minlength="20"
+							name="address" ng-focus="addressFocus=true"
+							ng-blur="addressFocus=false" placeholder="Enter Address Here"
+							class="form-control input-md" required></textarea>
+							<span class="help-block">&nbsp;&nbsp;&nbsp;Address should be minimum 20 characters</span>  		
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.address.$error.required && !myForm.address.$error.minlength">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Date of Birth<span class="redasterik ">*</span></label>
+					<div class="col-md-4">
+						<input id="date" ng-model="dateOfBirth" type="date" name="date"
+							ng-focus="dateFocus=true" ng-blur="dateFocus=false"
+							placeholder="Enter date of birth here" min="1900-01-01"
+							class="form-control input-md" required>
+					</div>
+					<div
+						class="col-md-4 btn-sm btn-danger text-left-align alertBoxHeight"
+						ng-show="(!myForm.date.$valid) && !dateFocus && dateFocus != null">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid date
+					</div>
+					
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="!myForm.date.$error.required && myForm.date.$valid && !dateFocus ">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
 			
-			<label	class="pull-left">Password:<span class="redasterik ">*</span></label>
-				<input type="password" pattern=".{8,}"
-				title="Password should be at least 8 characters"
-				class="form-control password" ng-model="password"
-				placeholder="Enter Password" required> <span
-				class="help-block">Password should be at least 8 characters </span> 
+			<!-- Text input-->
+				<div class="form-group">
+					
+					<label class="col-md-4 control-label" for="userName">Username: <span class="redasterik ">*</span></label>
+					<div class="col-md-4">	
+						<input type="text" id="userName" class="form-control input-md" ng-focus="userNameFocus=true"
+						ng-blur="userNameFocus=false" ng-model="userName" placeholder="Enter Username Here" required>
+					</div>
+					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
+						ng-show="(userNameFocus!=true || userNameFocus==null ) && myForm.userName.$error.pattern">
+						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid Username
+					</div>
+					<div class="text-left-align btn-sm text-left-align alertBoxHeight"
+						ng-show="userName!=null && !myForm.userName.$error.pattern">
+						<i class="fa fa-check green-tick"></i>
+					</div>
+				</div>
 				
-			<label class="pull-left">Verify password:<span class="redasterik ">*</span></label>
-				<input type="password" pattern=".{8,}" title="Password should be at least 8 characters"
-				class="form-control password" ng-model="verifyPassword"
-				placeholder="Confirm Password" required>
-				
-			<uib-alert type="danger" ng-show="password != verifyPassword"
-				class="col-md-6 col-md-offset-3">Password does not match
-			</uib-alert>
+				<div class="form-group">
+					
+					<label class="col-md-4 control-label" for="password">Password: <span class="redasterik ">*</span></label>
+					<div class="col-md-4">	
+						<input type="password" id="password" class="form-control password" 
+						ng-pattern=".{8,}" ng-focus="passwordFocus=true"
+						ng-blur="passwordFocus=false" ng-model="password" 
+						placeholder="Enter Password Here" title="Password should be at least 8 characters" required>
+						<span class="help-block">Password should be at least 8 characters </span>
+					</div>
+				</div>
 			
-			<input class="btn btn-block btn-lg btn-primary submit voffset10"
-				type="submit" value="Create" ng-click="createBranchManagerToast()">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="verifyPassword">Verify password:<span class="redasterik ">*</span></label>
+					<div class="col-md-4">	
+						<input type="password" pattern=".{8,}" title="Password should be at least 8 characters"
+						class="form-control password" ng-model="verifyPassword"
+						placeholder="Confirm Password" required>
+					</div>
+					<uib-alert type="danger" ng-show="password != verifyPassword"
+						class="col-md-6 col-md-offset-3">Password does not match
+					</uib-alert>
+				</div>
+				
+			
+			<!-- Button -->
+					<!-- <input class="btn btn-block btn-lg btn-primary submit voffset10"
+			
+			
+				  	type="submit" value="Create" ng-click="createBranchManagerToast()"> -->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="submit"></label>
+						<div class="col-md-4">
+						<button id="submit" name="submit" class="btn btn-primary"
+						ng-disabled="!(((email!=null && email!= '')&& 
+						(!myForm.phone.$error.required && !myForm.phone.$error.minlength && 
+						!myForm.phone.$error.maxlength) && (!myForm.address.$error.required) && 
+						(!myForm.dateOfBirth.$error.required) && myForm.dateOfBirth.$valid && 
+						!myForm.address.$error.minlength)">Create</button>
+					</div>
+				</div>
+			</fieldset>
 		</form>
 		
 		<div class="row voffset10" >
 		<uib-alert type="danger" ng-show="errorMessage!=null"
-			class="col-md-6 col-md-offset-3">Username or password is invalid. 
+			class="col-md-6 col-md-offset-3">Username or Password is invalid. 
 		</uib-alert></div>
 	</div>
 </div>
