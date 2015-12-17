@@ -140,7 +140,7 @@
 	
 	
 	.controller("appController",
-			function($scope, $location, $rootScope, $localStorage,$http ) {
+			function($scope, $location, $rootScope, $localStorage,$http,toaster) {
 				$rootScope.clientLoginRequest = false;
 				$localStorage.baseURI = "http://localhost:8080/";
 				$scope.$storage = $localStorage;
@@ -158,12 +158,18 @@
 						if (response.data.id != null) {
 							$location.path("/clientLogin");
 						} else {
-							console.log("Client nai hai..");
+
+							document.getElementById("myForm").reset();
 							$scope.errorMessage = response.data.Exception;
+							toaster.pop('error',"Customer Login",$scope.errorMessage);
 							$location.path("/home");
+							
 						}
 					}, function errorCallback(response) {
 						$scope.errorMessage = "Server Error. Try After Some time";
+						document.getElementById("myForm").reset();
+						$scope.errorMessage = response.data.Exception;
+						toaster.pop('error',"Customer Login","Invaild Customer Id");
 						$location.path("/home");
 					});
 					
