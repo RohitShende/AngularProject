@@ -1,74 +1,54 @@
 <div class="text-center">
 
-<div class="clear"> </div>
-   <!-- <ul style="list-style:none" class="list-group" ng-show="errorMessagePending==null">
-   
-   		<li class="list-group-item" ng-repeat="user in userPendingList">
-   			<ul style="list-style:none" class="list-group">
-   				<li class="pull-left"> EnquiryID: {{user.id}}  </li>
-   				<br>
-   				<li class="pull-left">Name: {{user.firstName}} {{user.lastName}} </li>
-   			
-   		 	
-   		<li><button type="button" class="btn btn-success pull-right" data-ng-click="viewUnregisteredUserDetails(user.id)">View</button></li>
-   		</ul>
-   		<br>
-   		</li>
-   </ul> -->
- 
-<br><br>
-<div class="col-md-11 col-md-offset-1" ng-show="errorMessagePending==null">
-		<div class="form-group has-feedback">
-    	<input type="text" class="form-control" placeholder="Search" data-ng-model="name"/>
-    	<i class="glyphicon glyphicon-search form-control-feedback"></i>
-</div> </div>
- <table class="table table-bordered" ng-show="errorMessagePending==null">
+	<div class="clear"></div>
+	<br> <br>
 
- <thead>
- 	
-      <tr>
-        <th  class="text-center">Enquiry ID</th>
-        <th  class="text-center">Name</th>
-        <th  class="text-center">Address</th>
-        <th  class="text-center">Contact</th>
-        <th  class="text-center">Verify/Decline</th>
-      </tr>
-    </thead>
- 	<tbody>
-      <tr ng-repeat="user in userPendingList | filter:name" class="text-center"> 
-        <td>{{user.id}}</td>
-        <td>{{user.firstName}} {{user.lastName}}</td>
-        <td>{{user.address}}</td>
-        <td>{{user.phone}}</td>
-        <td> <button type="button" class="btn btn-success" data-ng-click="viewUnregisteredUserDetails(user.id)">View</button> </td>
-      </tr>
-     </tbody>
- </table>
-  
-  <uib-alert type="danger" ng-show="errorMessagePending!=null"
-			class="col-md-7 col-md-offset-3 text-center">{{errorMessagePending}}</uib-alert>
 
-  <!-- Pagination --> 
-   
-  <!--  <nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav> -->
+	<div class="panel panel-default col-md-offset-1">
+		<div class="panel-heading active col-md-12">
+			<div class="col-md-12" ng-show="errorMessagePending==null">
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" placeholder="Search"
+						data-ng-model="name" /> <i
+						class="glyphicon glyphicon-search form-control-feedback"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered"
+				ng-show="errorMessagePending==null">
+
+				<thead>
+
+					<tr>
+						<th class="text-center">Enquiry ID</th>
+						<th class="text-center">Name</th>
+						<th class="text-center">Address</th>
+						<th class="text-center">Contact</th>
+						<th class="text-center">Verify/Decline</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="user in userPendingList | filter:name"
+						class="text-center">
+						<td>{{user.id}}</td>
+						<td>{{user.firstName}} {{user.lastName}}</td>
+						<td>{{user.address}}</td>
+						<td>{{user.phone}}</td>
+						<td>
+							<button type="button" class="btn btn-primary"
+								data-ng-click="viewUnregisteredUserDetails(user.id)">View</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<uib-alert type="danger" ng-show="errorMessagePending!=null"
+	class="col-md-7 col-md-offset-3 text-center">{{errorMessagePending}}</uib-alert>
 
 
 </div>

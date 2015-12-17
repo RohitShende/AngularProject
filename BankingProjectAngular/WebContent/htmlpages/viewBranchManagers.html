@@ -1,36 +1,46 @@
 <div class="text-center">
-<legend>Branch Managers</legend>
-<div class="row"></div>
-<div class="row col-md-offset-1">
-<div class="form-group has-feedback">
-    	<input type="text" class="form-control" placeholder="Search" data-ng-model="name"/>
-    	<i class="glyphicon glyphicon-search form-control-feedback"></i>
-</div>
-</div>
-<div class="row"></div> <br>
- <table class="table table-bordered">
- <thead>
-      <tr>
-        <th  class="text-center">First name</th>
-        <th  class="text-center">Last name</th>
-        <th  class="text-center">Branch</th>
-        <th  class="text-center">Phone</th>
-      </tr>
-    </thead>
- 	<tbody>
-      <tr ng-repeat="branchManager in branchManagers | filter : name">
-        <td>{{branchManager.firstName}}</td>
-        <td>{{branchManager.lastName}}</td>
-        <td>{{branchManager.branch}}</td>
-        <td>{{branchManager.phone}}</td>
-      </tr>
-     </tbody>
- </table>
-<!--  <uib-pagination ng-change="pageChanged()" total-items="50" 
+	<legend class="col-md-offset-2 col-md-10">Branch Managers</legend>
+	<div class="row"></div>
+
+	<div class="panel panel-default col-md-offset-2">
+		<div class="panel-heading active col-md-12">
+			<div class="col-md-12">
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" placeholder="Search"
+						data-ng-model="name" /> <i
+						class="glyphicon glyphicon-search form-control-feedback"></i>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center">First name</th>
+						<th class="text-center">Last name</th>
+						<th class="text-center">Branch</th>
+						<th class="text-center">Phone</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="branchManager in branchManagers | filter : name">
+						<td>{{branchManager.firstName}}</td>
+						<td>{{branchManager.lastName}}</td>
+						<td>{{branchManager.branch}}</td>
+						<td>{{branchManager.phone}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+	<!--  <uib-pagination ng-change="pageChanged()" total-items="50" 
  ng-model="currentPage" max-size="numberOfPages/pageSize" class="pagination-sm" 
  boundary-links="true" rotate="false" num-pages="numberOfPages"></uib-pagination>
   -->
 
- 
+
 
 </div>

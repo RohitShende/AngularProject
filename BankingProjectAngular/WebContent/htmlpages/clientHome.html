@@ -1,10 +1,10 @@
 <div class="row">
 
-	<div class="col-md-2 col-md-offset-1">
-		<!-- <ul class="nav nav-pills nav-stacked ">
+	<!-- <div class="col-md-2 col-md-offset-1">
+		<ul class="nav nav-pills nav-stacked ">
 			<li class="active"><a ui-sref="adminHome.newBranchManager">Create Branch Manager</a></li>
 			<li class="active"><a ui-sref="adminHome.createBranch"> Create Branch</a></li>
-		</ul> -->
+		</ul>
 		<br> <br><br> <br>
 		
 
@@ -16,7 +16,24 @@
 		</div>
 
 
+	</div> -->
+	
+	
+	<div class="col-md-2 bg-primary full-height">
+		<!-- <ul class="nav nav-pills nav-stacked ">
+			<li class="active"><a ui-sref="adminHome.newBranchManager">Create Branch Manager</a></li>
+			<li class="active"><a ui-sref="adminHome.createBranch"> Create Branch</a></li>
+		</ul> -->
+		<br> 
+		<div class="list-group">
+  			<a ui-sref="clientHome.viewAccountBalance" class="list-group-item active"> <strong> View Balance </strong></a>
+  			<a  ui-sref="clientHome.applyNewAccount" class="list-group-item active"> <strong> Apply for new account </strong></a>
+  			<a ui-sref="clientHome.transferMoney" class="list-group-item active"> <strong> Transfer Money </strong> </a>
+</div>
+		
+		
 	</div>
+	
 	<div class="col-md-8">
 		<div ui-view></div>
 	</div>

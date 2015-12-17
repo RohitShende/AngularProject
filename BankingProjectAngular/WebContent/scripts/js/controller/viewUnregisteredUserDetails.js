@@ -45,10 +45,6 @@ app.controller("viewUnregisteredUsersController", function($scope, $log,
 		{
 			$scope.ageProofErrorMessage="No age proof document has been submitted yet!"
 		}
-//	    if($scope.ageProofErrorMessage!=null || $scope.addressProofErrorMessage!=null)
-//	    {
-//	    	$scope.documentsMissing=true;
-//	    }
 	});
 
 	$scope.sendEmail=function(id,applicationStatus)

@@ -5,10 +5,26 @@ var app = angular.module('createBranchManager', []);
 app.controller("createBranchManagerController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http, toaster) {
 	
+	$http({
+		method : 'get',
+		url : $scope.$storage.baseURI + 'branch/'
+	})
+			.then(
+					function successCallback(response) {
+						if(response.data.Error == null)
+							{
+
+							$scope.branches = response.data;
+							console.log($scope.branches);
+							}
+					});
+	
+	
 	var today = new Date();
 	$scope.today = today.toISOString();
 	delete $scope.submitted;
 	$scope.addManager = function() {
+		$scope.branches = null;
 		$http({
 			method : 'post',
 			url : $scope.$storage.baseURI + 'branchmanager/',
@@ -23,7 +39,10 @@ app.controller("createBranchManagerController", function($scope, $log,
 				address : $scope.address,
 				dateOfBirth : $scope.dateOfBirth,
 				userName : $scope.userName,
-				password : $scope.password
+				password : $scope.password,
+				branchPOJO : {
+					branchName : $scope.branchName
+				}
 			}
 		}).then(function successCallback(response) {
 			var data = response.data;

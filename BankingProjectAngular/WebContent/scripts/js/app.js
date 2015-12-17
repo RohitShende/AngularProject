@@ -7,7 +7,7 @@
 					'applicationForm', 'createBranch', 'viewBranchManagers',
 					'viewBranches', 'basicModule', 'client','applicationForm1',
 					'verifyUnregisteredUsers', 'contact' ,'toaster', 'ngAnimate','viewRegisteredUsers',
-					'viewUnregisteredUsers'])
+					'viewUnregisteredUsers','viewAccountBalance'])
 
 	// UI Routing
 	.config(function($urlRouterProvider, $stateProvider) {
@@ -107,6 +107,10 @@
 			url : '/clientHome/applyNewAccount',
 			templateUrl : 'htmlpages/applicationFormForOnceRegisteredUser.html',
 			controller : 'applicationFormForRegisteredController'
+		}).state('clientHome.viewAccountBalance', {
+			url : '/viewAccountBalance',
+			templateUrl : 'htmlpages/viewAccountBalance.html',
+			controller : 'viewAccountBalanceController'
 		}).state('contact', {
 			url : '/contact',
 			templateUrl : 'htmlpages/contact.html',

@@ -5,7 +5,7 @@ var app = angular.module('verifyUnregisteredUsers', []);
 app.controller("verifyUnregisteredUsersController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http,$window) {
 	$scope.userd = $rootScope.userDetails;
-	var url = $scope.$storage.baseURI + 'unregistereduser/'+1+'/'+10;
+	var url = $scope.$storage.baseURI + 'unregistereduser/details';
 	console.log(url)
 	$scope.userList = [];
 	$scope.userPendingList=[];
