@@ -35,7 +35,8 @@ app.controller("branchManagerController", function($scope, $log, $stateParams,
 			},
 			data : {
 				userName : $scope.userName,
-				password : $scope.password
+				password : $scope.password,
+				branchName : $scope.branchName
 			}
 		}).then(function successCallback(response) {
 			var data = response.data;
