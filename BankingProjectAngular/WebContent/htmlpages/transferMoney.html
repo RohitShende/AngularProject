@@ -16,7 +16,7 @@
 						<label class="col-md-4 control-label" for="userName">Sender
 							Account No<span class="redasterik ">*</span>
 						</label>
-						<div class="col-md-4">
+						<div class="col-md-5">
 							<select id="selectbasic" ng-model="sender"
 								ng-focus="branchFocus=true" ng-blur="branchFocus=false"
 								ng-click="getBalance()" class="form-control">
@@ -27,7 +27,7 @@
 							</select>
 						</div>
 						<div
-							class="col-md-4 btn-info text-left-align btn-sm text-left-align alertBoxHeight"
+							class="col-md-3 btn-info text-left-align btn-sm text-left-align alertBoxHeight"
 							ng-show="accBalance!=null && accBalance>=0">
 							<i class="fa fa-money"></i>&nbsp;&nbsp;Your Balance
 							:{{accBalance}}
@@ -115,11 +115,13 @@
 
 				<!-- Button -->
 				<div class="form-group" ng-show="confirm">
-					<label class="col-md-4 control-label" for="submit"></label>
-					<div class="col-md-5">
+					<div class="col-md-4">
 					<button id="" type="Button" ng-click="confirm=false"
 							class="btn btn-primary">Edit Transaction</button>
-						<button id="submit" type="submit" name="submit"
+						
+					</div>
+					<div class="col-md-4s">
+					<button id="submit" type="submit" name="submit"
 							ng-disabled="amount==null || sender=='' ||sender == null || reciever ==null"
 							class="btn btn-primary">Transfer Money</button>
 					</div>
