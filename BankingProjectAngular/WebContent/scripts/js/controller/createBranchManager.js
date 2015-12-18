@@ -61,7 +61,8 @@ app.controller("createBranchManagerController", function($scope, $log,
 				$location.path("/newBranchManager");
 			} else {
 				console.log("New Branch Manager Created" + response.data);
-				$location.path("/adminHome");
+				$state.go("adminHome.viewBranches");
+//				$location.path("/adminHome");
 				toaster.pop('success', "Message", "Branch Manager has been created succesfully!");
 				
 			}
