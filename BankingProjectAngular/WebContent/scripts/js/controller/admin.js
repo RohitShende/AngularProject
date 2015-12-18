@@ -51,8 +51,3 @@ app.controller("adminHome", function($scope, $localStorage, $location,
 	$scope.id = $scope.$storage.id;
 	$state.go("adminHome.viewBranches");
 });
-
-//window.onbeforeunload = function() {
-//	localStorage.removeItem("ngStorage-role");
-//	localStorage.removeItem("ngStorage-id");
-//}
