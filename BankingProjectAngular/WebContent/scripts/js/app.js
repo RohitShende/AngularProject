@@ -141,7 +141,7 @@
 		.state('clientHome.transferMoney',{
 			url : '/clientHome/transferMoney',
 			templateUrl : 'htmlpages/transferMoney.html',
-			controller : 'transferMoney'
+			controller : 'transferMoneyController'
 		});
 		
 

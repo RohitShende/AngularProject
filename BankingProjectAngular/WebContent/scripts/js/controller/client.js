@@ -144,8 +144,8 @@ app.controller("clientSetAuthoriseDataControllers", function($scope, $log,
 	}
 });
 
-app.controller("transferMoney", function($scope, $log, $stateParams, $location,
-		$localStorage, $state, $state, $rootScope, $http, toaster) {
+app.controller("transferMoneyController", function($scope, $log, $stateParams, $location,
+		$localStorage, $state, $rootScope, $http, toaster) {
 
 	$scope.id = $localStorage.clientId
 	console.log("--->" + $scope.id + "--<>.." + $localStorage.clientId);
@@ -176,6 +176,7 @@ app.controller("transferMoney", function($scope, $log, $stateParams, $location,
 		}
 	}
 
+	
 	$scope.transferMoney = function() {
 		$http({
 			method : 'put',
@@ -195,6 +196,7 @@ app.controller("transferMoney", function($scope, $log, $stateParams, $location,
 				delete $scope.errorMessage;
 				toaster.pop('success', "Money Transfer", response.data.Status);
 				document.getElementById("transferMoneyForm").reset();
+				$state.go("clientHome.viewAccountBalance");
 			} else {
 				$scope.errorMessage = response.data.Message;
 				toaster.pop('error', "Money Transfer", response.data.Status);
@@ -202,12 +204,9 @@ app.controller("transferMoney", function($scope, $log, $stateParams, $location,
 			}
 		}, function errorCallback(response) {
 			$scope.errorMessage = "Server Error. Try After Some time";
+			toaster.pop('error', "Money Transfer", "Not done.Try after some time");
 			document.getElementById("transferMoneyForm").reset();
 		});
 	}
 });
 
-window.onbeforeunload = function() {
-	localStorage.removeItem("ngStorage-role");
-	localStorage.removeItem("ngStorage-id");
-}
