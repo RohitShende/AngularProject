@@ -68,12 +68,12 @@ app
 								address : $scope.client.address,
 								dateOfBirth : $scope.client.dateOfBirth,
 								branchPOJO : {
-									branchName : $scope.branhName
+									branchName : $scope.client.branch.branchName
 								},
 								account : [ {
 									accountType : $scope.accountType
 								} ],
-								customerId : $scope.clientId
+								customerId : $scope.clientId, 
 							}
 						})
 								.then(

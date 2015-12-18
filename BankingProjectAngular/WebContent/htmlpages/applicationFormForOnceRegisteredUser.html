@@ -78,13 +78,7 @@
 						Branch<span class="redasterik ">*</span>
 					</label>
 					<div class="col-md-4">
-						<select id="selectbasic" ng-model="branchName"
-							ng-focus="branchFocus=true" ng-blur="branchFocus=false" 
-							class="form-control">
-							<option  value="">--Select Branch--</option>
-							<option ng-repeat="branch in branches" value="branch.branchName">{{branch.branchName}}</option>
-							
-						</select>
+						<span class=>{{client.branch.branchName}}</span>
 					</div>
 
 
