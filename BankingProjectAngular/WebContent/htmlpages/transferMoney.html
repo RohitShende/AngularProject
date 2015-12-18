@@ -16,7 +16,7 @@
 						<label class="col-md-4 control-label" for="userName">Sender
 							Account No<span class="redasterik ">*</span>
 						</label>
-						<div class="col-md-5">
+						<div class="col-md-4">
 							<select id="selectbasic" ng-model="sender"
 								ng-focus="branchFocus=true" ng-blur="branchFocus=false"
 								ng-click="getBalance()" class="form-control">
@@ -27,7 +27,7 @@
 							</select>
 						</div>
 						<div
-							class="col-md-3 btn-info text-left-align btn-sm text-left-align alertBoxHeight"
+							class="col-md-4 btn-info text-left-align btn-sm text-left-align alertBoxHeight"
 							ng-show="accBalance!=null && accBalance>=0">
 							<i class="fa fa-money"></i>&nbsp;&nbsp;Your Balance
 							:{{accBalance}}
@@ -128,11 +128,11 @@
 				</div>
 
 			</fieldset>
-		</form>
+		</form><!-- 
 		<uib-alert type="danger" ng-show="errorMessage!=null"
 			class="col-md-6 col-md-offset-3">{{errorMessage}}</uib-alert>
 
 
-	</div>
+	 --></div>
 
 </div>

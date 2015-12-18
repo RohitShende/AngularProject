@@ -194,12 +194,12 @@ app.controller("transferMoneyController", function($scope, $log, $stateParams, $
 			console.log(data);
 			if (response.data.Status === 'Success') {
 				delete $scope.errorMessage;
-				toaster.pop('success', "Money Transfer", response.data.Status);
+				toaster.pop('success', "Money Transfer", response.data.Message);
 				document.getElementById("transferMoneyForm").reset();
 				$state.go("clientHome.viewAccountBalance");
 			} else {
 				$scope.errorMessage = response.data.Message;
-				toaster.pop('error', "Money Transfer", response.data.Status);
+				toaster.pop('error', "Money Transfer", response.data.Message);
 				document.getElementById("transferMoneyForm").reset();
 			}
 		}, function errorCallback(response) {
