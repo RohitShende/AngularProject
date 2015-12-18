@@ -22,7 +22,9 @@
 							ng-pattern="/^[a-zA-Z]{4}[\d]{6}]*$/" class="form-control input-md"
 							required>
 							<!-- "^[^\s]{4}\d{6}$" -->
+						<span class="help-block">&nbsp;&nbsp;eg. IFSC code: ANDB000147 as first 4 are alphabets and last 6 are numerics"</span>
 					</div>
+					
 					<div class="col-md-4 btn-sm btn-danger alertBoxHeight "
 						ng-show="(ifscCodeFocus!=true || ifscCodeFocus==null ) && myForm.ifscCode.$error.pattern">
 						<i class="fa fa-exclamation-triangle"></i>&nbsp;Invalid IFSC Code
