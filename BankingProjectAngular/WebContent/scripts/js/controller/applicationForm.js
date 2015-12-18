@@ -97,7 +97,7 @@ app
 										address : $scope.address,
 										dateOfBirth : $scope.dateOfBirth,
 										branchPOJO : {
-											branchName : $scope.branhName
+											branchName : $scope.branchName
 										},
 										account : {
 											accountType : $scope.accountType
@@ -271,9 +271,9 @@ app
 
 				});
 
-window.onbeforeunload = function() {
-	localStorage.removeItem("ngStorage-enquiryId");
-	localStorage.removeItem("ngStorage-email");
-	localStorage.removeItem("ngStorage-enquiryemail");
-	localStorage.removeItem("ngStorage-clientId");
-}
+//window.onbeforeunload = function() {
+//	localStorage.removeItem("ngStorage-enquiryId");
+//	localStorage.removeItem("ngStorage-email");
+//	localStorage.removeItem("ngStorage-enquiryemail");
+//	localStorage.removeItem("ngStorage-clientId");
+//}
