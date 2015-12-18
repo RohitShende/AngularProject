@@ -18,7 +18,7 @@ app
 						$location.path("/uploadDocument");
 					};
 					
-					$scope.branches = ['Branch1','Branch2'];
+					$scope.branches = [];
 					$http({
 						method : 'get',
 						url : $scope.$storage.baseURI + 'branch/'

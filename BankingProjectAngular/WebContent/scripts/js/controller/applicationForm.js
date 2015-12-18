@@ -97,7 +97,7 @@ app
 										address : $scope.address,
 										dateOfBirth : $scope.dateOfBirth,
 										branchPOJO : {
-											branchName : $scope.branhName
+											branchName : $scope.branchName
 										},
 										account : {
 											accountType : $scope.accountType
@@ -237,7 +237,7 @@ app
 											if (response.data.alreadyExists == 'false') {
 												$localStorage.email = $scope.email;
 
-												toaster.pop('error',"Not registered","This email Id is not registered. Please registered.");
+												toaster.pop('error',"Not registered","This email Id is not registered. Please register.");
 
 												$location
 														.path("/applicationFormUnregistered");
@@ -271,9 +271,9 @@ app
 
 				});
 
-window.onbeforeunload = function() {
-	localStorage.removeItem("ngStorage-enquiryId");
-	localStorage.removeItem("ngStorage-email");
-	localStorage.removeItem("ngStorage-enquiryemail");
-	localStorage.removeItem("ngStorage-clientId");
-}
+//window.onbeforeunload = function() {
+//	localStorage.removeItem("ngStorage-enquiryId");
+//	localStorage.removeItem("ngStorage-email");
+//	localStorage.removeItem("ngStorage-enquiryemail");
+//	localStorage.removeItem("ngStorage-clientId");
+//}
