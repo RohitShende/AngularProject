@@ -77,7 +77,7 @@
 					<label class="col-md-4 control-label" for="selectbasic">Select
 						Branch<span class="redasterik ">*</span>
 					</label>
-					<div class="col-md-4">
+					<div class="col-md-4 btn btn-info">
 						<span class=>{{client.branch.branchName}}</span>
 					</div>
 
@@ -114,7 +114,7 @@
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
 						<button id="submit" name="submit"
-							ng-disabled="!((branchName!=null && branchName != '') && (accountType!=null && accountType != ''))"
+							ng-disabled="(accountType!=null && accountType != ''))"
 							class="btn btn-primary">Apply</button>
 					</div>
 				</div>
