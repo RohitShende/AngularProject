@@ -19,13 +19,21 @@
 			<table class="table table-bordered"
 				ng-show="errorMessageRejected==null">
 
-				<thead>
+				<!-- <thead>
 					<tr ng-repeat="user in userRejectedList | filter:name">
 						<td>{{user.id}}</td>
 						<td>{{user.firstName}} {{user.lastName}}</td>
 						<td>{{user.address}}</td>
 						<td>{{user.phone}}</td>
 					</tr>
+				</thead> -->
+				<thead>
+				<tr>
+					<th class="text-center">Customer ID</th>
+					<th class="text-center">Name</th>
+					<th class="text-center">Address</th>
+					<th class="text-center">Contact</th>
+				</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="user in verifiedCustomers | filter:name"

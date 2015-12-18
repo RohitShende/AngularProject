@@ -4,6 +4,7 @@
 var app = angular.module('createBranchManager', []);
 app.controller("createBranchManagerController", function($scope, $log,
 		$stateParams, $location, $state, $rootScope, $http, toaster) {
+
 	
 	$http({
 		method : 'get',
@@ -21,6 +22,7 @@ app.controller("createBranchManagerController", function($scope, $log,
 	
 	
 	var today = new Date();
+	today.setFullYear(today.getFullYear() - 25);
 	$scope.today = today.toISOString();
 	delete $scope.submitted;
 	$scope.addManager = function() {
@@ -59,7 +61,8 @@ app.controller("createBranchManagerController", function($scope, $log,
 				$location.path("/newBranchManager");
 			} else {
 				console.log("New Branch Manager Created" + response.data);
-				$location.path("/adminHome");
+				$state.go("adminHome.viewBranches");
+//				$location.path("/adminHome");
 				toaster.pop('success', "Message", "Branch Manager has been created succesfully!");
 				
 			}
